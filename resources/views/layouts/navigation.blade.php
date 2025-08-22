@@ -49,6 +49,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('materiais.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-box fa-lg"></i>
+                        </span>
+                        <span class="nav-link-title"> Materiais </span>
+                    </a>
+                </li>
+
                 <!-- EXEMPLO DE MENU DROPDOWN: Use este bloco como referência para criar novos menus com subitens -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-form" data-bs-toggle="dropdown"

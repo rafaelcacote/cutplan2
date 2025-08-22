@@ -38,6 +38,13 @@ Route::middleware('auth')->group(function () {
     // Rotas para atribuir perfis ao usuário
     Route::get('users/{user}/permissions', [App\Http\Controllers\UserPermissionController::class, 'edit'])->name('users.permissions.edit');
     Route::put('users/{user}/permissions', [App\Http\Controllers\UserPermissionController::class, 'update'])->name('users.permissions.update');
+
+        // Rotas de CRUD de materiais
+        Route::resource('materiais', App\Http\Controllers\MaterialController::class)
+            ->parameters(['materiais' => 'material']);
+
+        // Rota para cadastro rápido de tipo de material via AJAX
+        Route::post('tipos-materiais', [App\Http\Controllers\TipoMaterialController::class, 'store'])->name('tipos-materiais.store');
 });
 
 require __DIR__.'/auth.php';
