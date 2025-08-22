@@ -10,16 +10,20 @@ class Endereco extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'linha1',
-        'linha2',
-        'cidade',
-        'estado',
+        'endereco',
+        'numero',
+        'complemento',
+        'bairro',
+        'municipio_id',
         'cep',
-        'pais',
+        'referencia',
     ];
 
-    public function clientes()
+    /**
+     * Um endereço pertence a um município.
+     */
+    public function municipio()
     {
-        return $this->hasMany(Cliente::class);
+        return $this->belongsTo(Municipio::class, 'municipio_id');
     }
 }

@@ -30,12 +30,22 @@
                     </a>
                 </li>
 
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('clientes.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="fa-solid fa-address-book fa-lg"></i>
                         </span>
                         <span class="nav-link-title"> Clientes </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('fornecedores.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-truck fa-lg"></i>
+                        </span>
+                        <span class="nav-link-title"> Fornecedores </span>
                     </a>
                 </li>
 

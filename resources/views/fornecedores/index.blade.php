@@ -8,17 +8,17 @@
                     <div class="col">
                         <div class="page-pretitle">Administração</div>
                         <h2 class="page-title">
-                            <i class="fa-solid fa-address-book icon me-2"></i>
-                            Clientes
+                            <i class="fa-solid fa-truck icon me-2"></i>
+                            Fornecedores
                         </h2>
                     </div>
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <a href="{{ route('clientes.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                            <a href="{{ route('fornecedores.create') }}" class="btn btn-primary d-none d-sm-inline-block">
                                 <i class="fa-solid fa-plus icon"></i>
-                                Novo Cliente
+                                Novo Fornecedor
                             </a>
-                            <a href="{{ route('clientes.create') }}" class="btn btn-primary d-sm-none btn-icon">
+                            <a href="{{ route('fornecedores.create') }}" class="btn btn-primary d-sm-none btn-icon">
                                 <i class="fa-solid fa-plus icon"></i>
                             </a>
                         </div>
@@ -41,7 +41,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="GET" action="{{ route('clientes.index') }}" class="row g-3">
+                                <form method="GET" action="{{ route('fornecedores.index') }}" class="row g-3">
                                     <div class="col-md-4">
                                         <label for="search_nome" class="form-label">Nome</label>
                                         <div class="input-icon">
@@ -53,14 +53,13 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="search_documento" class="form-label">CPF</label>
+                                        <label for="search_documento" class="form-label">Documento</label>
                                         <div class="input-icon">
                                             <span class="input-icon-addon">
                                                 <i class="fa-solid fa-id-card"></i>
                                             </span>
                                             <input type="text" class="form-control" id="search_documento" name="search_documento"
-                                                value="{{ request('search_documento') }}" placeholder="Pesquisar por CPF..."
-                                                data-mask="000.000.000-00">
+                                                value="{{ request('search_documento') }}" placeholder="Pesquisar por documento...">
                                         </div>
                                     </div>
                                     <div class="col-md-4 d-flex align-items-end">
@@ -69,7 +68,7 @@
                                                 <i class="fa-solid fa-search me-1"></i>
                                                 Pesquisar
                                             </button>
-                                            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">
+                                            <a href="{{ route('fornecedores.index') }}" class="btn btn-outline-secondary">
                                                 <i class="fa-solid fa-times me-1"></i>
                                                 Limpar
                                             </a>
@@ -84,20 +83,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Lista de Clientes</h3>
+                                <h3 class="card-title">Lista de Fornecedores</h3>
                                 <div class="card-actions">
-                                    <span class="text-muted">{{ $clientes->total() }} cliente(s) encontrado(s)</span>
+                                    <span class="text-muted">{{ $fornecedores->total() }} fornecedor(es) encontrado(s)</span>
                                 </div>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-vcenter card-table">
                                     <thead>
                                         <tr>
-                                            <th class="w-1">
-                                                <input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices">
-                                            </th>
-                                            <th>Cliente</th>
-                                            <th>CPF</th>
+                                            <th>Fornecedor</th>
+                                            <th>Documento</th>
                                             <th>Contato</th>
                                             <th>Endereço</th>
                                             <th>Cadastro</th>
@@ -105,19 +101,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($clientes as $cliente)
+                                        @forelse($fornecedores as $fornecedor)
                                             <tr>
                                                 <td>
-                                                    <input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select cliente">
-                                                </td>
-                                                <td>
                                                     <div class="d-flex py-1 align-items-center">
-                                                        <span class="avatar me-2" style="background-image: url(https://ui-avatars.com/api/?name={{ urlencode($cliente->nome) }}&background=206bc4&color=fff&size=64)"></span>
+                                                        <span class="avatar me-2" style="background-image: url(https://ui-avatars.com/api/?name={{ urlencode($fornecedor->nome) }}&background=206bc4&color=fff&size=64)"></span>
                                                         <div class="flex-fill">
-                                                            <div class="font-weight-medium">{{ $cliente->nome }}</div>
+                                                            <div class="font-weight-medium">{{ $fornecedor->nome }}</div>
                                                             <div class="text-muted">
-                                                                @if($cliente->email)
-                                                                    <a href="mailto:{{ $cliente->email }}" class="text-reset">{{ $cliente->email }}</a>
+                                                                @if($fornecedor->email)
+                                                                    <a href="mailto:{{ $fornecedor->email }}" class="text-reset">{{ $fornecedor->email }}</a>
                                                                 @else
                                                                     <span class="text-muted">Email não informado</span>
                                                                 @endif
@@ -126,30 +119,30 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    @if($cliente->documento)
-                                                        <span class="badge bg-blue-lt">{{ preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cliente->documento) }}</span>
+                                                    @if($fornecedor->documento)
+                                                        <span class="badge bg-blue-lt">{{ $fornecedor->documento_formatado }}</span>
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($cliente->telefone)
+                                                    @if($fornecedor->telefone)
                                                         <div class="small">
                                                             <i class="fa-solid fa-phone me-1"></i>
-                                                            {{ $cliente->telefone }}
+                                                            {{ $fornecedor->telefone }}
                                                         </div>
                                                     @else
                                                         <span class="text-muted">-</span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($cliente->endereco)
+                                                    @if($fornecedor->endereco)
                                                         <div class="small text-muted">
-                                                            {{ $cliente->endereco->endereco ?? '' }}
-                                                            @if($cliente->endereco->numero), {{ $cliente->endereco->numero }}@endif
-                                                            @if($cliente->endereco->bairro)<br>{{ $cliente->endereco->bairro }}@endif
-                                                            @if($cliente->endereco->municipio)
-                                                                - {{ $cliente->endereco->municipio->nome ?? '' }}
+                                                            {{ $fornecedor->endereco->endereco ?? '' }}
+                                                            @if($fornecedor->endereco->numero), {{ $fornecedor->endereco->numero }}@endif
+                                                            @if($fornecedor->endereco->bairro)<br>{{ $fornecedor->endereco->bairro }}@endif
+                                                            @if($fornecedor->endereco->municipio)
+                                                                - {{ $fornecedor->endereco->municipio->nome ?? '' }}
                                                             @endif
                                                         </div>
                                                     @else
@@ -158,29 +151,29 @@
                                                 </td>
                                                 <td>
                                                     <div class="small text-muted">
-                                                        {{ $cliente->created_at ? $cliente->created_at->format('d/m/Y') : '-' }}
+                                                        {{ $fornecedor->created_at ? $fornecedor->created_at->format('d/m/Y') : '-' }}
                                                     </div>
                                                     <div class="small text-muted">
-                                                        {{ $cliente->created_at ? $cliente->created_at->format('H:i') : '' }}
+                                                        {{ $fornecedor->created_at ? $fornecedor->created_at->format('H:i') : '' }}
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="btn-list flex-nowrap">
-                                                        <a href="{{ route('clientes.show', $cliente) }}" class="btn btn-outline-primary btn-sm">
+                                                        <a href="{{ route('fornecedores.show', $fornecedor) }}" class="btn btn-outline-primary btn-sm">
                                                             <i class="fa-solid fa-eye"></i>
                                                         </a>
-                                                        <a href="{{ route('clientes.edit', $cliente) }}" class="btn btn-outline-secondary btn-sm">
+                                                        <a href="{{ route('fornecedores.edit', $fornecedor) }}" class="btn btn-outline-secondary btn-sm">
                                                             <i class="fa-solid fa-pen"></i>
                                                         </a>
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-excluir-{{ $cliente->id }}">
+                                                            data-bs-toggle="modal" data-bs-target="#modal-excluir-{{ $fornecedor->id }}">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <!-- Modal Exclusão -->
-                                            <div class="modal modal-blur fade" id="modal-excluir-{{ $cliente->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal modal-blur fade" id="modal-excluir-{{ $fornecedor->id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -188,7 +181,7 @@
                                                         <div class="modal-body text-center py-4">
                                                             <i class="fa-solid fa-triangle-exclamation fa-3x text-danger mb-3"></i>
                                                             <h3>Tem certeza?</h3>
-                                                            <div class="text-muted">Deseja realmente excluir o cliente <strong>{{ $cliente->nome }}</strong>? Esta ação não pode ser desfeita.</div>
+                                                            <div class="text-muted">Deseja realmente excluir o fornecedor <strong>{{ $fornecedor->nome }}</strong>? Esta ação não pode ser desfeita.</div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="w-100">
@@ -199,7 +192,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="col">
-                                                                        <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" class="d-inline">
+                                                                        <form action="{{ route('fornecedores.destroy', $fornecedor) }}" method="POST" class="d-inline">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit" class="btn btn-danger w-100">
@@ -213,34 +206,34 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="7" class="text-center py-4">
-                                            <div class="empty">
-                                                <div class="empty-img">
-                                                    <img src="{{ asset('tabler/img/undraw_printing_invoices_5r4r.svg') }}" height="128" alt="">
-                                                </div>
-                                                <p class="empty-title">Nenhum cliente encontrado</p>
-                                                <p class="empty-subtitle text-muted">
-                                                    Tente criar um novo cliente para começar.
-                                                </p>
-                                                <div class="empty-action">
-                                                    <a href="{{ route('clientes.create') }}" class="btn btn-primary">
-                                                        <i class="fa-solid fa-plus icon"></i>
-                                                        Adicionar seu primeiro cliente
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-footer d-flex justify-content-center">
-                        {{ $clientes->links() }}
+                                        @empty
+                                            <tr>
+                                                <td colspan="6" class="text-center py-4">
+                                                    <div class="empty">
+                                                        <div class="empty-img">
+                                                            <img src="{{ asset('tabler/img/undraw_printing_invoices_5r4r.svg') }}" height="128" alt="">
+                                                        </div>
+                                                        <p class="empty-title">Nenhum fornecedor encontrado</p>
+                                                        <p class="empty-subtitle text-muted">
+                                                            Tente criar um novo fornecedor para começar.
+                                                        </p>
+                                                        <div class="empty-action">
+                                                            <a href="{{ route('fornecedores.create') }}" class="btn btn-primary">
+                                                                <i class="fa-solid fa-plus icon"></i>
+                                                                Adicionar seu primeiro fornecedor
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer d-flex justify-content-center">
+                                {{ $fornecedores->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

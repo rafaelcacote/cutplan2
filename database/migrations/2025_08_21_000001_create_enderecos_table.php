@@ -15,14 +15,19 @@ return new class extends Migration
     {
         Schema::create('enderecos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('linha1', 150);
-            $table->string('linha2', 150)->nullable();
-            $table->string('cidade', 100);
-            $table->string('estado', 100);
+            $table->string('endereco', 150);
+            $table->string('numero', 10)->nullable();
+            $table->string('complemento', 150)->nullable();
+            $table->string('bairro', 45)->nullable();
+            $table->unsignedBigInteger('municipio_id');
             $table->string('cep', 20)->nullable();
-            $table->string('pais', 100)->default('Brasil');
+            $table->string('referencia', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index('municipio_id', 'fk_enderecos_municipios_idx');
+            $table->foreign('municipio_id', 'fk_enderecos_municipios')
+                ->references('id')->on('municipios');
         });
     }
 

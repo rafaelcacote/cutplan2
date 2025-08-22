@@ -24,6 +24,11 @@ Route::middleware('auth')->group(function () {
     // Rotas de CRUD de clientes
     Route::resource('clientes', App\Http\Controllers\ClienteController::class);
 
+    // Rotas de CRUD de fornecedores (com parâmetro customizado)
+    Route::resource('fornecedores', App\Http\Controllers\FornecedorController::class)->parameters([
+        'fornecedores' => 'fornecedor'
+    ]);
+    
     // Rotas de CRUD de perfis (roles)
     Route::resource('roles', App\Http\Controllers\RoleController::class);
 

@@ -8,16 +8,16 @@
                 <div class="row g-2 align-items-center">
                     <div class="col">
                         <div class="page-pretitle">
-                            <a href="{{ route('clientes.index') }}" class="btn-link">Clientes</a>
+                            <a href="{{ route('fornecedores.index') }}" class="btn-link">Fornecedores</a>
                         </div>
                         <h2 class="page-title">
-                            <i class="fa-solid fa-user-plus fa-lg me-2"></i>
-                            Novo Cliente
+                            <i class="fa-solid fa-truck fa-lg me-2"></i>
+                            Novo Fornecedor
                         </h2>
                     </div>
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">
+                            <a href="{{ route('fornecedores.index') }}" class="btn btn-outline-secondary">
                                 <i class="fa-solid fa-arrow-left me-2"></i> Voltar
                             </a>
                         </div>
@@ -29,17 +29,17 @@
             <div class="container-xl">
                 <div class="row">
                     <div class="col-12">
-                        <form method="POST" action="{{ route('clientes.store') }}" class="card">
+                        <form method="POST" action="{{ route('fornecedores.store') }}" class="card">
                             @csrf
                             <div class="card-header">
-                                <h3 class="card-title">Informações do Cliente</h3>
+                                <h3 class="card-title">Informações do Fornecedor</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <div class="mb-3">
-                                            <label class="form-label required">Nome Completo</label>
-                                            <input type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" placeholder="Digite o nome completo" maxlength="150">
+                                            <label class="form-label required">Nome</label>
+                                            <input type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" placeholder="Digite o nome" maxlength="150">
                                             @error('nome')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -47,16 +47,15 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label class="form-label required">CPF</label>
-                                            <input type="text" class="form-control @error('documento') is-invalid @enderror" name="documento" value="{{ old('documento') }}" placeholder="00000000000" id="cpf" maxlength="14">
-                                            <small class="form-hint">Digite apenas números ou use a máscara</small>
+                                            <label class="form-label">Documento (CPF/CNPJ)</label>
+                                            <input type="text" class="form-control @error('documento') is-invalid @enderror" name="documento" value="{{ old('documento') }}" placeholder="000.000.000-00 ou 00.000.000/0000-00" maxlength="18" id="documento">
+                                            <small class="form-hint">Digite CPF (11 dígitos) ou CNPJ (14 dígitos)</small>
                                             @error('documento')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -65,7 +64,7 @@
                                                 <span class="input-group-text">
                                                     <i class="fa-solid fa-envelope"></i>
                                                 </span>
-                                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="cliente@email.com" maxlength="100">
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="fornecedor@email.com" maxlength="150">
                                                 @error('email')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -79,7 +78,7 @@
                                                 <span class="input-group-text">
                                                     <i class="fa-solid fa-phone"></i>
                                                 </span>
-                                                <input type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ old('telefone') }}" placeholder="(99) 99999-9999" id="telefone" maxlength="15">
+                                                <input type="text" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ old('telefone') }}" placeholder="(99) 99999-9999" maxlength="50">
                                                 @error('telefone')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -87,7 +86,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <h4 class="card-title mb-3">
@@ -96,7 +94,6 @@
                                         </h4>
                                     </div>
                                 </div>
-                                
                                 <!-- Linha 1: CEP, Endereço, Número -->
                                 <div class="row">
                                     <div class="col-lg-3">
@@ -106,7 +103,7 @@
                                                 <span class="input-group-text">
                                                     <i class="fa-solid fa-mail-bulk"></i>
                                                 </span>
-                                                <input type="text" class="form-control @error('endereco.cep') is-invalid @enderror" name="endereco[cep]" value="{{ old('endereco.cep') }}" placeholder="00000-000" id="cep" maxlength="9">
+                                                <input type="text" class="form-control @error('endereco.cep') is-invalid @enderror" name="endereco[cep]" value="{{ old('endereco.cep') }}" placeholder="00000-000" maxlength="9" id="cep">
                                                 @error('endereco.cep')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -137,7 +134,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <!-- Linha 2: Bairro, Estado, Município, Complemento -->
                                 <div class="row">
                                     <div class="col-lg-3">
@@ -185,7 +181,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
@@ -197,137 +192,46 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <!-- Linha 3: Observação -->
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label class="form-label">Observações</label>
-                                            <textarea class="form-control @error('observacoes') is-invalid @enderror" name="observacoes" rows="3" placeholder="Observações adicionais sobre o cliente..." id="observacoes">{{ old('observacoes') }}</textarea>
+                                            <textarea class="form-control @error('observacoes') is-invalid @enderror" name="observacoes" rows="3" placeholder="Observações adicionais sobre o fornecedor..." id="observacoes">{{ old('observacoes') }}</textarea>
                                             @error('observacoes')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <script>
-                                    // CSS para o toast
-                                    const toastCSS = `
-                                        .custom-toast {
-                                            position: fixed;
-                                            top: 20px;
-                                            right: 20px;
-                                            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
-                                            color: white;
-                                            padding: 16px 24px;
-                                            border-radius: 12px;
-                                            box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
-                                            z-index: 9999;
-                                            opacity: 0;
-                                            transform: translateX(100%) scale(0.8);
-                                            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                                            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                                            max-width: 350px;
-                                            backdrop-filter: blur(10px);
-                                            border: 1px solid rgba(255, 255, 255, 0.1);
-                                        }
-                                        .custom-toast.success {
-                                            background: linear-gradient(135deg, #51cf66, #40c057);
-                                            box-shadow: 0 8px 32px rgba(81, 207, 102, 0.3);
-                                        }
-                                        .custom-toast.show {
-                                            opacity: 1;
-                                            transform: translateX(0) scale(1);
-                                        }
-                                        .custom-toast .toast-header {
-                                            display: flex;
-                                            align-items: center;
-                                            margin-bottom: 8px;
-                                            font-weight: 600;
-                                            font-size: 14px;
-                                        }
-                                        .custom-toast .toast-icon {
-                                            width: 20px;
-                                            height: 20px;
-                                            margin-right: 10px;
-                                            background: rgba(255, 255, 255, 0.2);
-                                            border-radius: 50%;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-                                            font-size: 12px;
-                                        }
-                                        .custom-toast .toast-body {
-                                            font-size: 13px;
-                                            line-height: 1.4;
-                                            opacity: 0.95;
-                                        }
-                                        .custom-toast .toast-close {
-                                            position: absolute;
-                                            top: 8px;
-                                            right: 10px;
-                                            background: none;
-                                            border: none;
-                                            color: white;
-                                            font-size: 18px;
-                                            cursor: pointer;
-                                            opacity: 0.7;
-                                            transition: opacity 0.2s;
-                                        }
-                                        .custom-toast .toast-close:hover {
-                                            opacity: 1;
-                                        }
-                                    `;
-                                    
-                                    // Adicionar CSS ao head
-                                    const style = document.createElement('style');
-                                    style.textContent = toastCSS;
-                                    document.head.appendChild(style);
-
-                                    // Função para mostrar toast
-                                    function showToast(title, message, type = 'error') {
-                                        // Remove toast anterior se existir
-                                        const existingToast = document.querySelector('.custom-toast');
-                                        if (existingToast) {
-                                            existingToast.remove();
-                                        }
-
-                                        const toast = document.createElement('div');
-                                        toast.className = `custom-toast ${type}`;
-                                        
-                                        const icon = type === 'error' ? '⚠️' : '✅';
-                                        
-                                        toast.innerHTML = `
-                                            <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
-                                            <div class="toast-header">
-                                                <div class="toast-icon">${icon}</div>
-                                                ${title}
-                                            </div>
-                                            <div class="toast-body">
-                                                ${message}
-                                            </div>
-                                        `;
-
-                                        document.body.appendChild(toast);
-
-                                        // Mostrar toast com animação
-                                        setTimeout(() => toast.classList.add('show'), 100);
-
-                                        // Auto-remover após 5 segundos
-                                        setTimeout(() => {
-                                            if (toast.parentElement) {
-                                                toast.style.opacity = '0';
-                                                toast.style.transform = 'translateX(100%) scale(0.8)';
-                                                setTimeout(() => toast.remove(), 400);
-                                            }
-                                        }, 5000);
-                                    }
-
-                                    // Máscaras
+                                    window.municipios = @json($municipios ?? []);
                                     document.addEventListener('DOMContentLoaded', function() {
+                                        // Máscara para documento (CPF/CNPJ)
+                                        const documentoInput = document.getElementById('documento');
+                                        if (documentoInput) {
+                                            documentoInput.addEventListener('input', function() {
+                                                let value = this.value.replace(/\D/g, '');
+                                                
+                                                if (value.length <= 11) {
+                                                    // Máscara CPF: 000.000.000-00
+                                                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                                    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                                                } else {
+                                                    // Máscara CNPJ: 00.000.000/0000-00
+                                                    value = value.replace(/(\d{2})(\d)/, '$1.$2');
+                                                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                                                    value = value.replace(/(\d{3})(\d)/, '$1/$2');
+                                                    value = value.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+                                                }
+                                                
+                                                this.value = value;
+                                            });
+                                        }
+                                        
                                         // Máscara telefone
-                                        const telefoneInput = document.getElementById('telefone');
+                                        const telefoneInput = document.querySelector('input[name="telefone"]');
                                         if (telefoneInput) {
                                             telefoneInput.addEventListener('input', function() {
                                                 let value = this.value.replace(/\D/g, '');
@@ -341,7 +245,6 @@
                                                 this.value = value;
                                             });
                                         }
-
                                         // Máscara CEP
                                         const cepInput = document.getElementById('cep');
                                         if (cepInput) {
@@ -350,21 +253,76 @@
                                                 value = value.replace(/(\d{5})(\d)/, '$1-$2');
                                                 this.value = value;
                                             });
+                                            // Busca de endereço por CEP (usando ViaCEP)
+                                            function buscarCep(cepInput) {
+                                                const cep = cepInput.value.replace(/\D/g, '');
+                                                if (cep.length === 8) {
+                                                    const originalBg = cepInput.style.backgroundColor;
+                                                    cepInput.style.backgroundColor = '#f8f9fa';
+                                                    cepInput.style.cursor = 'wait';
+                                                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            cepInput.style.backgroundColor = originalBg;
+                                                            cepInput.style.cursor = '';
+                                                            if (!data.erro) {
+                                                                document.getElementById('endereco').value = data.logradouro || '';
+                                                                document.getElementById('bairro').value = data.bairro || '';
+                                                                const estadoSelect = document.getElementById('estado_id');
+                                                                const municipioSelect = document.getElementById('municipio_id');
+                                                                for (let i = 0; i < estadoSelect.options.length; i++) {
+                                                                    if (estadoSelect.options[i].text.includes(data.uf)) {
+                                                                        estadoSelect.selectedIndex = i;
+                                                                        estadoSelect.dispatchEvent(new Event('change'));
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                setTimeout(() => {
+                                                                    for (let i = 0; i < municipioSelect.options.length; i++) {
+                                                                        if (municipioSelect.options[i].text.trim() === data.localidade) {
+                                                                            municipioSelect.selectedIndex = i;
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                }, 200);
+                                                                document.getElementById('numero').focus();
+                                                                showToast('CEP Encontrado!', `Endereço preenchido automaticamente para ${data.localidade}/${data.uf}`, 'success');
+                                                            } else {
+                                                                showToast(
+                                                                    'CEP Não Encontrado',
+                                                                    `O CEP ${cep.replace(/(\d{5})(\d{3})/, '$1-$2')} não foi encontrado. Verifique o número digitado e tente novamente.`,
+                                                                    'error'
+                                                                );
+                                                                cepInput.focus();
+                                                                cepInput.select();
+                                                            }
+                                                        })
+                                                        .catch(error => {
+                                                            cepInput.style.backgroundColor = originalBg;
+                                                            cepInput.style.cursor = '';
+                                                            showToast(
+                                                                'Erro de Conexão',
+                                                                'Não foi possível consultar o CEP. Verifique sua conexão e tente novamente.',
+                                                                'error'
+                                                            );
+                                                        });
+                                                }
+                                            }
+                                            cepInput.addEventListener('blur', function() {
+                                                buscarCep(this);
+                                            });
+                                            cepInput.addEventListener('keypress', function(e) {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    buscarCep(this);
+                                                }
+                                            });
                                         }
-                                    });
-
-                                    // Municipios por estado
-                                    window.municipios = @json($municipios ?? []);
-
-                                    // Filtrar municípios pelo estado selecionado
-                                    document.addEventListener('DOMContentLoaded', function() {
+                                        // Estado/Município
                                         const estadoSelect = document.getElementById('estado_id');
                                         const municipioSelect = document.getElementById('municipio_id');
                                         const municipios = window.municipios;
-
-                                        // Valor antigo do município (caso erro de validação)
                                         const oldMunicipioId = "{{ old('endereco.municipio_id') }}";
-
                                         function filtrarMunicipios() {
                                             const estadoId = estadoSelect.value;
                                             municipioSelect.innerHTML = '<option value="">Selecione o município</option>';
@@ -378,101 +336,15 @@
                                         estadoSelect.addEventListener('change', filtrarMunicipios);
                                         if (estadoSelect.value) filtrarMunicipios();
                                     });
-
-                                    // Busca de endereço por CEP (usando ViaCEP)
-                                    function buscarCep(cepInput) {
-                                        const cep = cepInput.value.replace(/\D/g, '');
-                                        if (cep.length === 8) {
-                                            // Mostrar loading visual
-                                            const originalBg = cepInput.style.backgroundColor;
-                                            cepInput.style.backgroundColor = '#f8f9fa';
-                                            cepInput.style.cursor = 'wait';
-                                            
-                                            fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    // Restaurar visual do campo
-                                                    cepInput.style.backgroundColor = originalBg;
-                                                    cepInput.style.cursor = '';
-                                                    
-                                                    if (!data.erro) {
-                                                        // CEP encontrado - preencher campos
-                                                        document.getElementById('endereco').value = data.logradouro || '';
-                                                        document.getElementById('bairro').value = data.bairro || '';
-                                                        
-                                                        // Estado e município
-                                                        const estadoSelect = document.getElementById('estado_id');
-                                                        const municipioSelect = document.getElementById('municipio_id');
-                                                        
-                                                        // Seleciona estado
-                                                        for (let i = 0; i < estadoSelect.options.length; i++) {
-                                                            if (estadoSelect.options[i].text.includes(data.uf)) {
-                                                                estadoSelect.selectedIndex = i;
-                                                                estadoSelect.dispatchEvent(new Event('change'));
-                                                                break;
-                                                            }
-                                                        }
-                                                        
-                                                        // Seleciona município após carregar lista
-                                                        setTimeout(() => {
-                                                            for (let i = 0; i < municipioSelect.options.length; i++) {
-                                                                if (municipioSelect.options[i].text.trim() === data.localidade) {
-                                                                    municipioSelect.selectedIndex = i;
-                                                                    break;
-                                                                }
-                                                            }
-                                                        }, 200);
-                                                        
-                                                        // Foca no campo número
-                                                        document.getElementById('numero').focus();
-                                                        
-                                                        // Toast de sucesso
-                                                        showToast('CEP Encontrado!', `Endereço preenchido automaticamente para ${data.localidade}/${data.uf}`, 'success');
-                                                    } else {
-                                                        // CEP não encontrado - mostrar toast de erro
-                                                        showToast(
-                                                            'CEP Não Encontrado', 
-                                                            `O CEP ${cep.replace(/(\d{5})(\d{3})/, '$1-$2')} não foi encontrado. Verifique o número digitado e tente novamente.`,
-                                                            'error'
-                                                        );
-                                                        cepInput.focus();
-                                                        cepInput.select();
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    // Erro de conexão
-                                                    cepInput.style.backgroundColor = originalBg;
-                                                    cepInput.style.cursor = '';
-                                                    showToast(
-                                                        'Erro de Conexão', 
-                                                        'Não foi possível consultar o CEP. Verifique sua conexão e tente novamente.',
-                                                        'error'
-                                                    );
-                                                });
-                                        }
-                                    }
-
-                                    // Event listeners para CEP
-                                    document.getElementById('cep').addEventListener('blur', function() {
-                                        buscarCep(this);
-                                    });
-
-                                    // Buscar CEP ao pressionar Enter
-                                    document.getElementById('cep').addEventListener('keypress', function(e) {
-                                        if (e.key === 'Enter') {
-                                            e.preventDefault();
-                                            buscarCep(this);
-                                        }
-                                    });
                                 </script>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex">
-                                    <a href="{{ route('clientes.index') }}" class="btn btn-outline-secondary">
+                                    <a href="{{ route('fornecedores.index') }}" class="btn btn-outline-secondary">
                                         <i class="fa-solid fa-arrow-left me-2"></i> Voltar
                                     </a>
                                     <button type="submit" class="btn btn-primary ms-auto">
-                                        <i class="fa-solid fa-save me-2"></i> Salvar Cliente
+                                        <i class="fa-solid fa-save me-2"></i> Salvar Fornecedor
                                     </button>
                                 </div>
                             </div>

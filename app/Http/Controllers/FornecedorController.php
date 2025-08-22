@@ -1,32 +1,30 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
+use App\Models\Fornecedor;
 use App\Models\Endereco;
-use App\Models\User;
 use App\Models\Estado;
 use App\Models\Municipio;
-use App\Http\Requests\StoreClienteRequest;
-use App\Http\Requests\UpdateClienteRequest;
+use App\Http\Requests\StoreFornecedorRequest;
+use App\Http\Requests\UpdateFornecedorRequest;
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class FornecedorController extends Controller
 {
     public function index(Request $request)
     {
         $perPage = 10;
-        $query = Cliente::with(['endereco', 'user']);
+        $query = Fornecedor::with(['endereco', 'user']);
         if ($request->filled('search_nome')) {
             $query->where('nome', 'like', '%' . $request->search_nome . '%');
         }
         if ($request->filled('search_documento')) {
             $query->where('documento', 'like', '%' . $request->search_documento . '%');
         }
-        $clientes = $query->paginate($perPage);
-        $clientes->appends($request->query());
-        return view('clientes.index', compact('clientes'));
+        $fornecedores = $query->paginate($perPage);
+        $fornecedores->appends($request->query());
+        return view('fornecedores.index', compact('fornecedores'));
     }
-
 
     public function create()
     {
@@ -36,64 +34,63 @@ class ClienteController extends Controller
                 return ['id' => $m->id, 'nome' => $m->nome];
             });
         });
-        return view('clientes.create', compact('estados', 'municipios'));
+        return view('fornecedores.create', compact('estados', 'municipios'));
     }
 
-    public function store(StoreClienteRequest $request)
+    public function store(StoreFornecedorRequest $request)
     {
         $validated = $request->validated();
         $enderecoData = $validated['endereco'];
         $endereco = Endereco::create($enderecoData);
-        $clienteData = [
+        
+        $fornecedorData = [
             'nome' => $validated['nome'],
-            'documento' => $validated['documento'] ?? null,
+            'documento' => $validated['documento'],
             'email' => $validated['email'] ?? null,
             'telefone' => $validated['telefone'] ?? null,
             'observacoes' => $validated['observacoes'] ?? null,
             'endereco_id' => $endereco->id,
             'user_id' => auth()->id(),
         ];
-        Cliente::create($clienteData);
-        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
+        Fornecedor::create($fornecedorData);
+        return redirect()->route('fornecedores.index')->with('success', 'Fornecedor criado com sucesso!');
     }
 
-    public function show(Cliente $cliente)
+    public function show(Fornecedor $fornecedor)
     {
-        return view('clientes.show', compact('cliente'));
+        return view('fornecedores.show', compact('fornecedor'));
     }
 
-    public function edit(Cliente $cliente)
+    public function edit(Fornecedor $fornecedor)
     {
-        $endereco = $cliente->endereco;
+        $endereco = $fornecedor->endereco;
         $estados = Estado::all();
         $municipios = Municipio::all()->groupBy('estado_id')->map(function($group) {
             return $group->map(function($m) {
                 return ['id' => $m->id, 'nome' => $m->nome];
             });
         });
-        return view('clientes.edit', compact('cliente', 'endereco', 'estados', 'municipios'));
+        return view('fornecedores.edit', compact('fornecedor', 'endereco', 'estados', 'municipios'));
     }
 
- 
-
-    public function update(UpdateClienteRequest $request, Cliente $cliente)
+    public function update(UpdateFornecedorRequest $request, Fornecedor $fornecedor)
     {
         $validated = $request->validated();
-        $enderecoData = $validated['endereco'];
-        $cliente->endereco->update($enderecoData);
-        $cliente->update([
+        
+        $fornecedor->update([
             'nome' => $validated['nome'],
-            'documento' => $validated['documento'] ?? null,
+            'documento' => $validated['documento'],
             'email' => $validated['email'] ?? null,
             'telefone' => $validated['telefone'] ?? null,
             'observacoes' => $validated['observacoes'] ?? null,
         ]);
-        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
+        $fornecedor->endereco->update($validated['endereco']);
+        return redirect()->route('fornecedores.index')->with('success', 'Fornecedor atualizado com sucesso!');
     }
 
-    public function destroy(Cliente $cliente)
+    public function destroy(Fornecedor $fornecedor)
     {
-        $cliente->delete();
-        return redirect()->route('clientes.index')->with('success', 'Cliente excluído com sucesso!');
+        $fornecedor->delete();
+        return redirect()->route('fornecedores.index')->with('success', 'Fornecedor excluído com sucesso!');
     }
 }
