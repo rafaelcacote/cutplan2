@@ -58,29 +58,26 @@
                     </a>
                 </li>
 
-                <!-- EXEMPLO DE MENU DROPDOWN: Use este bloco como referência para criar novos menus com subitens -->
+               
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-form" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="icon icon-1">
-                                <path d="M9 11l3 3l8 -8"></path>
-                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
-                            </svg>
+                           <i class="fa-solid fa-people-group"></i>
                         </span>
-                        <span class="nav-link-title"> Forms </span>
+                        <span class="nav-link-title"> Membros e Equipes </span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="./form-elements.html"> Form elements </a>
-                        <a class="dropdown-item" href="./form-layout.html">
-                            Form layouts
+                        <a class="dropdown-item" href="{{ route('membros.index') }}">
+                            <i class="fa-solid fa-user me-2"></i> Membros
+                        </a>
+                        <a class="dropdown-item" href="{{ route('equipes.index') }}">
+                            <i class="fa-solid fa-people-group me-2"></i> Equipes
                             <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
                         </a>
                     </div>
                 </li>
-                <!-- FIM DO EXEMPLO DE MENU DROPDOWN -->
+                
                 <!-- Grupo: Gerenciamento de Usuários -->
                 <li class="nav-item mt-3 mb-1">
                     <span class="nav-link-title text-uppercase text-muted small fw-bold ps-3">Gerenciamento de
@@ -114,6 +111,35 @@
                         </a>
                     </li>
                 @endcan
+
+                <!-- Grupo: Cadastros Básicos -->
+                <li class="nav-item mt-3 mb-1">
+                    <span class="nav-link-title text-uppercase text-muted small fw-bold ps-3">Cadastros Básicos</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cargos.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-user-tag"></i>
+                        </span>
+                        <span class="nav-link-title"> Cargos </span>
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-users fa-lg"></i>
+                        </span>
+                        <span class="nav-link-title"> Tipos Material </span>
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-users fa-lg"></i>
+                        </span>
+                        <span class="nav-link-title"> Unidades </span>
+                    </a>
+                </li>
             </ul>
             <!-- END NAVBAR MENU -->
         </div>

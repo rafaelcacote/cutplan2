@@ -39,9 +39,21 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/permissions', [App\Http\Controllers\UserPermissionController::class, 'edit'])->name('users.permissions.edit');
     Route::put('users/{user}/permissions', [App\Http\Controllers\UserPermissionController::class, 'update'])->name('users.permissions.update');
 
-        // Rotas de CRUD de materiais
-        Route::resource('materiais', App\Http\Controllers\MaterialController::class)
-            ->parameters(['materiais' => 'material']);
+        // Rotas de CRUD de cargos
+        Route::resource('cargos', \App\Http\Controllers\CargoController::class);
+
+
+    // Rotas de CRUD de membros
+    Route::resource('membros', App\Http\Controllers\MembroController::class);
+
+    // Rotas de CRUD de equipes
+    Route::resource('equipes', App\Http\Controllers\EquipeController::class);
+    // Rota para gerenciar membros da equipe
+    Route::get('equipes/{equipe}/membros', [App\Http\Controllers\EquipeController::class, 'membros'])->name('equipes.membros');
+
+    // Rotas de CRUD de materiais
+    Route::resource('materiais', App\Http\Controllers\MaterialController::class)
+        ->parameters(['materiais' => 'material']);
 
         // Rota para cadastro rápido de tipo de material via AJAX
         Route::post('tipos-materiais', [App\Http\Controllers\TipoMaterialController::class, 'store'])->name('tipos-materiais.store');
