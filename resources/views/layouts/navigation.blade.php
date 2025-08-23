@@ -83,7 +83,8 @@
                             <i class="fa-solid fa-file-invoice-dollar fa-lg"></i>
                         </span>
                         <span class="nav-link-title"> Orçamentos </span>
-                        <span class="badge badge-sm bg-primary text-uppercase ms-auto">Novo</span>
+                        
+                        
                     </a>
                 </li>
                 
