@@ -26,4 +26,12 @@ class Endereco extends Model
     {
         return $this->belongsTo(Municipio::class, 'municipio_id');
     }
+
+    /**
+     * Um endereço pertence a um estado (através do município).
+     */
+    public function estado()
+    {
+        return $this->hasOneThrough(Estado::class, Municipio::class, 'id', 'id', 'municipio_id', 'estado_id');
+    }
 }

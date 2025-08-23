@@ -13,4 +13,13 @@ class Servico extends Model
         'nome',
         'ativo',
     ];
+
+    protected $casts = [
+        'ativo' => 'boolean',
+    ];
+
+    public function itensServico()
+    {
+        return $this->hasMany(ItemServico::class);
+    }
 }

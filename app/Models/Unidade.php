@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Unidade extends Model
 {
     use HasFactory;
+    
     protected $table = 'unidades';
-    protected $fillable = ['nome'];
+    
+    protected $fillable = [
+        'nome',
+        'simbolo'
+    ];
+
+    public function itensOrcamento()
+    {
+        return $this->hasMany(ItemOrcamento::class);
+    }
 }

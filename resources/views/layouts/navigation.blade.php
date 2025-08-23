@@ -76,6 +76,16 @@
                         </a>
                     </div>
                 </li>
+
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('orcamentos.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-file-invoice-dollar fa-lg"></i>
+                        </span>
+                        <span class="nav-link-title"> Orçamentos </span>
+                        <span class="badge badge-sm bg-primary text-uppercase ms-auto">Novo</span>
+                    </a>
+                </li>
                 
                 <!-- Grupo: Gerenciamento de Usuários -->
                 <li class="nav-item mt-3 mb-1">
