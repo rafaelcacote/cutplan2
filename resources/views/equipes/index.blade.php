@@ -90,6 +90,7 @@
                                     <th>ID</th>
                                     <th>Nome</th>
                                     <th>Líder</th>
+                                    <th>Membros</th>
                                     <th>Status</th>
                                     <th class="w-1"></th>
                                 </tr>
@@ -100,6 +101,13 @@
                                         <td>{{ $equipe->id }}</td>
                                         <td>{{ $equipe->nome }}</td>
                                         <td>{{ $equipe->lider ? $equipe->lider->nome : '-' }}</td>
+                                        <td>
+                                            @if($equipe->membros && $equipe->membros->count() > 0)
+                                                <span class="badge bg-blue-lt">{{ $equipe->membros->count() }} membro{{ $equipe->membros->count() > 1 ? 's' : '' }}</span>
+                                            @else
+                                                <span class="text-muted">0</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             @if($equipe->ativo)
                                                 <span class="badge bg-green-lt">Ativo</span>
@@ -141,7 +149,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="5" class="text-center">
-                                            <img src="https://tabler-icons.io/static/tabler-icons/icons/ghost.svg" alt="Sem registros" width="48" class="mb-2">
+                                            <i class="fa-solid fa-box-open fa-3x text-muted mb-2"></i>
                                             <div class="mb-2">Nenhuma equipe encontrada.</div>
                                             <a href="{{ route('equipes.create') }}" class="btn btn-primary">Criar primeira equipe</a>
                                         </td>

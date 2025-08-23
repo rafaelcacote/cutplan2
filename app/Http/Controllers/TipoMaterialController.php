@@ -14,6 +14,42 @@ class TipoMaterialController extends Controller
         $this->middleware('auth');
     }
 
+    public function update(Request $request, TipoMaterial $tipoMaterial)
+    {
+        $validated = $request->validate([
+            'nome' => 'required|string|max:100|unique:tipos_materiais,nome,' . $tipoMaterial->id,
+        ]);
+        $tipoMaterial->update($validated);
+        return redirect()->route('tipos-materiais.index')->with('success', 'Tipo de material atualizado com sucesso!');
+    }
+
+    public function create()
+    {
+        return view('tipos_materiais.create');
+    }
+
+    public function show(TipoMaterial $tipoMaterial)
+    {
+        return view('tipos_materiais.show', compact('tipoMaterial'));
+    }
+
+    public function edit(TipoMaterial $tipoMaterial)
+    {
+        return view('tipos_materiais.edit', compact('tipoMaterial'));
+    }
+
+    public function index(Request $request)
+    {
+        $perPage = 10;
+        $query = TipoMaterial::query();
+        if ($request->filled('search_nome')) {
+            $query->where('nome', 'like', '%' . $request->search_nome . '%');
+        }
+        $tipos = $query->paginate($perPage);
+        $tipos->appends($request->query());
+        return view('tipos_materiais.index', compact('tipos'));
+    }
+
     public function store(Request $request)
     {
         try {

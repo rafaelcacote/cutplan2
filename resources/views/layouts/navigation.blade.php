@@ -57,7 +57,6 @@
                         <span class="nav-link-title"> Materiais </span>
                     </a>
                 </li>
-
                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-form" data-bs-toggle="dropdown"
@@ -116,6 +115,24 @@
                 <li class="nav-item mt-3 mb-1">
                     <span class="nav-link-title text-uppercase text-muted small fw-bold ps-3">Cadastros Básicos</span>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-form" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                           <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </span>
+                        <span class="nav-link-title"> Itens e Serviços </span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('servicos.index') }}">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Serviços
+                        </a>
+                        <a class="dropdown-item" href="{{ route('itens-servico.index') }}">
+                            <i class="fa-solid fa-list fa-lg"></i> Itens de Serviço
+                            <!-- <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span> -->
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cargos.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -124,18 +141,18 @@
                         <span class="nav-link-title"> Cargos </span>
                     </a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('tipos-materiais.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="fa-solid fa-users fa-lg"></i>
+                            <i class="fa-solid fa-cubes-stacked fa-lg"></i>
                         </span>
-                        <span class="nav-link-title"> Tipos Material </span>
+                        <span class="nav-link-title"> Tipos de Materiais </span>
                     </a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('unidades.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="fa-solid fa-users fa-lg"></i>
+                            <i class="fa-solid fa-ruler-combined fa-lg"></i>
                         </span>
                         <span class="nav-link-title"> Unidades </span>
                     </a>

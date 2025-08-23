@@ -88,7 +88,8 @@
         </div>
         <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
             <!-- Photo -->
-            <div class="bg-cover h-100 min-vh-100" style="background-image: url('{{ asset('tabler/img/login.jpg') }}')">
+            <div class="bg-cover h-100 min-vh-100 position-relative" style="background-image: url('{{ asset('tabler/img/login.jpg') }}')">
+                <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);"></div>
             </div>
         </div>
     </div>

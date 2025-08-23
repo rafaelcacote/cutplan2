@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class EquipeController extends Controller
 {
+
+
     public function index(Request $request)
     {
         $perPage = 10;
@@ -58,6 +60,12 @@ class EquipeController extends Controller
 
     public function destroy(Equipe $equipe)
     {
+        // Exclui todos os membros vinculados a esta equipe
+        foreach ($equipe->membros as $membro) {
+            $membro->delete();
+        }
+        // Remove os vínculos da tabela pivô (opcional, pois o delete acima já faz isso se for cascade)
+        $equipe->membros()->detach();
         $equipe->delete();
         return redirect()->route('equipes.index')->with('success', 'Equipe excluída com sucesso!');
     }
@@ -65,8 +73,55 @@ class EquipeController extends Controller
     // Botão para gerenciar membros da equipe
     public function membros(Equipe $equipe)
     {
-        $equipe->load('membros');
-        $membros = Membro::all();
-        return view('equipes.membros', compact('equipe', 'membros'));
+    $equipe->load('membros');
+    // Só mostra membros que ainda não estão na equipe
+    $membros = Membro::whereNotIn('id', $equipe->membros->pluck('id'))->get();
+    return view('equipes.membros', compact('equipe', 'membros'));
+    }
+
+    // Adiciona um membro à equipe
+    public function adicionarMembro(Request $request, Equipe $equipe)
+    {
+        $request->validate([
+            'membro_id' => 'required|exists:membros,id',
+        ]);
+        // Verifica se o membro já está na equipe
+        if ($equipe->membros()->where('membro_id', $request->membro_id)->exists()) {
+            if ($request->wantsJson() || $request->isJson() || $request->ajax()) {
+                return response()->json(['error' => 'Este membro já faz parte da equipe!'], 422);
+            }
+            return redirect()->route('equipes.membros', $equipe->id)
+                ->with('error', 'Este membro já faz parte da equipe!');
+        }
+        // Supondo relação muitos-para-muitos: equipe_membro
+        $equipe->membros()->attach($request->membro_id, [
+            'funcao' => $request->input('funcao')
+        ]);
+        if ($request->wantsJson() || $request->isJson() || $request->ajax()) {
+            return response()->json(['success' => 'Membro adicionado com sucesso!']);
+        }
+        return redirect()->route('equipes.membros', $equipe->id)
+            ->with('success', 'Membro adicionado com sucesso!');
+    }
+
+    // Remove um membro da equipe
+    public function removerMembro(Request $request, Equipe $equipe, Membro $membro)
+    {
+        // Verifica se o membro está realmente na equipe
+        if (!$equipe->membros()->where('membro_id', $membro->id)->exists()) {
+            if ($request->wantsJson() || $request->isJson() || $request->ajax()) {
+                return response()->json(['error' => 'Este membro não faz parte desta equipe!'], 422);
+            }
+            return redirect()->route('equipes.membros', $equipe->id)
+                ->with('error', 'Este membro não faz parte desta equipe!');
+        }
+        
+        $equipe->membros()->detach($membro->id);
+        
+        if ($request->wantsJson() || $request->isJson() || $request->ajax()) {
+            return response()->json(['success' => 'Membro removido com sucesso!']);
+        }
+        return redirect()->route('equipes.membros', $equipe->id)
+            ->with('success', 'Membro removido com sucesso!');
     }
 }

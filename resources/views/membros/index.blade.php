@@ -217,9 +217,47 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-footer d-flex justify-content-center">
-                                {{ $membros->links() }}
-                            </div>
+                            @if ($membros instanceof \Illuminate\Pagination\LengthAwarePaginator && $membros->hasPages())
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <ul class="pagination">
+                                            {{-- Previous Page Link --}}
+                                            <li class="page-item{{ $membros->onFirstPage() ? ' disabled' : '' }}">
+                                                <a class="page-link" href="{{ $membros->previousPageUrl() ?? '#' }}" tabindex="-1"
+                                                    aria-disabled="{{ $membros->onFirstPage() ? 'true' : 'false' }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                                        <path d="M15 6l-6 6l6 6"></path>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            {{-- Pagination Elements --}}
+                                            @foreach ($membros->links()->elements[0] as $page => $url)
+                                                @if ($url)
+                                                    <li class="page-item{{ $page == $membros->currentPage() ? ' active' : '' }}">
+                                                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                                    </li>
+                                                @else
+                                                    <li class="page-item disabled"><span class="page-link">{{ $page }}</span>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                            {{-- Next Page Link --}}
+                                            <li class="page-item{{ $membros->hasMorePages() ? '' : ' disabled' }}">
+                                                <a class="page-link" href="{{ $membros->nextPageUrl() ?? '#' }}"
+                                                    aria-disabled="{{ $membros->hasMorePages() ? 'false' : 'true' }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+                                                        <path d="M9 6l6 6l-6 6"></path>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

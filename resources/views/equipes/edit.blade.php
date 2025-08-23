@@ -88,9 +88,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer d-flex align-items-center">
-                            <a href="{{ route('equipes.index') }}" class="btn btn-outline-secondary">Voltar</a>
-                            <button type="submit" class="btn btn-primary ms-auto">Salvar</button>
+                        <div class="card-footer d-flex align-items-center gap-2">
+                            <a href="{{ route('equipes.show', $equipe) }}" class="btn btn-outline-primary">
+                                <i class="fa-solid fa-eye me-2"></i> Visualizar
+                            </a>
+                            <a href="{{ route('equipes.index') }}" class="btn btn-outline-secondary">
+                                <i class="fa-solid fa-arrow-left me-2"></i> Voltar
+                            </a>
+                            <button type="submit" class="btn btn-primary ms-auto">
+                                <i class="fa-solid fa-save me-2"></i> Salvar
+                            </button>
                         </div>
                     </form>
                 </div>
