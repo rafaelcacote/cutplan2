@@ -195,41 +195,97 @@
 
     <!-- Modal Adicionar Serviço -->
     <div class="modal modal-blur fade" id="modal-servico" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
                         <i class="fa-solid fa-cogs me-2"></i>
-                        Adicionar Itens de Serviço
+                        Adicionar Serviço
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Selecione o Serviço</label>
-                        <select class="form-select" id="select-servico">
-                            <option value="">Carregando serviços...</option>
-                        </select>
+                    <!-- Etapa 1: Seleção do Serviço -->
+                    <div id="etapa-selecao-servico">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="form-label">Selecione o Serviço</label>
+                                <select class="form-select" id="select-servico">
+                                    <option value="">Carregando serviços...</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div id="itens-servico-container" style="display: none;">
-                        <label class="form-label">Itens do Serviço</label>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th width="50px">
-                                            <input type="checkbox" id="select-all-itens">
-                                        </th>
-                                        <th>Descrição</th>
-                                        <th width="120px">Quantidade</th>
-                                        <th width="120px">Unidade</th>
-                                        <th width="120px">Preço Unit.</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody-itens-servico">
-                                    <!-- Itens do serviço serão carregados aqui -->
-                                </tbody>
-                            </table>
+
+                    <!-- Etapa 2: Adicionar Itens do Serviço -->
+                    <div id="etapa-itens-servico" style="display: none;">
+                        <hr class="my-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="mb-0">Adicionar Itens do Serviço</h6>
+                            <span class="badge bg-blue" id="nome-servico-selecionado"></span>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Selecionar Item</label>
+                                <select class="form-select" id="select-item-servico">
+                                    <option value="">Escolha um item...</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Quantidade</label>
+                                <input type="number" class="form-control" id="input-quantidade-item" 
+                                       value="1" step="0.01" min="0.01">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Observações</label>
+                                <input type="text" class="form-control" id="input-observacoes-item" 
+                                       placeholder="Observações...">
+                            </div>
+                            <div class="col-md-1">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="button" class="btn btn-primary w-100" id="btn-adicionar-item-individual">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Lista de itens adicionados -->
+                        <div id="itens-adicionados-container" style="display: none;">
+                            <h6 class="mb-2">Itens Adicionados:</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th width="100px">Qtd</th>
+                                            <th>Observações</th>
+                                            <th width="60px">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody-itens-adicionados">
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="alert alert-info mt-3">
+                                <i class="fa-solid fa-info-circle me-2"></i>
+                                <strong>Itens adicionados:</strong> <span id="contador-itens-servico">0</span> item(ns)
+                                <br>
+                                <small>Defina o valor total do serviço abaixo para finalizar</small>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label"><strong>Valor Total do Serviço</strong></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="number" class="form-control" id="valor-total-servico" 
+                                               step="0.01" min="0.01" placeholder="0,00">
+                                    </div>
+                                    <small class="text-muted">Este será o valor total do serviço completo</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -237,9 +293,9 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Cancelar
                     </button>
-                    <button type="button" class="btn btn-primary" id="btn-adicionar-itens-servico" disabled>
-                        <i class="fa-solid fa-plus me-2"></i>
-                        Adicionar Itens Selecionados
+                    <button type="button" class="btn btn-primary" id="btn-finalizar-servico" disabled>
+                        <i class="fa-solid fa-check me-2"></i>
+                        Finalizar e Adicionar ao Orçamento
                     </button>
                 </div>
             </div>
@@ -398,6 +454,9 @@
             init();
 
             function init() {
+                // Carregar dados dos selects logo no início
+                carregarDadosSelect();
+
                 // Habilitar botão continuar quando cliente for selecionado
                 clienteSelect.addEventListener('change', function() {
                     btnContinuar.disabled = !this.value;
@@ -407,7 +466,6 @@
                 btnContinuar.addEventListener('click', function() {
                     etapaDados.style.display = 'none';
                     etapaItens.style.display = 'block';
-                    carregarDadosSelect();
                 });
 
                 btnVoltar.addEventListener('click', function() {
@@ -496,7 +554,7 @@
                     unidadesData.forEach(unidade => {
                         const option = document.createElement('option');
                         option.value = unidade.id;
-                        option.textContent = `${unidade.nome} (${unidade.simbolo})`;
+                        option.textContent = `${unidade.nome}${unidade.codigo ? ' (' + unidade.codigo + ')' : ''}`;
                         select.appendChild(option);
                     });
                 });
@@ -504,117 +562,224 @@
 
             function setupModalServico() {
                 const selectServico = document.getElementById('select-servico');
-                const containerItensServico = document.getElementById('itens-servico-container');
-                const tbodyItensServico = document.getElementById('tbody-itens-servico');
-                const btnAdicionarItensServico = document.getElementById('btn-adicionar-itens-servico');
-                const selectAllItens = document.getElementById('select-all-itens');
+                const etapaItensServico = document.getElementById('etapa-itens-servico');
+                const nomeServicoSelecionado = document.getElementById('nome-servico-selecionado');
+                const selectItemServico = document.getElementById('select-item-servico');
+                const inputQuantidade = document.getElementById('input-quantidade-item');
+                const inputObservacoes = document.getElementById('input-observacoes-item');
+                const btnAdicionarItem = document.getElementById('btn-adicionar-item-individual');
+                const btnFinalizarServico = document.getElementById('btn-finalizar-servico');
+                const itensAdicionadosContainer = document.getElementById('itens-adicionados-container');
+                const tbodyItensAdicionados = document.getElementById('tbody-itens-adicionados');
+                const contadorItensServico = document.getElementById('contador-itens-servico');
+                const valorTotalServico = document.getElementById('valor-total-servico');
 
+                let servicoAtual = null;
+                let itensServicoDisponiveis = [];
+                let itensAdicionados = [];
+
+                // Evento de mudança do select de serviço
                 selectServico.addEventListener('change', async function() {
                     if (!this.value) {
-                        containerItensServico.style.display = 'none';
-                        btnAdicionarItensServico.disabled = true;
+                        etapaItensServico.style.display = 'none';
+                        btnFinalizarServico.disabled = true;
+                        servicoAtual = null;
                         return;
                     }
 
                     try {
-                        const response = await fetch(`{{ url('orcamentos/servicos') }}/${this.value}/itens`);
-                        const itensServico = await response.json();
-
-                        tbodyItensServico.innerHTML = '';
+                        // Buscar dados do serviço
+                        const responseServico = await fetch(`{{ url('orcamentos/servicos') }}/${this.value}`);
+                        const servico = await responseServico.json();
                         
-                        if (itensServico.length === 0) {
-                            tbodyItensServico.innerHTML = `
-                                <tr>
-                                    <td colspan="5" class="text-center text-muted">
-                                        Nenhum item encontrado para este serviço
-                                    </td>
-                                </tr>
-                            `;
-                            containerItensServico.style.display = 'block';
-                            return;
-                        }
+                        // Buscar itens do serviço
+                        const responseItens = await fetch(`{{ url('orcamentos/servicos') }}/${this.value}/itens`);
+                        const itensServico = await responseItens.json();
 
-                        itensServico.forEach(item => {
-                            const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>
-                                    <input type="checkbox" class="item-servico-check" data-item-id="${item.id}">
-                                </td>
-                                <td>${item.descricao_item}</td>
-                                <td>
-                                    <input type="number" class="form-control form-control-sm" 
-                                           value="1" step="0.01" min="0.01" 
-                                           data-field="quantidade" data-item-id="${item.id}">
-                                </td>
-                                <td>
-                                    <select class="form-select form-select-sm" data-field="unidade" data-item-id="${item.id}">
-                                        <option value="">Sem unidade</option>
-                                        ${unidadesData.map(u => `<option value="${u.id}">${u.nome} (${u.simbolo})</option>`).join('')}
-                                    </select>
-                                </td>
-                                <td>
-                                    <div class="input-group input-group-sm">
-                                        <span class="input-group-text">R$</span>
-                                        <input type="number" class="form-control" 
-                                               step="0.01" min="0.01" value="10.00"
-                                               data-field="preco" data-item-id="${item.id}">
-                                    </div>
-                                </td>
-                            `;
-                            tbodyItensServico.appendChild(row);
-                        });
-
-                        containerItensServico.style.display = 'block';
-                        setupCheckboxesServico();
+                        servicoAtual = servico;
+                        itensServicoDisponiveis = itensServico;
+                        
+                        // Atualizar interface
+                        nomeServicoSelecionado.textContent = servico.nome;
+                        carregarSelectItens(itensServico);
+                        etapaItensServico.style.display = 'block';
+                        
                     } catch (error) {
-                        console.error('Erro ao carregar itens do serviço:', error);
-                        showToast('Erro', 'Não foi possível carregar os itens do serviço.', 'error');
+                        console.error('Erro ao carregar serviço:', error);
+                        showToast('Erro', 'Não foi possível carregar os dados do serviço.', 'error');
                     }
                 });
 
-                function setupCheckboxesServico() {
-                    const checkboxes = document.querySelectorAll('.item-servico-check');
+                function carregarSelectItens(itensServico) {
+                    selectItemServico.innerHTML = '<option value="">Escolha um item...</option>';
                     
-                    selectAllItens.addEventListener('change', function() {
-                        checkboxes.forEach(cb => cb.checked = this.checked);
-                        verificarSelecaoItens();
-                    });
-
-                    checkboxes.forEach(cb => {
-                        cb.addEventListener('change', verificarSelecaoItens);
-                    });
-
-                    function verificarSelecaoItens() {
-                        const selecionados = document.querySelectorAll('.item-servico-check:checked').length;
-                        btnAdicionarItensServico.disabled = selecionados === 0;
+                    if (itensServico.length === 0) {
+                        selectItemServico.innerHTML = '<option value="">Nenhum item disponível</option>';
+                        return;
                     }
+
+                    itensServico.forEach(item => {
+                        const option = document.createElement('option');
+                        option.value = item.id;
+                        option.textContent = item.descricao_item;
+                        selectItemServico.appendChild(option);
+                    });
                 }
 
-                btnAdicionarItensServico.addEventListener('click', function() {
-                    const itensSelecionados = document.querySelectorAll('.item-servico-check:checked');
-                    
-                    itensSelecionados.forEach(checkbox => {
-                        const itemId = checkbox.dataset.itemId;
-                        const row = checkbox.closest('tr');
-                        const descricao = row.cells[1].textContent;
-                        const quantidade = parseFloat(row.querySelector('[data-field="quantidade"]').value);
-                        const unidadeId = row.querySelector('[data-field="unidade"]').value;
-                        const unidadeNome = row.querySelector('[data-field="unidade"] option:checked').textContent;
-                        const preco = parseFloat(row.querySelector('[data-field="preco"]').value);
+                // Adicionar item individual
+                btnAdicionarItem.addEventListener('click', function() {
+                    const itemId = selectItemServico.value;
+                    const quantidade = parseFloat(inputQuantidade.value);
+                    const observacoes = inputObservacoes.value.trim();
 
+                    if (!itemId) {
+                        showToast('Aviso', 'Selecione um item para adicionar.', 'warning');
+                        return;
+                    }
+
+                    if (!quantidade || quantidade <= 0) {
+                        showToast('Aviso', 'Informe uma quantidade válida.', 'warning');
+                        return;
+                    }
+
+                    // Buscar dados do item
+                    const itemSelecionado = itensServicoDisponiveis.find(item => item.id == itemId);
+                    if (!itemSelecionado) {
+                        showToast('Erro', 'Item não encontrado.', 'error');
+                        return;
+                    }
+
+                    // Verificar se o item já foi adicionado
+                    const itemJaAdicionado = itensAdicionados.find(item => item.item_id == itemId);
+                    if (itemJaAdicionado) {
+                        showToast('Aviso', 'Este item já foi adicionado ao serviço.', 'warning');
+                        return;
+                    }
+
+                    // Adicionar à lista
+                    const novoItem = {
+                        item_id: itemId,
+                        descricao: itemSelecionado.descricao_item,
+                        quantidade: quantidade,
+                        observacoes: observacoes
+                    };
+
+                    itensAdicionados.push(novoItem);
+                    atualizarTabelaItens();
+                    limparFormularioItem();
+                    verificarBotaoFinalizar();
+
+                    showToast('Sucesso', 'Item adicionado com sucesso!', 'success');
+                });
+
+                function atualizarTabelaItens() {
+                    tbodyItensAdicionados.innerHTML = '';
+
+                    if (itensAdicionados.length === 0) {
+                        itensAdicionadosContainer.style.display = 'none';
+                        contadorItensServico.textContent = '0';
+                        return;
+                    }
+
+                    itensAdicionadosContainer.style.display = 'block';
+                    contadorItensServico.textContent = itensAdicionados.length;
+
+                    itensAdicionados.forEach((item, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><strong>${item.descricao}</strong></td>
+                            <td>${item.quantidade}</td>
+                            <td>${item.observacoes || '-'}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-outline-danger" onclick="removerItemAdicionado(${index})">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        `;
+                        tbodyItensAdicionados.appendChild(row);
+                    });
+                }
+
+                function limparFormularioItem() {
+                    selectItemServico.value = '';
+                    inputQuantidade.value = '1';
+                    inputObservacoes.value = '';
+                }
+
+                function verificarBotaoFinalizar() {
+                    const temItens = itensAdicionados.length > 0;
+                    const temValor = parseFloat(valorTotalServico.value) > 0;
+                    btnFinalizarServico.disabled = !(temItens && temValor);
+                }
+
+                // Evento para verificar botão quando o valor total mudar
+                valorTotalServico.addEventListener('input', verificarBotaoFinalizar);
+
+                // Função global para remover item (chamada pelo botão)
+                window.removerItemAdicionado = function(index) {
+                    itensAdicionados.splice(index, 1);
+                    atualizarTabelaItens();
+                    verificarBotaoFinalizar();
+                    showToast('Sucesso', 'Item removido com sucesso!', 'success');
+                };
+
+                // Finalizar serviço
+                btnFinalizarServico.addEventListener('click', function() {
+                    const valorTotal = parseFloat(valorTotalServico.value);
+                    
+                    if (itensAdicionados.length === 0) {
+                        showToast('Aviso', 'Adicione pelo menos um item antes de finalizar.', 'warning');
+                        return;
+                    }
+
+                    if (!valorTotal || valorTotal <= 0) {
+                        showToast('Aviso', 'Informe o valor total do serviço.', 'warning');
+                        return;
+                    }
+
+                    // Adicionar cada item ao orçamento com o valor total apenas no primeiro item
+                    itensAdicionados.forEach((item, index) => {
                         adicionarItem({
-                            descricao: descricao,
-                            quantidade: quantidade,
-                            unidade_id: unidadeId || null,
-                            unidade_nome: unidadeId ? unidadeNome : '',
-                            preco_unitario: preco,
-                            item_servico_id: itemId,
-                            total: quantidade * preco
+                            descricao: `${servicoAtual.nome} - ${item.descricao}`,
+                            quantidade: item.quantidade,
+                            unidade_id: null,
+                            unidade_nome: '',
+                            preco_unitario: index === 0 ? valorTotal / item.quantidade : 0, // Valor só no primeiro item
+                            item_servico_id: item.item_id,
+                            total: index === 0 ? valorTotal : 0, // Total só no primeiro item
+                            observacoes: item.observacoes
                         });
                     });
 
+                    // Resetar modal
+                    resetarModalServico();
                     fecharModal('modal-servico');
-                    showToast('Sucesso', `${itensSelecionados.length} item(ns) adicionado(s) ao orçamento!`, 'success');
+                    
+                    showToast('Sucesso', 
+                        `Serviço "${servicoAtual.nome}" adicionado com ${itensAdicionados.length} item(ns) no valor de R$ ${valorTotal.toFixed(2)}!`, 
+                        'success'
+                    );
+                });
+
+                function resetarModalServico() {
+                    selectServico.value = '';
+                    etapaItensServico.style.display = 'none';
+                    servicoAtual = null;
+                    itensServicoDisponiveis = [];
+                    itensAdicionados = [];
+                    limparFormularioItem();
+                    itensAdicionadosContainer.style.display = 'none';
+                    tbodyItensAdicionados.innerHTML = '';
+                    contadorItensServico.textContent = '0';
+                    valorTotalServico.value = '';
+                    btnFinalizarServico.disabled = true;
+                }
+
+                // Resetar quando o modal for fechado
+                document.getElementById('modal-servico').addEventListener('click', function(e) {
+                    if (e.target === this || e.target.classList.contains('btn-close')) {
+                        resetarModalServico();
+                    }
                 });
             }
 
@@ -697,9 +862,7 @@
                         <tr>
                             <th>Descrição</th>
                             <th width="100px">Qtd</th>
-                            <th width="100px">Unidade</th>
-                            <th width="120px">Preço Unit.</th>
-                            <th width="120px">Total</th>
+                            <th width="120px">Subtotal</th>
                             <th width="80px">Ações</th>
                         </tr>
                     </thead>
@@ -719,8 +882,6 @@
                                 <input type="hidden" name="itens[${index}][item_servico_id]" value="${item.item_servico_id || ''}">
                             </td>
                             <td>${item.quantidade}</td>
-                            <td>${item.unidade_nome || '-'}</td>
-                            <td>R$ ${item.preco_unitario.toFixed(2).replace('.', ',')}</td>
                             <td class="font-weight-bold">R$ ${item.total.toFixed(2).replace('.', ',')}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-danger btn-sm" 
@@ -754,6 +915,22 @@
 
             // Função global para remoção de itens
             window.removerItem = removerItem;
+            
+            // Debug: Capturar submit do formulário
+            const form = document.getElementById('form-orcamento');
+            form.addEventListener('submit', function(e) {
+                console.log('=== DADOS DO FORMULÁRIO ===');
+                console.log('Itens do orçamento:', itensOrcamento);
+                
+                // Verificar se há itens
+                if (itensOrcamento.length === 0) {
+                    e.preventDefault();
+                    showToast('Aviso', 'Adicione pelo menos um item ao orçamento antes de salvar.', 'warning');
+                    return false;
+                }
+                
+                console.log('Formulário será enviado...');
+            });
 
             // Toast notification function
             function showToast(title, message, type = 'info') {

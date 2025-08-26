@@ -79,6 +79,7 @@ Route::middleware('auth')->group(function () {
     
     // Rotas API para orçamentos
     Route::get('orcamentos/api/servicos', [App\Http\Controllers\OrcamentoController::class, 'getServicos'])->name('orcamentos.get-servicos');
+    Route::get('orcamentos/servicos/{servico}', [App\Http\Controllers\OrcamentoController::class, 'getServico'])->name('orcamentos.get-servico');
     Route::get('orcamentos/servicos/{servico}/itens', [App\Http\Controllers\OrcamentoController::class, 'getItensServico'])->name('orcamentos.get-itens-servico');
     Route::get('orcamentos/api/unidades', [App\Http\Controllers\OrcamentoController::class, 'getUnidades'])->name('orcamentos.get-unidades');
     Route::post('orcamentos/{orcamento}/status', [App\Http\Controllers\OrcamentoController::class, 'updateStatus'])->name('orcamentos.update-status');

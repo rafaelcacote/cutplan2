@@ -236,7 +236,7 @@
                                                     {{ number_format($item->quantidade, 2, ',', '.') }}
                                                 </td>
                                                 <td class="text-center">
-                                                    {{ $item->unidade ? $item->unidade->simbolo : '-' }}
+                                                    {{ $item->unidade ? $item->unidade->codigo : '-' }}
                                                 </td>
                                                 <td class="text-end">
                                                     R$ {{ number_format($item->preco_unitario, 2, ',', '.') }}

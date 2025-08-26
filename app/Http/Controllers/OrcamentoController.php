@@ -54,6 +54,9 @@ class OrcamentoController extends Controller
     public function store(StoreOrcamentoRequest $request)
     {
         $validated = $request->validated();
+        
+        // Log para debug
+        \Log::info('Dados recebidos para criar orçamento:', $validated);
 
         // Criar orçamento
         $orcamento = Orcamento::create([
@@ -65,9 +68,11 @@ class OrcamentoController extends Controller
             'observacoes' => $validated['observacoes'] ?? null,
         ]);
 
+        \Log::info('Orçamento criado:', ['id' => $orcamento->id]);
+
         // Criar itens
         foreach ($validated['itens'] as $itemData) {
-            ItemOrcamento::create([
+            $item = ItemOrcamento::create([
                 'orcamento_id' => $orcamento->id,
                 'descricao' => $itemData['descricao'],
                 'quantidade' => $itemData['quantidade'],
@@ -75,6 +80,7 @@ class OrcamentoController extends Controller
                 'preco_unitario' => $itemData['preco_unitario'],
                 'item_servico_id' => $itemData['item_servico_id'] ?? null,
             ]);
+            \Log::info('Item criado:', ['item_id' => $item->id, 'descricao' => $item->descricao]);
         }
 
         return redirect()->route('orcamentos.index')->with('success', 'Orçamento criado com sucesso!');
@@ -150,9 +156,15 @@ class OrcamentoController extends Controller
         return response()->json($itens);
     }
 
+    public function getServico($id): JsonResponse
+    {
+        $servico = Servico::findOrFail($id);
+        return response()->json($servico);
+    }
+
     public function getUnidades(): JsonResponse
     {
-        $unidades = Unidade::orderBy('nome')->get(['id', 'nome', 'simbolo']);
+        $unidades = Unidade::orderBy('nome')->get(['id', 'nome', 'codigo']);
         return response()->json($unidades);
     }
 

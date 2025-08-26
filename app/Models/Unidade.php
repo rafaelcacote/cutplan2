@@ -10,10 +10,12 @@ class Unidade extends Model
     use HasFactory;
     
     protected $table = 'unidades';
+    public $timestamps = false; // Tabela não tem timestamps
     
     protected $fillable = [
         'nome',
-        'simbolo'
+        'codigo',
+        'precisao'
     ];
 
     public function itensOrcamento()

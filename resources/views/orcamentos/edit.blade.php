@@ -368,7 +368,7 @@
                     'descricao' => $item->descricao,
                     'quantidade' => (float) $item->quantidade,
                     'unidade_id' => $item->unidade_id,
-                    'unidade_nome' => $item->unidade ? $item->unidade->nome . ' (' . $item->unidade->simbolo . ')' : '',
+                    'unidade_nome' => $item->unidade ? $item->unidade->nome . ($item->unidade->codigo ? ' (' . $item->unidade->codigo . ')' : '') : '',
                     'preco_unitario' => (float) $item->preco_unitario,
                     'item_servico_id' => $item->item_servico_id,
                     'total' => (float) $item->total
@@ -502,7 +502,7 @@
                     unidadesData.forEach(unidade => {
                         const option = document.createElement('option');
                         option.value = unidade.id;
-                        option.textContent = `${unidade.nome} (${unidade.simbolo})`;
+                        option.textContent = `${unidade.nome}${unidade.codigo ? ' (' + unidade.codigo + ')' : ''}`;
                         select.appendChild(option);
                     });
                 });
@@ -640,7 +640,7 @@
                                 <td>
                                     <select class="form-select form-select-sm" data-field="unidade" data-item-id="${item.id}">
                                         <option value="">Sem unidade</option>
-                                        ${unidadesData.map(u => `<option value="${u.id}">${u.nome} (${u.simbolo})</option>`).join('')}
+                                        ${unidadesData.map(u => `<option value="${u.id}">${u.nome}${u.codigo ? ' (' + u.codigo + ')' : ''}</option>`).join('')}
                                     </select>
                                 </td>
                                 <td>
