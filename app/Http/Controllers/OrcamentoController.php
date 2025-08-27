@@ -53,37 +53,62 @@ class OrcamentoController extends Controller
 
     public function store(StoreOrcamentoRequest $request)
     {
-        $validated = $request->validated();
-        
-        // Log para debug
-        \Log::info('Dados recebidos para criar orçamento:', $validated);
+        try {
+            \Log::info('=== INÍCIO DO STORE ===');
+            \Log::info('Request data:', $request->all());
 
-        // Criar orçamento
-        $orcamento = Orcamento::create([
-            'cliente_id' => $validated['cliente_id'],
-            'status' => 'draft',
-            'validade' => $validated['validade'] ?? null,
-            'desconto' => $validated['desconto'] ?? 0,
-            'user_id' => auth()->id(),
-            'observacoes' => $validated['observacoes'] ?? null,
-        ]);
+            $validated = $request->validated();
 
-        \Log::info('Orçamento criado:', ['id' => $orcamento->id]);
+            // Log para debug
+            \Log::info('Dados validados para criar orçamento:', $validated);
 
-        // Criar itens
-        foreach ($validated['itens'] as $itemData) {
-            $item = ItemOrcamento::create([
-                'orcamento_id' => $orcamento->id,
-                'descricao' => $itemData['descricao'],
-                'quantidade' => $itemData['quantidade'],
-                'unidade_id' => $itemData['unidade_id'] ?? null,
-                'preco_unitario' => $itemData['preco_unitario'],
-                'item_servico_id' => $itemData['item_servico_id'] ?? null,
+            // Criar orçamento
+            $orcamento = Orcamento::create([
+                'cliente_id' => $validated['cliente_id'],
+                'status' => 'draft',
+                'validade' => $validated['validade'] ?? null,
+                'desconto' => $validated['desconto'] ?? 0,
+                'user_id' => auth()->id(),
+                'observacoes' => $validated['observacoes'] ?? null,
             ]);
-            \Log::info('Item criado:', ['item_id' => $item->id, 'descricao' => $item->descricao]);
-        }
 
-        return redirect()->route('orcamentos.index')->with('success', 'Orçamento criado com sucesso!');
+            \Log::info('Orçamento criado com sucesso:', ['id' => $orcamento->id]);
+
+            // Criar itens
+            foreach ($validated['itens'] as $index => $itemData) {
+                \Log::info("Criando item {$index}:", $itemData);
+
+                $item = ItemOrcamento::create([
+                    'orcamento_id' => $orcamento->id,
+                    'descricao' => $itemData['descricao'],
+                    'quantidade' => $itemData['quantidade'],
+                    'unidade_id' => $itemData['unidade_id'] ?? null,
+                    'preco_unitario' => $itemData['preco_unitario'],
+                    'item_servico_id' => $itemData['item_servico_id'] ?? null,
+                ]);
+                \Log::info("Item {$index} criado com sucesso:", ['item_id' => $item->id, 'descricao' => $item->descricao]);
+            }
+
+            \Log::info('=== ORÇAMENTO SALVO COM SUCESSO ===');
+            return redirect()->route('orcamentos.index')->with('success', 'Orçamento criado com sucesso!');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            \Log::error('Erro de validação:', [
+                'errors' => $e->errors(),
+                'request_data' => $request->all()
+            ]);
+
+            return back()->withErrors($e->errors())->withInput()->with('error', 'Erro de validação nos dados do orçamento.');
+
+        } catch (\Exception $e) {
+            \Log::error('Erro ao criar orçamento:', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'request_data' => $request->all()
+            ]);
+
+            return back()->withInput()->with('error', 'Erro ao criar orçamento: ' . $e->getMessage());
+        }
     }
 
     public function show(Orcamento $orcamento)
@@ -98,7 +123,7 @@ class OrcamentoController extends Controller
         $clientes = Cliente::orderBy('nome')->get();
         $servicos = Servico::where('ativo', true)->orderBy('nome')->get();
         $unidades = Unidade::orderBy('nome')->get();
-        
+
         return view('orcamentos.edit', compact('orcamento', 'clientes', 'servicos', 'unidades'));
     }
 
@@ -145,7 +170,7 @@ class OrcamentoController extends Controller
         $servicos = Servico::where('ativo', true)
             ->orderBy('nome')
             ->get(['id', 'nome']);
-        
+
         return response()->json($servicos);
     }
 

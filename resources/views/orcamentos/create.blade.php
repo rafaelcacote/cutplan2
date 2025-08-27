@@ -29,7 +29,7 @@
             <div class="container-xl">
                 <form method="POST" action="{{ route('orcamentos.store') }}" id="form-orcamento">
                     @csrf
-                    
+
                     <!-- Etapa 1: Dados Básicos -->
                     <div class="card mb-3" id="etapa-dados">
                         <div class="card-header">
@@ -43,14 +43,14 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label required">Cliente</label>
-                                        <select class="form-select @error('cliente_id') is-invalid @enderror" 
-                                                name="cliente_id" id="cliente_id" required>
+                                        <select class="form-select @error('cliente_id') is-invalid @enderror"
+                                            name="cliente_id" id="cliente_id" required>
                                             <option value="">Selecione um cliente</option>
-                                            @foreach($clientes as $cliente)
-                                                <option value="{{ $cliente->id }}" 
-                                                        {{ old('cliente_id') == $cliente->id ? 'selected' : '' }}>
+                                            @foreach ($clientes as $cliente)
+                                                <option value="{{ $cliente->id }}"
+                                                    {{ old('cliente_id') == $cliente->id ? 'selected' : '' }}>
                                                     {{ $cliente->nome }}
-                                                    @if($cliente->documento)
+                                                    @if ($cliente->documento)
                                                         - {{ $cliente->documento }}
                                                     @endif
                                                 </option>
@@ -64,9 +64,8 @@
                                 <div class="col-lg-3">
                                     <div class="mb-3">
                                         <label class="form-label">Validade</label>
-                                        <input type="date" class="form-control @error('validade') is-invalid @enderror" 
-                                               name="validade" value="{{ old('validade') }}" 
-                                               min="{{ date('Y-m-d') }}">
+                                        <input type="date" class="form-control @error('validade') is-invalid @enderror"
+                                            name="validade" value="{{ old('validade') }}" min="{{ date('Y-m-d') }}">
                                         @error('validade')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -77,9 +76,10 @@
                                         <label class="form-label">Desconto (R$)</label>
                                         <div class="input-group">
                                             <span class="input-group-text">R$</span>
-                                            <input type="number" class="form-control @error('desconto') is-invalid @enderror" 
-                                                   name="desconto" value="{{ old('desconto', '0.00') }}" 
-                                                   step="0.01" min="0" id="desconto">
+                                            <input type="number"
+                                                class="form-control @error('desconto') is-invalid @enderror" name="desconto"
+                                                value="{{ old('desconto', '0.00') }}" step="0.01" min="0"
+                                                id="desconto">
                                             @error('desconto')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -91,9 +91,8 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label">Observações</label>
-                                        <textarea class="form-control @error('observacoes') is-invalid @enderror" 
-                                                  name="observacoes" rows="3" 
-                                                  placeholder="Observações gerais sobre o orçamento...">{{ old('observacoes') }}</textarea>
+                                        <textarea class="form-control @error('observacoes') is-invalid @enderror" name="observacoes" rows="3"
+                                            placeholder="Observações gerais sobre o orçamento...">{{ old('observacoes') }}</textarea>
                                         @error('observacoes')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -117,10 +116,12 @@
                                     Itens do Orçamento
                                 </h3>
                                 <div class="btn-list">
-                                    <button type="button" class="btn btn-outline-primary btn-sm" id="btn-adicionar-servico">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        id="btn-adicionar-servico">
                                         <i class="fa-solid fa-plus me-2"></i> Adicionar Serviço
                                     </button>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-adicionar-item-manual">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                        id="btn-adicionar-item-manual">
                                         <i class="fa-solid fa-edit me-2"></i> Item Manual
                                     </button>
                                 </div>
@@ -130,10 +131,11 @@
                             <div id="container-itens">
                                 <!-- Itens serão adicionados aqui dinamicamente -->
                             </div>
-                            
+
                             <div class="alert alert-info" id="alert-sem-itens">
                                 <i class="fa-solid fa-info-circle me-2"></i>
-                                Clique em "Adicionar Serviço" para incluir itens de serviços pré-cadastrados ou "Item Manual" para criar um item personalizado.
+                                Clique em "Adicionar Serviço" para incluir itens de serviços pré-cadastrados ou "Item
+                                Manual" para criar um item personalizado.
                             </div>
 
                             <!-- Resumo do Orçamento -->
@@ -224,7 +226,7 @@
                             <h6 class="mb-0">Adicionar Itens do Serviço</h6>
                             <span class="badge bg-blue" id="nome-servico-selecionado"></span>
                         </div>
-                        
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label">Selecionar Item</label>
@@ -234,13 +236,13 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Quantidade</label>
-                                <input type="number" class="form-control" id="input-quantidade-item" 
-                                       value="1" step="0.01" min="0.01">
+                                <input type="number" class="form-control" id="input-quantidade-item" value="1"
+                                    step="0.01" min="0.01">
                             </div>
                             <div class="col-md-2">
                                 <label class="form-label">Observações</label>
-                                <input type="text" class="form-control" id="input-observacoes-item" 
-                                       placeholder="Observações...">
+                                <input type="text" class="form-control" id="input-observacoes-item"
+                                    placeholder="Observações...">
                             </div>
                             <div class="col-md-1">
                                 <label class="form-label">&nbsp;</label>
@@ -249,7 +251,7 @@
                                 </button>
                             </div>
                         </div>
-                        
+
                         <!-- Lista de itens adicionados -->
                         <div id="itens-adicionados-container" style="display: none;">
                             <h6 class="mb-2">Itens Adicionados:</h6>
@@ -267,21 +269,21 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                             <div class="alert alert-info mt-3">
                                 <i class="fa-solid fa-info-circle me-2"></i>
                                 <strong>Itens adicionados:</strong> <span id="contador-itens-servico">0</span> item(ns)
                                 <br>
                                 <small>Defina o valor total do serviço abaixo para finalizar</small>
                             </div>
-                            
+
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label class="form-label"><strong>Valor Total do Serviço</strong></label>
                                     <div class="input-group">
                                         <span class="input-group-text">R$</span>
-                                        <input type="number" class="form-control" id="valor-total-servico" 
-                                               step="0.01" min="0.01" placeholder="0,00">
+                                        <input type="number" class="form-control" id="valor-total-servico"
+                                            step="0.01" min="0.01" placeholder="0,00">
                                     </div>
                                     <small class="text-muted">Este será o valor total do serviço completo</small>
                                 </div>
@@ -316,15 +318,15 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label required">Descrição</label>
-                        <input type="text" class="form-control" id="manual-descricao" 
-                               placeholder="Descrição do item" maxlength="255">
+                        <input type="text" class="form-control" id="manual-descricao" placeholder="Descrição do item"
+                            maxlength="255">
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
                                 <label class="form-label required">Quantidade</label>
-                                <input type="number" class="form-control" id="manual-quantidade" 
-                                       value="1" step="0.01" min="0.01">
+                                <input type="number" class="form-control" id="manual-quantidade" value="1"
+                                    step="0.01" min="0.01">
                             </div>
                         </div>
                         <div class="col-6">
@@ -340,8 +342,7 @@
                         <label class="form-label required">Preço Unitário</label>
                         <div class="input-group">
                             <span class="input-group-text">R$</span>
-                            <input type="number" class="form-control" id="manual-preco" 
-                                   step="0.01" min="0.01">
+                            <input type="number" class="form-control" id="manual-preco" step="0.01" min="0.01">
                         </div>
                     </div>
                     <div class="alert alert-info">
@@ -393,7 +394,7 @@
                 overflow: hidden;
             }
         `;
-        
+
         // Adicionar CSS ao head se não existir
         if (!document.querySelector('#modal-custom-styles')) {
             const style = document.createElement('style');
@@ -409,7 +410,7 @@
                 modalElement.style.display = 'none';
                 modalElement.classList.remove('show');
                 document.body.classList.remove('modal-open');
-                
+
                 // Remover backdrop
                 const backdrop = document.querySelector('.modal-backdrop');
                 if (backdrop) {
@@ -419,13 +420,14 @@
 
             // Adicionar listeners para fechar modais com botões close
             document.addEventListener('click', function(e) {
-                if (e.target.matches('[data-bs-dismiss="modal"]') || e.target.closest('[data-bs-dismiss="modal"]')) {
+                if (e.target.matches('[data-bs-dismiss="modal"]') || e.target.closest(
+                        '[data-bs-dismiss="modal"]')) {
                     const modal = e.target.closest('.modal');
                     if (modal) {
                         fecharModal(modal.id);
                     }
                 }
-                
+
                 // Fechar modal clicando no backdrop
                 if (e.target.classList.contains('modal')) {
                     fecharModal(e.target.id);
@@ -459,16 +461,21 @@
 
                 // Habilitar botão continuar quando cliente for selecionado
                 clienteSelect.addEventListener('change', function() {
+                    console.log('Cliente selecionado:', this.value);
                     btnContinuar.disabled = !this.value;
+                    console.log('Botão continuar habilitado:', !btnContinuar.disabled);
                 });
 
                 // Navegação entre etapas
                 btnContinuar.addEventListener('click', function() {
+                    console.log('=== NAVEGANDO PARA ETAPA 2 ===');
                     etapaDados.style.display = 'none';
                     etapaItens.style.display = 'block';
+                    console.log('Etapa de itens exibida');
                 });
 
                 btnVoltar.addEventListener('click', function() {
+                    console.log('=== VOLTANDO PARA ETAPA 1 ===');
                     etapaItens.style.display = 'none';
                     etapaDados.style.display = 'block';
                 });
@@ -479,7 +486,7 @@
                     modalElement.style.display = 'block';
                     modalElement.classList.add('show');
                     document.body.classList.add('modal-open');
-                    
+
                     // Criar backdrop se não existir
                     if (!document.querySelector('.modal-backdrop')) {
                         const backdrop = document.createElement('div');
@@ -494,7 +501,7 @@
                     modalElement.style.display = 'block';
                     modalElement.classList.add('show');
                     document.body.classList.add('modal-open');
-                    
+
                     // Criar backdrop se não existir
                     if (!document.querySelector('.modal-backdrop')) {
                         const backdrop = document.createElement('div');
@@ -519,11 +526,11 @@
             async function carregarDadosSelect() {
                 try {
                     // Carregar serviços
-                    const responseServicos = await fetch('{{ route("orcamentos.get-servicos") }}');
+                    const responseServicos = await fetch('{{ route('orcamentos.get-servicos') }}');
                     servicosData = await responseServicos.json();
 
                     // Carregar unidades
-                    const responseUnidades = await fetch('{{ route("orcamentos.get-unidades") }}');
+                    const responseUnidades = await fetch('{{ route('orcamentos.get-unidades') }}');
                     unidadesData = await responseUnidades.json();
 
                     popularSelectServicos();
@@ -537,7 +544,7 @@
             function popularSelectServicos() {
                 const select = document.getElementById('select-servico');
                 select.innerHTML = '<option value="">Selecione um serviço</option>';
-                
+
                 servicosData.forEach(servico => {
                     const option = document.createElement('option');
                     option.value = servico.id;
@@ -548,13 +555,14 @@
 
             function popularSelectUnidades() {
                 const selects = [document.getElementById('manual-unidade')];
-                
+
                 selects.forEach(select => {
                     select.innerHTML = '<option value="">Sem unidade</option>';
                     unidadesData.forEach(unidade => {
                         const option = document.createElement('option');
                         option.value = unidade.id;
-                        option.textContent = `${unidade.nome}${unidade.codigo ? ' (' + unidade.codigo + ')' : ''}`;
+                        option.textContent =
+                            `${unidade.nome}${unidade.codigo ? ' (' + unidade.codigo + ')' : ''}`;
                         select.appendChild(option);
                     });
                 });
@@ -589,21 +597,23 @@
 
                     try {
                         // Buscar dados do serviço
-                        const responseServico = await fetch(`{{ url('orcamentos/servicos') }}/${this.value}`);
+                        const responseServico = await fetch(
+                            `{{ url('orcamentos/servicos') }}/${this.value}`);
                         const servico = await responseServico.json();
-                        
+
                         // Buscar itens do serviço
-                        const responseItens = await fetch(`{{ url('orcamentos/servicos') }}/${this.value}/itens`);
+                        const responseItens = await fetch(
+                            `{{ url('orcamentos/servicos') }}/${this.value}/itens`);
                         const itensServico = await responseItens.json();
 
                         servicoAtual = servico;
                         itensServicoDisponiveis = itensServico;
-                        
+
                         // Atualizar interface
                         nomeServicoSelecionado.textContent = servico.nome;
                         carregarSelectItens(itensServico);
                         etapaItensServico.style.display = 'block';
-                        
+
                     } catch (error) {
                         console.error('Erro ao carregar serviço:', error);
                         showToast('Erro', 'Não foi possível carregar os dados do serviço.', 'error');
@@ -612,7 +622,7 @@
 
                 function carregarSelectItens(itensServico) {
                     selectItemServico.innerHTML = '<option value="">Escolha um item...</option>';
-                    
+
                     if (itensServico.length === 0) {
                         selectItemServico.innerHTML = '<option value="">Nenhum item disponível</option>';
                         return;
@@ -726,9 +736,15 @@
                 // Finalizar serviço
                 btnFinalizarServico.addEventListener('click', function() {
                     const valorTotal = parseFloat(valorTotalServico.value);
-                    
+
                     if (itensAdicionados.length === 0) {
                         showToast('Aviso', 'Adicione pelo menos um item antes de finalizar.', 'warning');
+                        return;
+                    }
+
+                    // Verificar se há um serviço selecionado
+                    if (!servicoAtual) {
+                        showToast('Aviso', 'Selecione um serviço antes de adicionar.', 'warning');
                         return;
                     }
 
@@ -737,16 +753,24 @@
                         return;
                     }
 
-                    // Adicionar cada item ao orçamento com o valor total apenas no primeiro item
+                    // Calcular preço unitário distribuído entre todos os itens
+                    const totalQuantidade = itensAdicionados.reduce((sum, item) => sum + parseFloat(item
+                        .quantidade), 0);
+                    const precoUnitarioDistribuido = valorTotal / totalQuantidade;
+
+                    // Adicionar cada item ao orçamento com o valor distribuído
                     itensAdicionados.forEach((item, index) => {
+                        const precoItem = precoUnitarioDistribuido;
+                        const totalItem = precoItem * parseFloat(item.quantidade);
+
                         adicionarItem({
                             descricao: `${servicoAtual.nome} - ${item.descricao}`,
                             quantidade: item.quantidade,
                             unidade_id: null,
                             unidade_nome: '',
-                            preco_unitario: index === 0 ? valorTotal / item.quantidade : 0, // Valor só no primeiro item
+                            preco_unitario: precoItem,
                             item_servico_id: item.item_id,
-                            total: index === 0 ? valorTotal : 0, // Total só no primeiro item
+                            total: totalItem,
                             observacoes: item.observacoes
                         });
                     });
@@ -754,9 +778,9 @@
                     // Resetar modal
                     resetarModalServico();
                     fecharModal('modal-servico');
-                    
-                    showToast('Sucesso', 
-                        `Serviço "${servicoAtual.nome}" adicionado com ${itensAdicionados.length} item(ns) no valor de R$ ${valorTotal.toFixed(2)}!`, 
+
+                    showToast('Sucesso',
+                        `Serviço "${servicoAtual.nome}" adicionado com ${itensAdicionados.length} item(ns) no valor de R$ ${valorTotal.toFixed(2)}!`,
                         'success'
                     );
                 });
@@ -785,12 +809,13 @@
 
             function setupModalItemManual() {
                 const btnAdicionarItemManual = document.querySelector('#modal-item-manual .btn-primary');
-                
+
                 btnAdicionarItemManual.addEventListener('click', function() {
                     const descricao = document.getElementById('manual-descricao').value.trim();
                     const quantidade = parseFloat(document.getElementById('manual-quantidade').value);
                     const unidadeId = document.getElementById('manual-unidade').value;
-                    const unidadeNome = document.getElementById('manual-unidade').selectedOptions[0].textContent;
+                    const unidadeNome = document.getElementById('manual-unidade').selectedOptions[0]
+                        .textContent;
                     const preco = parseFloat(document.getElementById('manual-preco').value);
 
                     if (!descricao || !quantidade || !preco) {
@@ -833,6 +858,10 @@
                 item.id = contadorItens;
                 itensOrcamento.push(item);
 
+                console.log('=== ITEM ADICIONADO ===');
+                console.log('Item:', item);
+                console.log('Total de itens agora:', itensOrcamento.length);
+
                 renderizarItens();
                 atualizarResumo();
             }
@@ -844,17 +873,23 @@
             }
 
             function renderizarItens() {
+                console.log('=== RENDERIZANDO ITENS ===');
+                console.log('Quantidade de itens:', itensOrcamento.length);
+                console.log('Lista de itens:', itensOrcamento);
+
                 if (itensOrcamento.length === 0) {
                     containerItens.innerHTML = '';
                     alertSemItens.style.display = 'block';
                     resumoOrcamento.style.display = 'none';
                     btnSalvar.disabled = true;
+                    console.log('Botão salvar DESABILITADO - nenhum item');
                     return;
                 }
 
                 alertSemItens.style.display = 'none';
                 resumoOrcamento.style.display = 'block';
                 btnSalvar.disabled = false;
+                console.log('Botão salvar HABILITADO');
 
                 let html = '<div class="table-responsive"><table class="table table-vcenter">';
                 html += `
@@ -862,7 +897,6 @@
                         <tr>
                             <th>Descrição</th>
                             <th width="100px">Qtd</th>
-                            <th width="120px">Subtotal</th>
                             <th width="80px">Ações</th>
                         </tr>
                     </thead>
@@ -870,6 +904,19 @@
                 `;
 
                 itensOrcamento.forEach((item, index) => {
+                    console.log(`Criando campos para item ${index}:`, item);
+
+                    // Verificar se o item tem todas as propriedades necessárias
+                    if (!item.descricao) {
+                        console.error(`ERRO: Item ${index} não tem descrição:`, item);
+                    }
+                    if (!item.quantidade) {
+                        console.error(`ERRO: Item ${index} não tem quantidade:`, item);
+                    }
+                    if (!item.preco_unitario && item.preco_unitario !== 0) {
+                        console.error(`ERRO: Item ${index} não tem preço unitário:`, item);
+                    }
+
                     html += `
                         <tr>
                             <td>
@@ -882,9 +929,8 @@
                                 <input type="hidden" name="itens[${index}][item_servico_id]" value="${item.item_servico_id || ''}">
                             </td>
                             <td>${item.quantidade}</td>
-                            <td class="font-weight-bold">R$ ${item.total.toFixed(2).replace('.', ',')}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-danger btn-sm" 
+                                <button type="button" class="btn btn-outline-danger btn-sm"
                                         onclick="removerItem(${item.id})" title="Remover">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
@@ -895,6 +941,7 @@
 
                 html += '</tbody></table></div>';
                 containerItens.innerHTML = html;
+                console.log('HTML dos itens criado:', html);
             }
 
             function atualizarResumo() {
@@ -915,27 +962,116 @@
 
             // Função global para remoção de itens
             window.removerItem = removerItem;
-            
+
             // Debug: Capturar submit do formulário
             const form = document.getElementById('form-orcamento');
             form.addEventListener('submit', function(e) {
-                console.log('=== DADOS DO FORMULÁRIO ===');
-                console.log('Itens do orçamento:', itensOrcamento);
-                
-                // Verificar se há itens
-                if (itensOrcamento.length === 0) {
+                try {
+                    console.log('=== EVENTO SUBMIT DISPARADO ===');
+                    console.log('Itens do orçamento:', itensOrcamento);
+                    console.log('Quantidade de itens:', itensOrcamento.length);
+
+                    // Verificar se há itens
+                    if (itensOrcamento.length === 0) {
+                        e.preventDefault();
+                        console.log('SUBMIT CANCELADO - Nenhum item encontrado');
+                        showToast('Aviso', 'Adicione pelo menos um item ao orçamento antes de salvar.',
+                            'warning');
+                        return false;
+                    }
+
+                    // Verificar se todos os campos obrigatórios estão preenchidos
+                    const clienteId = document.getElementById('cliente_id').value;
+                    if (!clienteId) {
+                        e.preventDefault();
+                        console.log('SUBMIT CANCELADO - Cliente não selecionado');
+                        showToast('Erro', 'Selecione um cliente antes de salvar.', 'error');
+                        return false;
+                    }
+
+                    console.log('Cliente ID:', clienteId);
+                    console.log('Formulário será enviado...');
+                    console.log('URL de destino:', this.action);
+                    console.log('Método:', this.method);
+
+                    // Vamos logar os dados que serão enviados
+                    const formData = new FormData(this);
+                    console.log('=== DADOS DO FORMULÁRIO ===');
+
+                    // Agrupar dados por tipo para melhor visualização
+                    const dadosOrganizados = {
+                        cliente_id: formData.get('cliente_id'),
+                        validade: formData.get('validade'),
+                        desconto: formData.get('desconto'),
+                        observacoes: formData.get('observacoes'),
+                        itens: []
+                    };
+
+                    // Extrair itens
+                    for (let [key, value] of formData.entries()) {
+                        if (key.startsWith('itens[')) {
+                            const match = key.match(/itens\[(\d+)\]\[(\w+)\]/);
+                            if (match) {
+                                const index = parseInt(match[1]);
+                                const campo = match[2];
+
+                                if (!dadosOrganizados.itens[index]) {
+                                    dadosOrganizados.itens[index] = {};
+                                }
+                                dadosOrganizados.itens[index][campo] = value;
+                            }
+                        }
+                    }
+
+                    console.log('Dados organizados:', dadosOrganizados);
+
+                    // Verificar se há problemas nos itens
+                    dadosOrganizados.itens.forEach((item, index) => {
+                        if (!item.descricao) {
+                            console.error(`ERRO: Item ${index} sem descrição`);
+                        }
+                        if (!item.quantidade || parseFloat(item.quantidade) <= 0) {
+                            console.error(`ERRO: Item ${index} com quantidade inválida:`, item
+                                .quantidade);
+                        }
+                        if (!item.preco_unitario || parseFloat(item.preco_unitario) < 0.01) {
+                            console.error(`ERRO: Item ${index} com preço unitário inválido:`, item
+                                .preco_unitario);
+                        }
+                    });
+
+                    // Verificar se há pelo menos um item nos dados do formulário
+                    let hasItems = false;
+                    for (let [key, value] of formData.entries()) {
+                        if (key.startsWith('itens[')) {
+                            hasItems = true;
+                            break;
+                        }
+                    }
+
+                    if (!hasItems) {
+                        e.preventDefault();
+                        console.log('SUBMIT CANCELADO - Nenhum campo de item encontrado no FormData');
+                        showToast('Erro',
+                            'Erro interno: itens não foram adicionados ao formulário. Tente novamente.',
+                            'error');
+                        return false;
+                    }
+
+                    console.log('✅ Formulário válido - enviando dados...');
+
+                } catch (error) {
+                    console.error('ERRO NO SUBMIT:', error);
                     e.preventDefault();
-                    showToast('Aviso', 'Adicione pelo menos um item ao orçamento antes de salvar.', 'warning');
+                    showToast('Erro', 'Erro inesperado: ' + error.message, 'error');
                     return false;
                 }
-                
-                console.log('Formulário será enviado...');
             });
 
             // Toast notification function
             function showToast(title, message, type = 'info') {
                 const toastHtml = `
-                    <div class="alert alert-${type === 'error' ? 'danger' : type} alert-dismissible position-fixed" 
+                    <div class="alert alert-${type === 'error' ? 'danger' : type} alert-dismissible position-fixed"
                          style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
                         <div class="d-flex">
                             <div>
@@ -946,12 +1082,12 @@
                         </div>
                     </div>
                 `;
-                
+
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = toastHtml;
                 const toast = tempDiv.firstElementChild;
                 document.body.appendChild(toast);
-                
+
                 setTimeout(() => {
                     if (toast.parentElement) {
                         toast.remove();
