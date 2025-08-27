@@ -25,12 +25,21 @@ class TestDataSeeder extends Seeder
         }
 
         // Criar cliente de teste simples
+        $endereco = Endereco::firstOrCreate([
+            'cep' => '12345678'
+        ], [
+            'cep' => '12345678',
+            'municipio_id' => 1, // Assumindo que existe
+            'estado_id' => 1     // Assumindo que existe
+        ]);
+
         $cliente = Cliente::firstOrCreate([
             'email' => 'cliente@teste.com'
         ], [
             'nome' => 'Cliente Teste',
             'documento' => '123.456.789-00',
-            'telefone' => '(11) 99999-9999'
+            'telefone' => '(11) 99999-9999',
+            'endereco_id' => $endereco->id
         ]);
 
         // Criar serviços de teste
