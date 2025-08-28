@@ -57,12 +57,12 @@
                         <span class="nav-link-title"> Materiais </span>
                     </a>
                 </li>
-               
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#navbar-form" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                           <i class="fa-solid fa-people-group"></i>
+                            <i class="fa-solid fa-people-group"></i>
                         </span>
                         <span class="nav-link-title"> Membros e Equipes </span>
                     </a>
@@ -77,17 +77,26 @@
                     </div>
                 </li>
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('orcamentos.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="fa-solid fa-file-invoice-dollar fa-lg"></i>
                         </span>
                         <span class="nav-link-title"> Orçamentos </span>
-                        
-                        
+
+
                     </a>
                 </li>
-                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('projetos.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="fa-solid fa-diagram-project fa-lg"></i>
+                        </span>
+                        <span class="nav-link-title"> Projetos </span>
+                    </a>
+                </li>
+
                 <!-- Grupo: Gerenciamento de Usuários -->
                 <li class="nav-item mt-3 mb-1">
                     <span class="nav-link-title text-uppercase text-muted small fw-bold ps-3">Gerenciamento de
@@ -130,7 +139,7 @@
                     <a class="nav-link dropdown-toggle" href="#navbar-form" data-bs-toggle="dropdown"
                         data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                           <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
                         </span>
                         <span class="nav-link-title"> Itens e Serviços </span>
                     </a>

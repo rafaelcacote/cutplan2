@@ -11,7 +11,17 @@
                             <a href="{{ route('orcamentos.index') }}" class="btn-link">Orçamentos</a>
                         </div>
                         <h2 class="page-title">
-                            <i class="fa-solid fa-pen fa-lg me-2"></i>
+                            <div class="font-weight-medium">' + item.descricao + '</div>
+                            ' + (item.item_servico_id ? '<small class="text-muted">Item de serviço</small>' : '<small
+                                class="text-muted">Item manual</small>') + '
+                            <input type="hidden" name="itens[' + index + '][descricao]" value="' + item.descricao + '">
+                            <input type="hidden" name="itens[' + index + '][quantidade]" value="' + item.quantidade + '">
+                            <input type="hidden" name="itens[' + index + '][unidade_id]"
+                                value="' + (item.unidade_id || '') + '">
+                            <input type="hidden" name="itens[' + index + '][preco_unitario]"
+                                value="' + item.preco_unitario + '">
+                            <input type="hidden" name="itens[' + index + '][item_servico_id]"
+                                value="' + (item.item_servico_id || '') + '"><i class="fa-solid fa-pen fa-lg me-2"></i>
                             Editar Orçamento #{{ str_pad($orcamento->id, 4, '0', STR_PAD_LEFT) }}
                         </h2>
                     </div>
@@ -33,7 +43,7 @@
                 <form method="POST" action="{{ route('orcamentos.update', $orcamento) }}" id="form-orcamento">
                     @csrf
                     @method('PUT')
-                    
+
                     <!-- Dados Básicos -->
                     <div class="card mb-3">
                         <div class="card-header">
@@ -47,14 +57,14 @@
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label class="form-label required">Cliente</label>
-                                        <select class="form-select @error('cliente_id') is-invalid @enderror" 
-                                                name="cliente_id" id="cliente_id" required>
+                                        <select class="form-select @error('cliente_id') is-invalid @enderror"
+                                            name="cliente_id" id="cliente_id" required>
                                             <option value="">Selecione um cliente</option>
-                                            @foreach($clientes as $cliente)
-                                                <option value="{{ $cliente->id }}" 
-                                                        {{ (old('cliente_id') ?? $orcamento->cliente_id) == $cliente->id ? 'selected' : '' }}>
+                                            @foreach ($clientes as $cliente)
+                                                <option value="{{ $cliente->id }}"
+                                                    {{ (old('cliente_id') ?? $orcamento->cliente_id) == $cliente->id ? 'selected' : '' }}>
                                                     {{ $cliente->nome }}
-                                                    @if($cliente->documento)
+                                                    @if ($cliente->documento)
                                                         - {{ $cliente->documento }}
                                                     @endif
                                                 </option>
@@ -68,13 +78,23 @@
                                 <div class="col-lg-2">
                                     <div class="mb-3">
                                         <label class="form-label required">Status</label>
-                                        <select class="form-select @error('status') is-invalid @enderror" 
-                                                name="status" required>
-                                            <option value="draft" {{ (old('status') ?? $orcamento->status) == 'draft' ? 'selected' : '' }}>Rascunho</option>
-                                            <option value="sent" {{ (old('status') ?? $orcamento->status) == 'sent' ? 'selected' : '' }}>Enviado</option>
-                                            <option value="approved" {{ (old('status') ?? $orcamento->status) == 'approved' ? 'selected' : '' }}>Aprovado</option>
-                                            <option value="rejected" {{ (old('status') ?? $orcamento->status) == 'rejected' ? 'selected' : '' }}>Rejeitado</option>
-                                            <option value="expired" {{ (old('status') ?? $orcamento->status) == 'expired' ? 'selected' : '' }}>Expirado</option>
+                                        <select class="form-select @error('status') is-invalid @enderror" name="status"
+                                            required>
+                                            <option value="draft"
+                                                {{ (old('status') ?? $orcamento->status) == 'draft' ? 'selected' : '' }}>
+                                                Rascunho</option>
+                                            <option value="sent"
+                                                {{ (old('status') ?? $orcamento->status) == 'sent' ? 'selected' : '' }}>
+                                                Enviado</option>
+                                            <option value="approved"
+                                                {{ (old('status') ?? $orcamento->status) == 'approved' ? 'selected' : '' }}>
+                                                Aprovado</option>
+                                            <option value="rejected"
+                                                {{ (old('status') ?? $orcamento->status) == 'rejected' ? 'selected' : '' }}>
+                                                Rejeitado</option>
+                                            <option value="expired"
+                                                {{ (old('status') ?? $orcamento->status) == 'expired' ? 'selected' : '' }}>
+                                                Expirado</option>
                                         </select>
                                         @error('status')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -84,8 +104,9 @@
                                 <div class="col-lg-3">
                                     <div class="mb-3">
                                         <label class="form-label">Validade</label>
-                                        <input type="date" class="form-control @error('validade') is-invalid @enderror" 
-                                               name="validade" value="{{ old('validade') ?? ($orcamento->validade ? $orcamento->validade->format('Y-m-d') : '') }}">
+                                        <input type="date" class="form-control @error('validade') is-invalid @enderror"
+                                            name="validade"
+                                            value="{{ old('validade') ?? ($orcamento->validade ? $orcamento->validade->format('Y-m-d') : '') }}">
                                         @error('validade')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -96,9 +117,10 @@
                                         <label class="form-label">Desconto (R$)</label>
                                         <div class="input-group">
                                             <span class="input-group-text">R$</span>
-                                            <input type="number" class="form-control @error('desconto') is-invalid @enderror" 
-                                                   name="desconto" value="{{ old('desconto') ?? $orcamento->desconto }}" 
-                                                   step="0.01" min="0" id="desconto">
+                                            <input type="number"
+                                                class="form-control @error('desconto') is-invalid @enderror" name="desconto"
+                                                value="{{ old('desconto') ?? $orcamento->desconto }}" step="0.01"
+                                                min="0" id="desconto">
                                             @error('desconto')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -110,9 +132,8 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label">Observações</label>
-                                        <textarea class="form-control @error('observacoes') is-invalid @enderror" 
-                                                  name="observacoes" rows="3" 
-                                                  placeholder="Observações gerais sobre o orçamento...">{{ old('observacoes') ?? $orcamento->observacoes }}</textarea>
+                                        <textarea class="form-control @error('observacoes') is-invalid @enderror" name="observacoes" rows="3"
+                                            placeholder="Observações gerais sobre o orçamento...">{{ old('observacoes') ?? $orcamento->observacoes }}</textarea>
                                         @error('observacoes')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -131,10 +152,12 @@
                                     Itens do Orçamento
                                 </h3>
                                 <div class="btn-list">
-                                    <button type="button" class="btn btn-outline-primary btn-sm" id="btn-adicionar-servico">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        id="btn-adicionar-servico">
                                         <i class="fa-solid fa-plus me-2"></i> Adicionar Serviço
                                     </button>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-adicionar-item-manual">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                        id="btn-adicionar-item-manual">
                                         <i class="fa-solid fa-edit me-2"></i> Item Manual
                                     </button>
                                 </div>
@@ -144,10 +167,11 @@
                             <div id="container-itens">
                                 <!-- Itens serão carregados aqui -->
                             </div>
-                            
+
                             <div class="alert alert-info" id="alert-sem-itens" style="display: none;">
                                 <i class="fa-solid fa-info-circle me-2"></i>
-                                Clique em "Adicionar Serviço" para incluir itens de serviços pré-cadastrados ou "Item Manual" para criar um item personalizado.
+                                Clique em "Adicionar Serviço" para incluir itens de serviços pré-cadastrados ou "Item
+                                Manual" para criar um item personalizado.
                             </div>
 
                             <!-- Resumo do Orçamento -->
@@ -272,15 +296,15 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label required">Descrição</label>
-                        <input type="text" class="form-control" id="manual-descricao" 
-                               placeholder="Descrição do item" maxlength="255">
+                        <input type="text" class="form-control" id="manual-descricao" placeholder="Descrição do item"
+                            maxlength="255">
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
                                 <label class="form-label required">Quantidade</label>
-                                <input type="number" class="form-control" id="manual-quantidade" 
-                                       value="1" step="0.01" min="0.01">
+                                <input type="number" class="form-control" id="manual-quantidade" value="1"
+                                    step="0.01" min="0.01">
                             </div>
                         </div>
                         <div class="col-6">
@@ -296,8 +320,7 @@
                         <label class="form-label required">Preço Unitário</label>
                         <div class="input-group">
                             <span class="input-group-text">R$</span>
-                            <input type="number" class="form-control" id="manual-preco" 
-                                   step="0.01" min="0.01">
+                            <input type="number" class="form-control" id="manual-preco" step="0.01" min="0.01">
                         </div>
                     </div>
                     <div class="alert alert-info">
@@ -349,7 +372,7 @@
                 overflow: hidden;
             }
         `;
-        
+
         // Adicionar CSS ao head se não existir
         if (!document.querySelector('#modal-custom-styles')) {
             const style = document.createElement('style');
@@ -362,18 +385,21 @@
             // Estado da aplicação
             let servicosData = [];
             let unidadesData = [];
-            let itensOrcamento = @json($orcamento->itens->map(function($item) {
-                return [
-                    'id' => $item->id,
-                    'descricao' => $item->descricao,
-                    'quantidade' => (float) $item->quantidade,
-                    'unidade_id' => $item->unidade_id,
-                    'unidade_nome' => $item->unidade ? $item->unidade->nome . ($item->unidade->codigo ? ' (' . $item->unidade->codigo . ')' : '') : '',
-                    'preco_unitario' => (float) $item->preco_unitario,
-                    'item_servico_id' => $item->item_servico_id,
-                    'total' => (float) $item->total
-                ];
-            }));
+            let itensOrcamento = @json(
+                $orcamento->itens->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'descricao' => $item->descricao,
+                        'quantidade' => (float) $item->quantidade,
+                        'unidade_id' => $item->unidade_id,
+                        'unidade_nome' => $item->unidade
+                            ? $item->unidade->nome . ($item->unidade->codigo ? ' (' . $item->unidade->codigo . ')' : '')
+                            : '',
+                        'preco_unitario' => (float) $item->preco_unitario,
+                        'item_servico_id' => $item->item_servico_id,
+                        'total' => (float) $item->total,
+                    ];
+                }));
             let contadorItens = Math.max(...itensOrcamento.map(i => i.id), 0);
 
             // Elementos DOM
@@ -391,7 +417,7 @@
                 modalElement.style.display = 'none';
                 modalElement.classList.remove('show');
                 document.body.classList.remove('modal-open');
-                
+
                 // Remover backdrop
                 const backdrop = document.querySelector('.modal-backdrop');
                 if (backdrop) {
@@ -401,13 +427,14 @@
 
             // Adicionar listeners para fechar modais com botões close
             document.addEventListener('click', function(e) {
-                if (e.target.matches('[data-bs-dismiss="modal"]') || e.target.closest('[data-bs-dismiss="modal"]')) {
+                if (e.target.matches('[data-bs-dismiss="modal"]') || e.target.closest(
+                        '[data-bs-dismiss="modal"]')) {
                     const modal = e.target.closest('.modal');
                     if (modal) {
                         fecharModal(modal.id);
                     }
                 }
-                
+
                 // Fechar modal clicando no backdrop
                 if (e.target.classList.contains('modal')) {
                     fecharModal(e.target.id);
@@ -428,7 +455,7 @@
                     modalElement.style.display = 'block';
                     modalElement.classList.add('show');
                     document.body.classList.add('modal-open');
-                    
+
                     // Criar backdrop se não existir
                     if (!document.querySelector('.modal-backdrop')) {
                         const backdrop = document.createElement('div');
@@ -443,7 +470,7 @@
                     modalElement.style.display = 'block';
                     modalElement.classList.add('show');
                     document.body.classList.add('modal-open');
-                    
+
                     // Criar backdrop se não existir
                     if (!document.querySelector('.modal-backdrop')) {
                         const backdrop = document.createElement('div');
@@ -468,10 +495,10 @@
             // Reutilizar as mesmas funções da view create
             async function carregarDadosSelect() {
                 try {
-                    const responseServicos = await fetch('{{ route("orcamentos.get-servicos") }}');
+                    const responseServicos = await fetch('{{ route('orcamentos.get-servicos') }}');
                     servicosData = await responseServicos.json();
 
-                    const responseUnidades = await fetch('{{ route("orcamentos.get-unidades") }}');
+                    const responseUnidades = await fetch('{{ route('orcamentos.get-unidades') }}');
                     unidadesData = await responseUnidades.json();
 
                     popularSelectServicos();
@@ -485,7 +512,7 @@
             function popularSelectServicos() {
                 const select = document.getElementById('select-servico');
                 select.innerHTML = '<option value="">Selecione um serviço</option>';
-                
+
                 servicosData.forEach(servico => {
                     const option = document.createElement('option');
                     option.value = servico.id;
@@ -496,13 +523,14 @@
 
             function popularSelectUnidades() {
                 const selects = [document.getElementById('manual-unidade')];
-                
+
                 selects.forEach(select => {
                     select.innerHTML = '<option value="">Sem unidade</option>';
                     unidadesData.forEach(unidade => {
                         const option = document.createElement('option');
                         option.value = unidade.id;
-                        option.textContent = `${unidade.nome}${unidade.codigo ? ' (' + unidade.codigo + ')' : ''}`;
+                        option.textContent = unidade.nome + (unidade.codigo ? ' (' + unidade
+                            .codigo + ')' : '');
                         select.appendChild(option);
                     });
                 });
@@ -539,29 +567,35 @@
                 `;
 
                 itensOrcamento.forEach((item, index) => {
-                    html += `
-                        <tr>
-                            <td>
-                                <div class="font-weight-medium">${item.descricao}</div>
-                                ${item.item_servico_id ? '<small class="text-muted">Item de serviço</small>' : '<small class="text-muted">Item manual</small>'}
-                                <input type="hidden" name="itens[${index}][descricao]" value="${item.descricao}">
-                                <input type="hidden" name="itens[${index}][quantidade]" value="${item.quantidade}">
-                                <input type="hidden" name="itens[${index}][unidade_id]" value="${item.unidade_id || ''}">
-                                <input type="hidden" name="itens[${index}][preco_unitario]" value="${item.preco_unitario}">
-                                <input type="hidden" name="itens[${index}][item_servico_id]" value="${item.item_servico_id || ''}">
-                            </td>
-                            <td>${item.quantidade}</td>
-                            <td>${item.unidade_nome || '-'}</td>
-                            <td>R$ ${item.preco_unitario.toFixed(2).replace('.', ',')}</td>
-                            <td class="font-weight-bold">R$ ${item.total.toFixed(2).replace('.', ',')}</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-sm" 
-                                        onclick="removerItem(${item.id})" title="Remover">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    `;
+                    html +=
+                        '<tr>' +
+                        '<td>' +
+                        '<div class="font-weight-medium">' + item.descricao + '</div>' +
+                        (item.item_servico_id ? '<small class="text-muted">Item de serviço</small>' :
+                            '<small class="text-muted">Item manual</small>') +
+                        '<input type="hidden" name="itens[' + index + '][descricao]" value="' + item
+                        .descricao + '">' +
+                        '<input type="hidden" name="itens[' + index + '][quantidade]" value="' + item
+                        .quantidade + '">' +
+                        '<input type="hidden" name="itens[' + index + '][unidade_id]" value="' + (item
+                            .unidade_id || '') + '">' +
+                        '<input type="hidden" name="itens[' + index + '][preco_unitario]" value="' + item
+                        .preco_unitario + '">' +
+                        '<input type="hidden" name="itens[' + index + '][item_servico_id]" value="' + (item
+                            .item_servico_id || '') + '">' +
+                        '</td>' +
+                        '<td>' + item.quantidade + '</td>' +
+                        '<td>' + (item.unidade_nome || '-') + '</td>' +
+                        '<td>R$ ' + item.preco_unitario.toFixed(2).replace('.', ',') + '</td>' +
+                        '<td class="font-weight-bold">R$ ' + item.total.toFixed(2).replace('.', ',') +
+                        '</td>' +
+                        '<td>' +
+                        '<button type="button" class="btn btn-outline-danger btn-sm" ' +
+                        'onclick="removerItem(' + item.id + ')" title="Remover">' +
+                        '<i class="fa-solid fa-trash"></i>' +
+                        '</button>' +
+                        '</td>' +
+                        '</tr>';
                 });
 
                 html += '</tbody></table></div>';
@@ -587,7 +621,7 @@
             }
 
             function formatarMoeda(valor) {
-                return `R$ ${valor.toFixed(2).replace('.', ',')}`;
+                return 'R$ ' + valor.toFixed(2).replace('.', ',');
             }
 
             // Incluir aqui as outras funções necessárias...
@@ -608,11 +642,12 @@
                     }
 
                     try {
-                        const response = await fetch(`{{ url('orcamentos/servicos') }}/${this.value}/itens`);
+                        const response = await fetch('{{ url('orcamentos/servicos') }}' + '/' + this
+                            .value + '/itens');
                         const itensServico = await response.json();
 
                         tbodyItensServico.innerHTML = '';
-                        
+
                         if (itensServico.length === 0) {
                             tbodyItensServico.innerHTML = `
                                 <tr>
@@ -627,31 +662,37 @@
 
                         itensServico.forEach(item => {
                             const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>
-                                    <input type="checkbox" class="item-servico-check" data-item-id="${item.id}">
-                                </td>
-                                <td>${item.descricao_item}</td>
-                                <td>
-                                    <input type="number" class="form-control form-control-sm" 
-                                           value="1" step="0.01" min="0.01" 
-                                           data-field="quantidade" data-item-id="${item.id}">
-                                </td>
-                                <td>
-                                    <select class="form-select form-select-sm" data-field="unidade" data-item-id="${item.id}">
-                                        <option value="">Sem unidade</option>
-                                        ${unidadesData.map(u => `<option value="${u.id}">${u.nome}${u.codigo ? ' (' + u.codigo + ')' : ''}</option>`).join('')}
-                                    </select>
-                                </td>
-                                <td>
-                                    <div class="input-group input-group-sm">
-                                        <span class="input-group-text">R$</span>
-                                        <input type="number" class="form-control" 
-                                               step="0.01" min="0.01" value="10.00"
-                                               data-field="preco" data-item-id="${item.id}">
-                                    </div>
-                                </td>
-                            `;
+                            const unidadesOptions = unidadesData.map(u =>
+                                '<option value="' + u.id + '">' + u.nome + (u.codigo ?
+                                    ' (' + u.codigo + ')' : '') + '</option>'
+                            ).join('');
+
+                            row.innerHTML =
+                                '<td>' +
+                                '<input type="checkbox" class="item-servico-check" data-item-id="' +
+                                item.id + '">' +
+                                '</td>' +
+                                '<td>' + item.descricao_item + '</td>' +
+                                '<td>' +
+                                '<input type="number" class="form-control form-control-sm" ' +
+                                'value="1" step="0.01" min="0.01" ' +
+                                'data-field="quantidade" data-item-id="' + item.id + '">' +
+                                '</td>' +
+                                '<td>' +
+                                '<select class="form-select form-select-sm" data-field="unidade" data-item-id="' +
+                                item.id + '">' +
+                                '<option value="">Sem unidade</option>' +
+                                unidadesOptions +
+                                '</select>' +
+                                '</td>' +
+                                '<td>' +
+                                '<div class="input-group input-group-sm">' +
+                                '<span class="input-group-text">R$</span>' +
+                                '<input type="number" class="form-control" ' +
+                                'step="0.01" min="0.01" value="10.00"' +
+                                'data-field="preco" data-item-id="' + item.id + '">' +
+                                '</div>' +
+                                '</td>';
                             tbodyItensServico.appendChild(row);
                         });
 
@@ -665,7 +706,7 @@
 
                 function setupCheckboxesServico() {
                     const checkboxes = document.querySelectorAll('.item-servico-check');
-                    
+
                     selectAllItens.addEventListener('change', function() {
                         checkboxes.forEach(cb => cb.checked = this.checked);
                         verificarSelecaoItens();
@@ -683,14 +724,16 @@
 
                 btnAdicionarItensServico.addEventListener('click', function() {
                     const itensSelecionados = document.querySelectorAll('.item-servico-check:checked');
-                    
+
                     itensSelecionados.forEach(checkbox => {
                         const itemId = checkbox.dataset.itemId;
                         const row = checkbox.closest('tr');
                         const descricao = row.cells[1].textContent;
-                        const quantidade = parseFloat(row.querySelector('[data-field="quantidade"]').value);
+                        const quantidade = parseFloat(row.querySelector('[data-field="quantidade"]')
+                            .value);
                         const unidadeId = row.querySelector('[data-field="unidade"]').value;
-                        const unidadeNome = row.querySelector('[data-field="unidade"] option:checked').textContent;
+                        const unidadeNome = row.querySelector(
+                            '[data-field="unidade"] option:checked').textContent;
                         const preco = parseFloat(row.querySelector('[data-field="preco"]').value);
 
                         adicionarItem({
@@ -705,18 +748,20 @@
                     });
 
                     fecharModal('modal-servico');
-                    showToast('Sucesso', `${itensSelecionados.length} item(ns) adicionado(s) ao orçamento!`, 'success');
+                    showToast('Sucesso', itensSelecionados.length + ' item(ns) adicionado(s) ao orçamento!',
+                        'success');
                 });
             }
 
             function setupModalItemManual() {
                 const btnAdicionarItemManual = document.querySelector('#modal-item-manual .btn-primary');
-                
+
                 btnAdicionarItemManual.addEventListener('click', function() {
                     const descricao = document.getElementById('manual-descricao').value.trim();
                     const quantidade = parseFloat(document.getElementById('manual-quantidade').value);
                     const unidadeId = document.getElementById('manual-unidade').value;
-                    const unidadeNome = document.getElementById('manual-unidade').selectedOptions[0].textContent;
+                    const unidadeNome = document.getElementById('manual-unidade').selectedOptions[0]
+                        .textContent;
                     const preco = parseFloat(document.getElementById('manual-preco').value);
 
                     if (!descricao || !quantidade || !preco) {
@@ -767,24 +812,27 @@
             window.removerItem = removerItem;
 
             function showToast(title, message, type = 'info') {
-                const toastHtml = `
-                    <div class="alert alert-${type === 'error' ? 'danger' : type} alert-dismissible position-fixed" 
-                         style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
-                        <div class="d-flex">
-                            <div>
-                                <i class="fa-solid fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
-                                <strong>${title}</strong> ${message}
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    </div>
-                `;
-                
+                const iconClass = type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' :
+                    'info-circle';
+                const alertClass = type === 'error' ? 'danger' : type;
+
+                const toastHtml =
+                    '<div class="alert alert-' + alertClass + ' alert-dismissible position-fixed" ' +
+                    'style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">' +
+                    '<div class="d-flex">' +
+                    '<div>' +
+                    '<i class="fa-solid fa-' + iconClass + ' me-2"></i>' +
+                    '<strong>' + title + '</strong> ' + message +
+                    '</div>' +
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>' +
+                    '</div>' +
+                    '</div>';
+
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = toastHtml;
                 const toast = tempDiv.firstElementChild;
                 document.body.appendChild(toast);
-                
+
                 setTimeout(() => {
                     if (toast.parentElement) {
                         toast.remove();

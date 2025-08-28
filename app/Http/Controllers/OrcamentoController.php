@@ -12,6 +12,7 @@ use App\Http\Requests\StoreOrcamentoRequest;
 use App\Http\Requests\UpdateOrcamentoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Mpdf\Mpdf;
 
 class OrcamentoController extends Controller
 {
@@ -208,5 +209,36 @@ class OrcamentoController extends Controller
             'status_label' => $orcamento->status_label,
             'status_badge' => $orcamento->status_badge
         ]);
+    }
+
+    public function generatePdf(Orcamento $orcamento)
+    {
+        // Carregar relacionamentos necessários
+        $orcamento->load(['cliente', 'itens.unidade', 'user']);
+
+        // Criar instância do mPDF
+        $mpdf = new Mpdf([
+            'format' => 'A4',
+            'margin_left' => 15,
+            'margin_right' => 15,
+            'margin_top' => 16,
+            'margin_bottom' => 16,
+            'margin_header' => 9,
+            'margin_footer' => 9
+        ]);
+
+        // Gerar HTML do orçamento
+        $html = view('orcamentos.pdf', compact('orcamento'))->render();
+
+        // Escrever HTML no PDF
+        $mpdf->WriteHTML($html);
+
+        // Nome do arquivo
+        $filename = 'orcamento_' . str_pad($orcamento->id, 4, '0', STR_PAD_LEFT) . '.pdf';
+
+        // Retornar o PDF
+        return response($mpdf->Output($filename, 'S'))
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
     }
 }

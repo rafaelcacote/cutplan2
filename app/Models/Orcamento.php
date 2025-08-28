@@ -43,6 +43,11 @@ class Orcamento extends Model
         return $this->hasMany(ItemOrcamento::class);
     }
 
+    public function projetos()
+    {
+        return $this->hasMany(Projeto::class);
+    }
+
     public function getStatusLabelAttribute()
     {
         return match($this->status) {

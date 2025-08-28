@@ -43,19 +43,19 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label required">Cliente</label>
-                                        <select class="form-select @error('cliente_id') is-invalid @enderror"
-                                            name="cliente_id" id="cliente_id" required>
-                                            <option value="">Selecione um cliente</option>
-                                            @foreach ($clientes as $cliente)
-                                                <option value="{{ $cliente->id }}"
-                                                    {{ old('cliente_id') == $cliente->id ? 'selected' : '' }}>
-                                                    {{ $cliente->nome }}
-                                                    @if ($cliente->documento)
-                                                        - {{ $cliente->documento }}
-                                                    @endif
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                        <div class="position-relative">
+                                            <input type="text"
+                                                class="form-control @error('cliente_id') is-invalid @enderror"
+                                                id="cliente-search" placeholder="Digite para buscar um cliente..."
+                                                autocomplete="off">
+                                            <input type="hidden" name="cliente_id" id="cliente_id" required>
+
+                                            <!-- Dropdown de resultados -->
+                                            <div id="cliente-dropdown" class="dropdown-menu w-100"
+                                                style="display: none; max-height: 200px; overflow-y: auto;">
+                                                <div class="dropdown-item text-muted">Digite para buscar...</div>
+                                            </div>
+                                        </div>
                                         @error('cliente_id')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -363,7 +363,7 @@
     </div>
 
     <script>
-        // CSS adicional para modais
+        // CSS adicional para modais e busca de cliente
         const modalCSS = `
             .modal {
                 position: fixed;
@@ -392,6 +392,39 @@
             }
             body.modal-open {
                 overflow: hidden;
+            }
+
+            /* Estilos para busca de cliente */
+            #cliente-dropdown {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 1000;
+                display: none;
+                min-width: 100%;
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+                border-radius: 0.375rem;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+            }
+
+            #cliente-dropdown .dropdown-item {
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                border-bottom: 1px solid #f1f3f4;
+            }
+
+            #cliente-dropdown .dropdown-item:hover {
+                background-color: #f8f9fa;
+            }
+
+            #cliente-dropdown .dropdown-item.active {
+                background-color: #0d6efd;
+                color: white;
+            }
+
+            #cliente-dropdown .dropdown-item:last-child {
+                border-bottom: none;
             }
         `;
 
@@ -439,9 +472,12 @@
             let unidadesData = [];
             let itensOrcamento = [];
             let contadorItens = 0;
+            let clientesData = @json($clientes); // Dados dos clientes do PHP
 
             // Elementos DOM
             const clienteSelect = document.getElementById('cliente_id');
+            const clienteSearch = document.getElementById('cliente-search');
+            const clienteDropdown = document.getElementById('cliente-dropdown');
             const btnContinuar = document.getElementById('btn-continuar');
             const btnVoltar = document.getElementById('btn-voltar');
             const btnSalvar = document.getElementById('btn-salvar');
@@ -456,6 +492,9 @@
             init();
 
             function init() {
+                // Configurar busca de clientes
+                setupClienteSearch();
+
                 // Carregar dados dos selects logo no início
                 carregarDadosSelect();
 
@@ -521,6 +560,127 @@
 
                 // Recalcular quando desconto muda
                 descontoInput.addEventListener('input', atualizarResumo);
+            }
+
+            function setupClienteSearch() {
+                let selectedIndex = -1;
+
+                // Configurar valor inicial se houver old() do Laravel
+                @if (old('cliente_id'))
+                    const oldClienteId = {{ old('cliente_id') }};
+                    const oldCliente = clientesData.find(c => c.id == oldClienteId);
+                    if (oldCliente) {
+                        clienteSearch.value = oldCliente.nome + (oldCliente.documento ?
+                            ` - ${oldCliente.documento}` : '');
+                        clienteSelect.value = oldCliente.id;
+                        btnContinuar.disabled = false;
+                    }
+                @endif
+
+                // Evento de digitação no campo de busca
+                clienteSearch.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase().trim();
+                    selectedIndex = -1;
+
+                    if (searchTerm.length === 0) {
+                        clienteDropdown.style.display = 'none';
+                        clienteSelect.value = '';
+                        btnContinuar.disabled = true;
+                        return;
+                    }
+
+                    // Filtrar clientes
+                    const filteredClientes = clientesData.filter(cliente => {
+                        const nome = cliente.nome.toLowerCase();
+                        const documento = cliente.documento ? cliente.documento.toLowerCase() : '';
+                        return nome.includes(searchTerm) || documento.includes(searchTerm);
+                    });
+
+                    // Mostrar resultados
+                    mostrarResultadosClientes(filteredClientes);
+                });
+
+                // Navegação com teclado
+                clienteSearch.addEventListener('keydown', function(e) {
+                    const items = clienteDropdown.querySelectorAll('.dropdown-item:not(.text-muted)');
+
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+                        updateSelection(items);
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        selectedIndex = Math.max(selectedIndex - 1, -1);
+                        updateSelection(items);
+                    } else if (e.key === 'Enter') {
+                        e.preventDefault();
+                        if (selectedIndex >= 0 && items[selectedIndex]) {
+                            items[selectedIndex].click();
+                        }
+                    } else if (e.key === 'Escape') {
+                        clienteDropdown.style.display = 'none';
+                        selectedIndex = -1;
+                    }
+                });
+
+                // Fechar dropdown ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (!clienteSearch.contains(e.target) && !clienteDropdown.contains(e.target)) {
+                        clienteDropdown.style.display = 'none';
+                        selectedIndex = -1;
+                    }
+                });
+
+                function mostrarResultadosClientes(clientes) {
+                    clienteDropdown.innerHTML = '';
+
+                    if (clientes.length === 0) {
+                        clienteDropdown.innerHTML =
+                            '<div class="dropdown-item text-muted">Nenhum cliente encontrado</div>';
+                    } else {
+                        clientes.forEach((cliente, index) => {
+                            const item = document.createElement('div');
+                            item.className = 'dropdown-item';
+                            item.innerHTML = `
+                                <div>
+                                    <strong>${cliente.nome}</strong>
+                                    ${cliente.documento ? `<br><small class="text-muted">${cliente.documento}</small>` : ''}
+                                </div>
+                            `;
+
+                            item.addEventListener('click', function() {
+                                selecionarCliente(cliente);
+                            });
+
+                            clienteDropdown.appendChild(item);
+                        });
+                    }
+
+                    clienteDropdown.style.display = 'block';
+                }
+
+                function updateSelection(items) {
+                    items.forEach((item, index) => {
+                        if (index === selectedIndex) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+
+                function selecionarCliente(cliente) {
+                    clienteSearch.value = cliente.nome + (cliente.documento ? ` - ${cliente.documento}` : '');
+                    clienteSelect.value = cliente.id;
+                    clienteDropdown.style.display = 'none';
+                    selectedIndex = -1;
+
+                    // Disparar evento change
+                    const event = new Event('change');
+                    clienteSelect.dispatchEvent(event);
+
+                    console.log('Cliente selecionado via busca:', cliente);
+                }
             }
 
             async function carregarDadosSelect() {
@@ -917,10 +1077,19 @@
                         console.error(`ERRO: Item ${index} não tem preço unitário:`, item);
                     }
 
+                    // Formatar descrição com serviço em negrito se for item de serviço
+                    let descricaoFormatada = item.descricao;
+                    if (item.item_servico_id && item.descricao.includes(' - ')) {
+                        const partes = item.descricao.split(' - ');
+                        const nomeServico = partes[0];
+                        const nomeItem = partes.slice(1).join(' - '); // Caso tenha mais de um traço
+                        descricaoFormatada = `<strong>${nomeServico}</strong> - ${nomeItem}`;
+                    }
+
                     html += `
                         <tr>
                             <td>
-                                <div class="font-weight-medium">${item.descricao}</div>
+                                <div class="font-weight-medium">${descricaoFormatada}</div>
                                 ${item.item_servico_id ? '<small class="text-muted">Item de serviço</small>' : '<small class="text-muted">Item manual</small>'}
                                 <input type="hidden" name="itens[${index}][descricao]" value="${item.descricao}">
                                 <input type="hidden" name="itens[${index}][quantidade]" value="${item.quantidade}">

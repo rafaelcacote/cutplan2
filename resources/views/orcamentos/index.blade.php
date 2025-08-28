@@ -38,9 +38,8 @@
                                 <div class="col-lg-3">
                                     <div class="mb-3">
                                         <label class="form-label">Cliente</label>
-                                        <input type="text" class="form-control" name="search_cliente" 
-                                               value="{{ request('search_cliente') }}" 
-                                               placeholder="Nome do cliente">
+                                        <input type="text" class="form-control" name="search_cliente"
+                                            value="{{ request('search_cliente') }}" placeholder="Nome do cliente">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -48,26 +47,35 @@
                                         <label class="form-label">Status</label>
                                         <select class="form-select" name="search_status">
                                             <option value="">Todos</option>
-                                            <option value="draft" {{ request('search_status') == 'draft' ? 'selected' : '' }}>Rascunho</option>
-                                            <option value="sent" {{ request('search_status') == 'sent' ? 'selected' : '' }}>Enviado</option>
-                                            <option value="approved" {{ request('search_status') == 'approved' ? 'selected' : '' }}>Aprovado</option>
-                                            <option value="rejected" {{ request('search_status') == 'rejected' ? 'selected' : '' }}>Rejeitado</option>
-                                            <option value="expired" {{ request('search_status') == 'expired' ? 'selected' : '' }}>Expirado</option>
+                                            <option value="draft"
+                                                {{ request('search_status') == 'draft' ? 'selected' : '' }}>Rascunho
+                                            </option>
+                                            <option value="sent"
+                                                {{ request('search_status') == 'sent' ? 'selected' : '' }}>Enviado</option>
+                                            <option value="approved"
+                                                {{ request('search_status') == 'approved' ? 'selected' : '' }}>Aprovado
+                                            </option>
+                                            <option value="rejected"
+                                                {{ request('search_status') == 'rejected' ? 'selected' : '' }}>Rejeitado
+                                            </option>
+                                            <option value="expired"
+                                                {{ request('search_status') == 'expired' ? 'selected' : '' }}>Expirado
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="mb-3">
                                         <label class="form-label">Data Início</label>
-                                        <input type="date" class="form-control" name="search_data_inicio" 
-                                               value="{{ request('search_data_inicio') }}">
+                                        <input type="date" class="form-control" name="search_data_inicio"
+                                            value="{{ request('search_data_inicio') }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="mb-3">
                                         <label class="form-label">Data Fim</label>
-                                        <input type="date" class="form-control" name="search_data_fim" 
-                                               value="{{ request('search_data_fim') }}">
+                                        <input type="date" class="form-control" name="search_data_fim"
+                                            value="{{ request('search_data_fim') }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
@@ -94,8 +102,41 @@
                         <h3 class="card-title">Lista de Orçamentos</h3>
                         <div class="card-subtitle">{{ $orcamentos->total() }} orçamento(s) encontrado(s)</div>
                     </div>
+
+                    <!-- Legenda de Status -->
+                    <div class="card-body pt-3 pb-2">
+                        <div class="alert alert-info border-0"
+                            style="background: linear-gradient(135deg, #e3f2fd 0%, #f8f9fa 100%); border-left: 4px solid #007bff !important;">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-tags me-2 text-primary"></i>
+                                <strong class="text-primary">Legenda dos Status:</strong>
+                            </div>
+                            <div class="row text-sm">
+                                <div class="col-md-2 col-6 mb-1">
+                                    <span class="badge bg-secondary me-1">Rascunho</span>
+                                    <small class="text-muted d-block">Em elaboração</small>
+                                </div>
+                                <div class="col-md-2 col-6 mb-1">
+                                    <span class="badge bg-warning me-1">Enviado</span>
+                                    <small class="text-muted d-block">Aguardando resposta</small>
+                                </div>
+                                <div class="col-md-2 col-6 mb-1">
+                                    <span class="badge bg-success me-1">Aprovado</span>
+                                    <small class="text-muted d-block">Cliente aceitou</small>
+                                </div>
+                                <div class="col-md-2 col-6 mb-1">
+                                    <span class="badge bg-danger me-1">Rejeitado</span>
+                                    <small class="text-muted d-block">Cliente recusou</small>
+                                </div>
+                                <div class="col-md-2 col-6 mb-1">
+                                    <span class="badge bg-dark me-1">Expirado</span>
+                                    <small class="text-muted d-block">Prazo vencido</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @forelse($orcamentos as $orcamento)
-                        @if($loop->first)
+                        @if ($loop->first)
                             <div class="table-responsive">
                                 <table class="table table-vcenter card-table">
                                     <thead>
@@ -130,12 +171,13 @@
                             </td>
                             <td class="text-end">
                                 <strong>R$ {{ number_format($orcamento->total, 2, ',', '.') }}</strong>
-                                @if($orcamento->desconto > 0)
-                                    <br><small class="text-muted">Desc: R$ {{ number_format($orcamento->desconto, 2, ',', '.') }}</small>
+                                @if ($orcamento->desconto > 0)
+                                    <br><small class="text-muted">Desc: R$
+                                        {{ number_format($orcamento->desconto, 2, ',', '.') }}</small>
                                 @endif
                             </td>
                             <td>
-                                @if($orcamento->validade)
+                                @if ($orcamento->validade)
                                     <span class="{{ $orcamento->validade < now() ? 'text-danger' : 'text-muted' }}">
                                         {{ $orcamento->validade->format('d/m/Y') }}
                                     </span>
@@ -148,62 +190,75 @@
                             </td>
                             <td>
                                 <div class="btn-list flex-nowrap">
-                                    <a href="{{ route('orcamentos.show', $orcamento) }}" 
-                                       class="btn btn-outline-primary btn-sm" title="Visualizar">
+                                    <a href="{{ route('orcamentos.show', $orcamento) }}"
+                                        class="btn btn-outline-primary btn-sm" title="Visualizar Detalhes">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('orcamentos.edit', $orcamento) }}" 
-                                       class="btn btn-outline-secondary btn-sm" title="Editar">
+                                    <a href="{{ route('orcamentos.edit', $orcamento) }}"
+                                        class="btn btn-outline-secondary btn-sm" title="Editar Orçamento">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <button type="button" class="btn btn-outline-danger btn-sm" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#modal-excluir-{{ $orcamento->id }}" title="Excluir">
+                                    @if ($orcamento->status == 'approved')
+                                        <a href="{{ route('projetos.create', ['orcamento_id' => $orcamento->id]) }}"
+                                            class="btn btn-success btn-sm" title="Criar Projeto">
+                                            <i class="fa-solid fa-diagram-project"></i>
+                                        </a>
+                                    @endif
+                                    <a href="{{ route('orcamentos.pdf', $orcamento) }}"
+                                        class="btn btn-info btn-sm pdf-btn" title="📄 Baixar PDF do Orçamento"
+                                        target="_blank"
+                                        style="background: linear-gradient(45deg, #007bff, #0056b3); border: none; color: white; font-weight: 500; box-shadow: 0 2px 4px rgba(0,123,255,0.3); transition: all 0.3s ease;">
+                                        <i class="fa-solid fa-file-pdf me-1"></i>
+
+                                    </a>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#modal-excluir-{{ $orcamento->id }}" title="Excluir">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
                             </td>
                         </tr>
-                        
-                        @if($loop->last)
-                                    </tbody>
-                                </table>
-                            </div>
-                        @endif
-                    @empty
-                        <div class="card-body">
-                            <div class="empty">
-                                <div class="empty-img">
-                                    <i class="fa-solid fa-file-lines fa-3x text-muted mb-2"></i>
-                                     
-                                </div>
-                                <p class="empty-title">Nenhum orçamento encontrado</p>
-                                <p class="empty-subtitle text-muted">
-                                    Não há orçamentos cadastrados ou que correspondam aos filtros aplicados.
-                                </p>
-                                <div class="empty-action">
-                                    <a href="{{ route('orcamentos.create') }}" class="btn btn-primary">
-                                        <i class="fa-solid fa-plus me-2"></i>
-                                        Criar primeiro orçamento
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforelse
 
-                    @if($orcamentos->hasPages())
-                        <div class="card-footer">
-                            {{ $orcamentos->links() }}
-                        </div>
-                    @endif
+                        @if ($loop->last)
+                            </tbody>
+                            </table>
                 </div>
+                @endif
+            @empty
+                <div class="card-body">
+                    <div class="empty">
+                        <div class="empty-img">
+                            <i class="fa-solid fa-file-lines fa-3x text-muted mb-2"></i>
+
+                        </div>
+                        <p class="empty-title">Nenhum orçamento encontrado</p>
+                        <p class="empty-subtitle text-muted">
+                            Não há orçamentos cadastrados ou que correspondam aos filtros aplicados.
+                        </p>
+                        <div class="empty-action">
+                            <a href="{{ route('orcamentos.create') }}" class="btn btn-primary">
+                                <i class="fa-solid fa-plus me-2"></i>
+                                Criar primeiro orçamento
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforelse
+
+                @if ($orcamentos->hasPages())
+                    <div class="card-footer">
+                        {{ $orcamentos->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Modais de Exclusão -->
-    @foreach($orcamentos as $orcamento)
-        <div class="modal modal-blur fade" id="modal-excluir-{{ $orcamento->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    @foreach ($orcamentos as $orcamento)
+        <div class="modal modal-blur fade" id="modal-excluir-{{ $orcamento->id }}" tabindex="-1" role="dialog"
+            aria-hidden="true">
             <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -212,7 +267,7 @@
                         <i class="fa-solid fa-triangle-exclamation fa-3x text-danger mb-3"></i>
                         <h3>Tem certeza?</h3>
                         <div class="text-muted">
-                            Você realmente deseja excluir o orçamento #{{ str_pad($orcamento->id, 4, '0', STR_PAD_LEFT) }} 
+                            Você realmente deseja excluir o orçamento #{{ str_pad($orcamento->id, 4, '0', STR_PAD_LEFT) }}
                             de <strong>{{ $orcamento->cliente->nome }}</strong>?
                             <br>Esta ação não pode ser desfeita.
                         </div>
@@ -226,7 +281,8 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <form method="POST" action="{{ route('orcamentos.destroy', $orcamento) }}" class="d-inline">
+                                    <form method="POST" action="{{ route('orcamentos.destroy', $orcamento) }}"
+                                        class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger w-100">
@@ -242,7 +298,7 @@
         </div>
     @endforeach
 
-    @if(session('success'))
+    @if (session('success'))
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Toast simples para notificações
@@ -259,7 +315,7 @@
                     </div>
                 `;
                 document.body.appendChild(toast);
-                
+
                 // Auto-remover após 5 segundos
                 setTimeout(() => {
                     if (toast.parentElement) {
@@ -269,4 +325,126 @@
             });
         </script>
     @endif
+
+    <style>
+        /* Melhorias para o botão PDF */
+        .pdf-btn:hover {
+            background: linear-gradient(45deg, #0056b3, #004085) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4) !important;
+        }
+
+        .pdf-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3) !important;
+        }
+
+        .pdf-btn i {
+            animation: pulse-pdf 2s infinite;
+        }
+
+        @keyframes pulse-pdf {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Tooltip customizado para PDF */
+        .pdf-btn[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+            margin-bottom: 5px;
+        }
+
+        /* Melhorar aparência geral dos botões de ação */
+        .btn-list .btn {
+            margin-right: 3px;
+            border-radius: 6px;
+        }
+
+        .btn-list .btn:last-child {
+            margin-right: 0;
+        }
+
+        /* Responsividade - esconder texto PDF em telas pequenas */
+        @media (max-width: 991px) {
+            .pdf-btn .d-none.d-lg-inline {
+                display: none !important;
+            }
+        }
+
+        /* Estilos para a legenda */
+        .alert.border-0 {
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .alert .fa-solid {
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Estilos para a legenda de status */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            min-width: 70px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .text-sm small {
+            font-size: 0.7rem;
+            line-height: 1.2;
+        }
+
+        /* Responsividade da legenda */
+        @media (max-width: 768px) {
+            .alert .row .col-6 {
+                margin-bottom: 8px;
+            }
+
+            .text-sm {
+                font-size: 0.8rem;
+            }
+
+            .text-sm small {
+                font-size: 0.65rem;
+            }
+
+            .badge {
+                min-width: 60px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-md-2 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+    </style>
 @endsection

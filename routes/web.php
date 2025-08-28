@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('fornecedores', App\Http\Controllers\FornecedorController::class)->parameters([
         'fornecedores' => 'fornecedor'
     ]);
-    
+
     // Rotas de CRUD de perfis (roles)
     Route::resource('roles', App\Http\Controllers\RoleController::class);
 
@@ -76,13 +76,19 @@ Route::middleware('auth')->group(function () {
 
     // Rotas de CRUD de orçamentos
     Route::resource('orcamentos', App\Http\Controllers\OrcamentoController::class);
-    
+
+    // Rota para gerar PDF do orçamento
+    Route::get('orcamentos/{orcamento}/pdf', [App\Http\Controllers\OrcamentoController::class, 'generatePdf'])->name('orcamentos.pdf');
+
     // Rotas API para orçamentos
     Route::get('orcamentos/api/servicos', [App\Http\Controllers\OrcamentoController::class, 'getServicos'])->name('orcamentos.get-servicos');
     Route::get('orcamentos/servicos/{servico}', [App\Http\Controllers\OrcamentoController::class, 'getServico'])->name('orcamentos.get-servico');
     Route::get('orcamentos/servicos/{servico}/itens', [App\Http\Controllers\OrcamentoController::class, 'getItensServico'])->name('orcamentos.get-itens-servico');
     Route::get('orcamentos/api/unidades', [App\Http\Controllers\OrcamentoController::class, 'getUnidades'])->name('orcamentos.get-unidades');
     Route::post('orcamentos/{orcamento}/status', [App\Http\Controllers\OrcamentoController::class, 'updateStatus'])->name('orcamentos.update-status');
+
+    // Rotas de CRUD de projetos
+    Route::resource('projetos', App\Http\Controllers\ProjetoController::class);
 });
 
 require __DIR__.'/auth.php';
