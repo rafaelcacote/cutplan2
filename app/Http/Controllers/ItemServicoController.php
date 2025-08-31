@@ -32,8 +32,38 @@ class ItemServicoController extends Controller
 
     public function store(StoreItemServicoRequest $request)
     {
-        ItemServico::create($request->validated());
-        return redirect()->route('itens-servico.index')->with('success', 'Item de serviço criado com sucesso!');
+        try {
+            $item = ItemServico::create($request->validated());
+            
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Item de serviço criado com sucesso!',
+                    'item' => $item->load('servico')
+                ]);
+            }
+            
+            return redirect()->route('itens-servico.index')->with('success', 'Item de serviço criado com sucesso!');
+            
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro de validação.',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+            throw $e;
+        } catch (\Exception $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro ao criar item: ' . $e->getMessage()
+                ], 500);
+            }
+            
+            return back()->withErrors(['error' => 'Erro ao criar item: ' . $e->getMessage()])->withInput();
+        }
     }
 
     public function show(ItemServico $itens_servico)
@@ -49,13 +79,51 @@ class ItemServicoController extends Controller
 
     public function update(UpdateItemServicoRequest $request, ItemServico $itens_servico)
     {
-        $itens_servico->update($request->validated());
-        return redirect()->route('itens-servico.index')->with('success', 'Item de serviço atualizado com sucesso!');
+        try {
+            $itens_servico->update($request->validated());
+            
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Item de serviço atualizado com sucesso!',
+                    'item' => $itens_servico->load('servico')
+                ]);
+            }
+            
+            return redirect()->route('itens-servico.index')->with('success', 'Item de serviço atualizado com sucesso!');
+            
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro de validação.',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+            throw $e;
+        } catch (\Exception $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro ao atualizar item: ' . $e->getMessage()
+                ], 500);
+            }
+            
+            return back()->withErrors(['error' => 'Erro ao atualizar item: ' . $e->getMessage()])->withInput();
+        }
     }
 
     public function destroy(ItemServico $itens_servico)
     {
         $itens_servico->delete();
+        
+        if (request()->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Item de serviço excluído com sucesso!'
+            ]);
+        }
+        
         return redirect()->route('itens-servico.index')->with('success', 'Item de serviço excluído com sucesso!');
     }
 }

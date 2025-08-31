@@ -60,7 +60,7 @@
                         <div class="input-group input-group-flat">
                             <input id="password" type="password" name="password"
                                 class="form-control @error('password') is-invalid @enderror" placeholder="Sua senha"
-                                required autocomplete="current-password">
+                                required autocomplete="off">
                         </div>
                         @if ($errors->has('password'))
                             <div class="text-danger small mt-1">{{ $errors->first('password') }}</div>

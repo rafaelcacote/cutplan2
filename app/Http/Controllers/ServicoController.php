@@ -11,13 +11,15 @@ class ServicoController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Servico::query();
+        $query = Servico::with('itensServico');
+        
         if ($request->filled('nome')) {
             $query->where('nome', 'like', '%'.$request->nome.'%');
         }
         if ($request->filled('ativo')) {
             $query->where('ativo', $request->ativo);
         }
+        
         $servicos = $query->paginate(10)->appends($request->query());
         return view('servicos.index', compact('servicos'));
     }
@@ -33,9 +35,20 @@ class ServicoController extends Controller
         return redirect()->route('servicos.index')->with('success', 'Serviço criado com sucesso!');
     }
 
-    public function show(Servico $servico)
+    public function show(Servico $servico, Request $request)
     {
-        return view('servicos.show', compact('servico'));
+        $perPage = 10;
+        $query = $servico->itensServico();
+        
+        // Aplicar filtro de busca se fornecido
+        if ($request->filled('search')) {
+            $query->where('descricao_item', 'like', '%' . $request->search . '%');
+        }
+        
+        $itens = $query->paginate($perPage);
+        $itens->appends($request->query());
+        
+        return view('servicos.show', compact('servico', 'itens'));
     }
 
     public function edit(Servico $servico)
