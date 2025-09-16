@@ -653,7 +653,7 @@
         <script>
             function confirmDelete(projetoId) {
                 const form = document.getElementById('delete-form');
-                form.action = '{{ route('projetos.destroy', '') }}/' + projetoId;
+                form.action = '{{ route('projetos.destroy', ['projeto' => ':id']) }}'.replace(':id', projetoId);
                 const modal = new bootstrap.Modal(document.getElementById('modal-delete'));
                 modal.show();
             }

@@ -67,17 +67,6 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Código</label>
-                                            <input type="text" name="codigo"
-                                                class="form-control @error('codigo') is-invalid @enderror"
-                                                value="{{ old('codigo', $projeto->codigo) }}" maxlength="50">
-                                            @error('codigo')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
                                             <label class="form-label">Orçamento Vinculado</label>
                                             <select name="orcamento_id"
                                                 class="form-select @error('orcamento_id') is-invalid @enderror">
@@ -94,6 +83,8 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                     </div>
                                 </div>
 
@@ -178,7 +169,7 @@
                                                 @foreach ($equipes as $equipe)
                                                     <option value="{{ $equipe->id }}"
                                                         {{ old('equipe_id', $projeto->equipe_id) == $equipe->id ? 'selected' : '' }}>
-                                                        {{ $equipe->nome }}
+                                                        {{ $equipe->nome }} ({{ $equipe->membros_count }} {{ $equipe->membros_count == 1 ? 'membro' : 'membros' }})
                                                     </option>
                                                 @endforeach
                                             </select>

@@ -56,6 +56,7 @@
             width: 100%;
         }
 
+
         .content-area {
             flex: 1;
             width: 100%;
@@ -220,14 +221,12 @@
         <div class="sidebar" id="sidebar">
             @include('layouts.navigation')
         </div>
-
         {{-- Área principal (Header + Conteúdo + Footer) --}}
         <div class="main-content">
             {{-- Header fixo do sistema --}}
             <div class="header-area w-full">
                 @include('layouts.header')
             </div>
-
             {{-- Header dinâmico da página (opcional) --}}
             @isset($header)
                 <header class="bg-white shadow w-full">
@@ -236,12 +235,10 @@
                     </div>
                 </header>
             @endisset
-
             <!-- Page Content -->
             <main class="content-area">
                 @yield('content')
             </main>
-
             {{-- Footer --}}
             <div class="footer-area">
                 @include('layouts.footer')

@@ -11,7 +11,6 @@ class Projeto extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'codigo',
         'cliente_id',
         'nome',
         'status',
@@ -114,23 +113,9 @@ class Projeto extends Model
     protected static function boot()
     {
         parent::boot();
-
-        static::creating(function ($projeto) {
-            if (empty($projeto->codigo)) {
-                $projeto->codigo = static::generateCodigo();
-            }
-        });
+        
+        // Código removido: não precisamos mais gerar código automaticamente
     }
 
-    public static function generateCodigo()
-    {
-        $ano = date('Y');
-        $ultimoProjeto = static::whereYear('created_at', $ano)
-            ->orderBy('id', 'desc')
-            ->first();
-
-        $numero = $ultimoProjeto ? ((int) substr($ultimoProjeto->codigo, -4)) + 1 : 1;
-
-        return 'PRJ' . $ano . str_pad($numero, 4, '0', STR_PAD_LEFT);
-    }
+    
 }

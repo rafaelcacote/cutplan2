@@ -67,7 +67,7 @@ class ProjetoController extends Controller
         $gerentes = User::whereHas('roles', function($q) {
             $q->where('name', 'gerente');
         })->orderBy('name')->get();
-        $equipes = Equipe::orderBy('nome')->get();
+        $equipes = Equipe::withCount('membros')->orderBy('nome')->get();
         $orcamentos = Orcamento::with('cliente')
             ->where('status', 'approved')
             ->orderBy('created_at', 'desc')
@@ -106,7 +106,6 @@ class ProjetoController extends Controller
         $request->validate([
             'cliente_id' => 'required|exists:clientes,id',
             'nome' => 'required|string|max:150',
-            'codigo' => 'nullable|string|max:50|unique:projetos,codigo',
             'status' => 'required|in:em_planejamento,producao,montagem,vistoria,concluido,cancelado',
             'data_inicio' => 'nullable|date',
             'data_entrega_prevista' => 'nullable|date|after_or_equal:data_inicio',
@@ -150,7 +149,7 @@ class ProjetoController extends Controller
         $gerentes = User::whereHas('roles', function($q) {
             $q->where('name', 'gerente');
         })->orderBy('name')->get();
-        $equipes = Equipe::orderBy('nome')->get();
+        $equipes = Equipe::withCount('membros')->orderBy('nome')->get();
         $orcamentos = Orcamento::with('cliente')
             ->where('status', 'approved')
             ->orderBy('created_at', 'desc')
@@ -183,7 +182,6 @@ class ProjetoController extends Controller
         $request->validate([
             'cliente_id' => 'required|exists:clientes,id',
             'nome' => 'required|string|max:150',
-            'codigo' => 'nullable|string|max:50|unique:projetos,codigo,' . $projeto->id,
             'status' => 'required|in:em_planejamento,producao,montagem,vistoria,concluido,cancelado',
             'data_inicio' => 'nullable|date',
             'data_entrega_prevista' => 'nullable|date|after_or_equal:data_inicio',
