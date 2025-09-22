@@ -19,7 +19,7 @@ class OrcamentoController extends Controller
     public function index(Request $request)
     {
         $perPage = 10;
-        $query = Orcamento::with(['cliente', 'user']);
+        $query = Orcamento::with(['cliente', 'user', 'projetos']);
 
         // Filtros
         if ($request->filled('search_cliente')) {
@@ -56,12 +56,20 @@ class OrcamentoController extends Controller
     {
         try {
             \Log::info('=== INÍCIO DO STORE ===');
-            \Log::info('Request data:', $request->all());
+            \Log::info('Request data completo:', $request->all());
+            \Log::info('Dados de itens recebidos:', $request->input('itens', []));
 
             $validated = $request->validated();
 
             // Log para debug
             \Log::info('Dados validados para criar orçamento:', $validated);
+            \Log::info('Itens validados:', $validated['itens'] ?? []);
+
+            // Verificar se realmente tem itens
+            if (empty($validated['itens'])) {
+                \Log::error('ERRO: Nenhum item foi enviado no request!');
+                return back()->withInput()->with('error', 'Erro: Nenhum item foi enviado. Adicione pelo menos um item ao orçamento.');
+            }
 
             // Criar orçamento
             $orcamento = Orcamento::create([
@@ -79,9 +87,11 @@ class OrcamentoController extends Controller
             foreach ($validated['itens'] as $index => $itemData) {
                 \Log::info("Criando item {$index}:", $itemData);
 
+
                 $item = ItemOrcamento::create([
                     'orcamento_id' => $orcamento->id,
                     'descricao' => $itemData['descricao'],
+                    'observacao' => $itemData['observacao'] ?? null,
                     'quantidade' => $itemData['quantidade'],
                     'unidade_id' => $itemData['unidade_id'] ?? null,
                     'preco_unitario' => $itemData['preco_unitario'],
@@ -90,8 +100,15 @@ class OrcamentoController extends Controller
                 \Log::info("Item {$index} criado com sucesso:", ['item_id' => $item->id, 'descricao' => $item->descricao]);
             }
 
+            // Recalcular totais do orçamento
+            $orcamento->recalcularTotais();
+            \Log::info('Totais recalculados:', ['subtotal' => $orcamento->subtotal, 'total' => $orcamento->total]);
+
+            // Atualizar status para 'ready'
+            $orcamento->update(['status' => 'ready']);
+
             \Log::info('=== ORÇAMENTO SALVO COM SUCESSO ===');
-            return redirect()->route('orcamentos.index')->with('success', 'Orçamento criado com sucesso!');
+            return redirect()->route('orcamentos.actions', $orcamento->id)->with('success', 'Orçamento criado com sucesso!');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             \Log::error('Erro de validação:', [
@@ -149,6 +166,7 @@ class OrcamentoController extends Controller
             ItemOrcamento::create([
                 'orcamento_id' => $orcamento->id,
                 'descricao' => $itemData['descricao'],
+                'observacao' => $itemData['observacao'] ?? null,
                 'quantidade' => $itemData['quantidade'],
                 'unidade_id' => $itemData['unidade_id'] ?? null,
                 'preco_unitario' => $itemData['preco_unitario'],
@@ -161,6 +179,12 @@ class OrcamentoController extends Controller
 
     public function destroy(Orcamento $orcamento)
     {
+        // Verificar se o orçamento pode ser excluído
+        if (!$orcamento->podeSerExcluido()) {
+            return redirect()->route('orcamentos.index')
+                ->with('error', 'Este orçamento não pode ser excluído. Apenas orçamentos com status "Rascunho", "Rejeitado" ou "Expirado" podem ser excluídos.');
+        }
+
         $orcamento->delete();
         return redirect()->route('orcamentos.index')->with('success', 'Orçamento excluído com sucesso!');
     }
@@ -240,5 +264,95 @@ class OrcamentoController extends Controller
         return response($mpdf->Output($filename, 'S'))
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+    }
+
+    /**
+     * Página de ações pós-criação do orçamento
+     */
+    public function actions($id)
+    {
+        $orcamento = Orcamento::with(['cliente', 'itens.unidade'])->findOrFail($id);
+        return view('orcamentos.actions', compact('orcamento'));
+    }
+
+    /**
+     * Enviar orçamento por email
+     */
+    public function sendEmail(Request $request, $id)
+    {
+        $orcamento = Orcamento::with(['cliente', 'itens.unidade'])->findOrFail($id);
+        
+        $request->validate([
+            'email' => 'required|email',
+            'message' => 'nullable|string|max:1000'
+        ]);
+
+        try {
+            // Gerar PDF
+            $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
+            $html = view('orcamentos.pdf', compact('orcamento'))->render();
+            $mpdf->WriteHTML($html);
+            $pdfContent = $mpdf->Output('', 'S');
+
+            // Enviar email
+            \Mail::send('emails.orcamento', [
+                'orcamento' => $orcamento,
+                'customMessage' => $request->message
+            ], function ($message) use ($orcamento, $request, $pdfContent) {
+                $message->to($request->email)
+                    ->subject("Orçamento #{$orcamento->id} - " . config('app.name'))
+                    ->attachData($pdfContent, "orcamento_{$orcamento->id}.pdf", [
+                        'mime' => 'application/pdf',
+                    ]);
+            });
+
+            // Atualizar status
+            $orcamento->update(['status' => 'sent']);
+
+            return back()->with('success', 'Orçamento enviado por email com sucesso!');
+            
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erro ao enviar email: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Enviar orçamento via WhatsApp
+     */
+    public function sendWhatsApp($id)
+    {
+        $orcamento = Orcamento::with(['cliente'])->findOrFail($id);
+        $cliente = $orcamento->cliente;
+        if (!$cliente) {
+            return back()->with('error', 'Orçamento não possui cliente vinculado.');
+        }
+        $telefone = preg_replace('/\D/', '', $cliente->telefone ?? '');
+        if (empty($telefone)) {
+            return back()->with('error', 'Cliente não possui telefone cadastrado.');
+        }
+        // Criar mensagem
+        $nomeCliente = $cliente->nome ?? 'Cliente';
+        $message = "Olá {$nomeCliente}!\n\n";
+        $message .= "Segue o orçamento #{$orcamento->id} solicitado.\n";
+        $message .= "Total: R$ " . number_format($orcamento->total, 2, ',', '.') . "\n\n";
+        $message .= "Você pode visualizar o orçamento completo em:\n";
+        $message .= route('orcamentos.public', $orcamento->uuid);
+        // URL do WhatsApp
+        $whatsappUrl = "https://wa.me/55{$telefone}?text=" . urlencode($message);
+        // Atualizar status
+        $orcamento->update(['status' => 'sent']);
+        return redirect($whatsappUrl);
+    }
+
+    /**
+     * Visualização pública do orçamento (sem autenticação)
+     */
+    public function publicView($uuid)
+    {
+        $orcamento = Orcamento::with(['cliente', 'itens.unidade', 'user'])
+            ->where('uuid', $uuid)
+            ->firstOrFail();
+            
+        return view('orcamentos.public', compact('orcamento'));
     }
 }

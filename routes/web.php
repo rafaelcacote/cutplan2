@@ -9,6 +9,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Rota pública para visualização de orçamentos (sem autenticação)
+Route::get('orcamento/public/{uuid}', [App\Http\Controllers\OrcamentoController::class, 'publicView'])->name('orcamentos.public');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -77,8 +80,11 @@ Route::middleware('auth')->group(function () {
     // Rotas de CRUD de orçamentos
     Route::resource('orcamentos', App\Http\Controllers\OrcamentoController::class);
 
-    // Rota para gerar PDF do orçamento
+    // Novas rotas para ações pós-criação do orçamento
+    Route::get('orcamentos/{orcamento}/actions', [App\Http\Controllers\OrcamentoController::class, 'actions'])->name('orcamentos.actions');
     Route::get('orcamentos/{orcamento}/pdf', [App\Http\Controllers\OrcamentoController::class, 'generatePdf'])->name('orcamentos.pdf');
+    Route::post('orcamentos/{orcamento}/send-email', [App\Http\Controllers\OrcamentoController::class, 'sendEmail'])->name('orcamentos.send-email');
+    Route::get('orcamentos/{orcamento}/send-whatsapp', [App\Http\Controllers\OrcamentoController::class, 'sendWhatsApp'])->name('orcamentos.send-whatsapp');
 
     // Rotas API para orçamentos
     Route::get('orcamentos/api/servicos', [App\Http\Controllers\OrcamentoController::class, 'getServicos'])->name('orcamentos.get-servicos');

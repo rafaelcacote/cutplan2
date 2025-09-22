@@ -19,7 +19,19 @@ class Orcamento extends Model
         'validade',
         'user_id',
         'observacoes',
+        'uuid',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($model) {
+            if (empty($model->uuid)) {
+                $model->uuid = \Illuminate\Support\Str::uuid();
+            }
+        });
+    }
 
     protected $casts = [
         'validade' => 'date',
@@ -63,12 +75,12 @@ class Orcamento extends Model
     public function getStatusBadgeAttribute()
     {
         return match($this->status) {
-            'draft' => 'bg-secondary',
-            'sent' => 'bg-primary',
-            'approved' => 'bg-success',
-            'rejected' => 'bg-danger',
-            'expired' => 'bg-warning',
-            default => 'bg-secondary'
+            'draft' => 'bg-secondary text-white',
+            'sent' => 'bg-primary text-white',
+            'approved' => 'bg-success text-white',
+            'rejected' => 'bg-danger text-white',
+            'expired' => 'bg-warning text-dark',
+            default => 'bg-secondary text-white'
         };
     }
 
@@ -77,5 +89,20 @@ class Orcamento extends Model
         $this->subtotal = $this->itens()->sum('total');
         $this->total = $this->subtotal - $this->desconto;
         $this->save();
+    }
+
+    public function temProjetoCriado()
+    {
+        return $this->projetos()->exists();
+    }
+
+    public function getPrimeiroProjeto()
+    {
+        return $this->projetos()->first();
+    }
+
+    public function podeSerExcluido()
+    {
+        return in_array($this->status, ['draft', 'rejected', 'expired']);
     }
 }

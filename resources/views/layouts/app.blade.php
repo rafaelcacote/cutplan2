@@ -247,6 +247,8 @@
     </div>
     <script src="{{ asset('tabler/js/tabler.min.js') }}"></script>
 
+    <script src="{{ asset('tabler/js/tabler.min.js') }}"></script>
+    
     <!-- Script para controle do sidebar mobile -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {

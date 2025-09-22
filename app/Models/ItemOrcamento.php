@@ -11,9 +11,13 @@ class ItemOrcamento extends Model
 
     protected $table = 'itens_orcamento';
 
+    // Desabilitar timestamps já que a tabela não tem essas colunas
+    public $timestamps = false;
+
     protected $fillable = [
         'orcamento_id',
         'descricao',
+        'observacao',
         'quantidade',
         'unidade_id',
         'preco_unitario',

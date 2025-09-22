@@ -34,7 +34,7 @@
                     <div class="card mb-3" id="etapa-dados">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <span class="badge bg-primary me-2">1</span>
+                                <span class="badge bg-primary text-white me-2">1</span>
                                 Dados Básicos do Orçamento
                             </h3>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">
-                                    <span class="badge bg-primary me-2">2</span>
+                                    <span class="badge bg-primary text-white me-2">2</span>
                                     Itens do Orçamento
                                 </h3>
                                 <div class="btn-list">
@@ -282,8 +282,8 @@
                                     <label class="form-label"><strong>Valor Total do Serviço</strong></label>
                                     <div class="input-group">
                                         <span class="input-group-text">R$</span>
-                                        <input type="number" class="form-control" id="valor-total-servico"
-                                            step="0.01" min="0.01" placeholder="0,00">
+                                        <input type="text" class="form-control money-mask" id="valor-total-servico"
+                                            placeholder="0,00" data-mask="currency">
                                     </div>
                                     <small class="text-muted">Este será o valor total do serviço completo</small>
                                 </div>
@@ -342,7 +342,7 @@
                         <label class="form-label required">Preço Unitário</label>
                         <div class="input-group">
                             <span class="input-group-text">R$</span>
-                            <input type="number" class="form-control" id="manual-preco" step="0.01" min="0.01">
+                            <input type="text" class="form-control money-mask" id="manual-preco" placeholder="0,00" data-mask="currency">
                         </div>
                     </div>
                     <div class="alert alert-info">
@@ -498,6 +498,9 @@
                 // Carregar dados dos selects logo no início
                 carregarDadosSelect();
 
+                // Configurar máscaras de dinheiro
+                setupMoneyMasks();
+
                 // Habilitar botão continuar quando cliente for selecionado
                 clienteSelect.addEventListener('change', function() {
                     console.log('Cliente selecionado:', this.value);
@@ -553,9 +556,22 @@
                 setupModalServico();
                 setupModalItemManual();
 
+                // Configurar máscaras em tempo real quando os modais abrem
+                document.getElementById('btn-adicionar-servico').addEventListener('click', function() {
+                    setTimeout(setupMoneyMasks, 100); // Aguardar modal abrir
+                });
+
+                document.getElementById('btn-adicionar-item-manual').addEventListener('click', function() {
+                    setTimeout(setupMoneyMasks, 100); // Aguardar modal abrir
+                });
+
                 // Calcular total do item manual em tempo real
                 ['manual-quantidade', 'manual-preco'].forEach(id => {
-                    document.getElementById(id).addEventListener('input', calcularTotalManual);
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.addEventListener('input', calcularTotalManual);
+                        element.addEventListener('blur', calcularTotalManual);
+                    }
                 });
 
                 // Recalcular quando desconto muda
@@ -681,6 +697,52 @@
 
                     console.log('Cliente selecionado via busca:', cliente);
                 }
+            }
+
+            // Configurar máscaras de dinheiro
+            function setupMoneyMasks() {
+                // Aplicar máscara nos campos de valor
+                const moneyFields = document.querySelectorAll('.money-mask');
+                moneyFields.forEach(field => {
+                    // Máscara para entrada
+                    field.addEventListener('input', function(e) {
+                        let value = e.target.value.replace(/\D/g, '');
+                        value = (value / 100).toFixed(2);
+                        value = value.replace('.', ',');
+                        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                        e.target.value = value;
+                    });
+
+                    // Converter para número quando sair do campo
+                    field.addEventListener('blur', function(e) {
+                        const value = parseCurrencyToFloat(e.target.value);
+                        if (e.target.id === 'manual-preco') {
+                            calcularTotalManual();
+                        }
+                    });
+                });
+            }
+
+            // Converter valor com máscara para float
+            function parseCurrencyToFloat(value) {
+                if (!value || value === '') return 0;
+                // Remove pontos e substitui vírgula por ponto
+                return parseFloat(value.replace(/\./g, '').replace(',', '.')) || 0;
+            }
+
+            // Formatar número para moeda brasileira
+            function formatCurrency(value) {
+                return new Intl.NumberFormat('pt-BR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(value);
+            }
+
+            // Escapar HTML para evitar problemas com caracteres especiais
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
             }
 
             async function carregarDadosSelect() {
@@ -895,7 +957,7 @@
 
                 // Finalizar serviço
                 btnFinalizarServico.addEventListener('click', function() {
-                    const valorTotal = parseFloat(valorTotalServico.value);
+                    const valorTotal = parseCurrencyToFloat(valorTotalServico.value);
 
                     if (itensAdicionados.length === 0) {
                         showToast('Aviso', 'Adicione pelo menos um item antes de finalizar.', 'warning');
@@ -976,7 +1038,7 @@
                     const unidadeId = document.getElementById('manual-unidade').value;
                     const unidadeNome = document.getElementById('manual-unidade').selectedOptions[0]
                         .textContent;
-                    const preco = parseFloat(document.getElementById('manual-preco').value);
+                    const preco = parseCurrencyToFloat(document.getElementById('manual-preco').value);
 
                     if (!descricao || !quantidade || !preco) {
                         showToast('Erro', 'Preencha todos os campos obrigatórios.', 'error');
@@ -990,10 +1052,12 @@
                         unidade_nome: unidadeId ? unidadeNome : '',
                         preco_unitario: preco,
                         item_servico_id: null,
-                        total: quantidade * preco
+                        total: quantidade * preco,
+                        observacoes: null // Item manual não tem observações por enquanto
                     });
 
                     fecharModal('modal-item-manual');
+                    limparModalItemManual();
                     showToast('Sucesso', 'Item adicionado ao orçamento!', 'success');
                 });
             }
@@ -1002,13 +1066,13 @@
                 document.getElementById('manual-descricao').value = '';
                 document.getElementById('manual-quantidade').value = '1';
                 document.getElementById('manual-unidade').value = '';
-                document.getElementById('manual-preco').value = '';
+                document.getElementById('manual-preco').value = '0,00';
                 document.getElementById('manual-total').textContent = 'R$ 0,00';
             }
 
             function calcularTotalManual() {
                 const quantidade = parseFloat(document.getElementById('manual-quantidade').value) || 0;
-                const preco = parseFloat(document.getElementById('manual-preco').value) || 0;
+                const preco = parseCurrencyToFloat(document.getElementById('manual-preco').value) || 0;
                 const total = quantidade * preco;
                 document.getElementById('manual-total').textContent = formatarMoeda(total);
             }
@@ -1051,18 +1115,27 @@
                 btnSalvar.disabled = false;
                 console.log('Botão salvar HABILITADO');
 
-                let html = '<div class="table-responsive"><table class="table table-vcenter">';
-                html += `
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th width="100px">Qtd</th>
-                            <th width="80px">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                // Criar tabela usando DOM ao invés de innerHTML
+                const tableDiv = document.createElement('div');
+                tableDiv.className = 'table-responsive';
+                
+                const table = document.createElement('table');
+                table.className = 'table table-vcenter';
+                
+                // Cabeçalho
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
+                    <tr>
+                        <th>Descrição</th>
+                        <th width="100px">Qtd</th>
+                        <th width="80px">Ações</th>
+                    </tr>
                 `;
-
+                table.appendChild(thead);
+                
+                // Corpo da tabela
+                const tbody = document.createElement('tbody');
+                
                 itensOrcamento.forEach((item, index) => {
                     console.log(`Criando campos para item ${index}:`, item);
 
@@ -1077,40 +1150,82 @@
                         console.error(`ERRO: Item ${index} não tem preço unitário:`, item);
                     }
 
+                    // Criar linha da tabela
+                    const tr = document.createElement('tr');
+                    
+                    // Célula da descrição com inputs hidden
+                    const tdDescricao = document.createElement('td');
+                    
                     // Formatar descrição com serviço em negrito se for item de serviço
                     let descricaoFormatada = item.descricao;
                     if (item.item_servico_id && item.descricao.includes(' - ')) {
                         const partes = item.descricao.split(' - ');
                         const nomeServico = partes[0];
-                        const nomeItem = partes.slice(1).join(' - '); // Caso tenha mais de um traço
+                        const nomeItem = partes.slice(1).join(' - ');
                         descricaoFormatada = `<strong>${nomeServico}</strong> - ${nomeItem}`;
                     }
-
-                    html += `
-                        <tr>
-                            <td>
-                                <div class="font-weight-medium">${descricaoFormatada}</div>
-                                ${item.item_servico_id ? '<small class="text-muted">Item de serviço</small>' : '<small class="text-muted">Item manual</small>'}
-                                <input type="hidden" name="itens[${index}][descricao]" value="${item.descricao}">
-                                <input type="hidden" name="itens[${index}][quantidade]" value="${item.quantidade}">
-                                <input type="hidden" name="itens[${index}][unidade_id]" value="${item.unidade_id || ''}">
-                                <input type="hidden" name="itens[${index}][preco_unitario]" value="${item.preco_unitario}">
-                                <input type="hidden" name="itens[${index}][item_servico_id]" value="${item.item_servico_id || ''}">
-                            </td>
-                            <td>${item.quantidade}</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-sm"
-                                        onclick="removerItem(${item.id})" title="Remover">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    `;
+                    
+                    const descricaoDiv = document.createElement('div');
+                    descricaoDiv.className = 'font-weight-medium';
+                    descricaoDiv.innerHTML = descricaoFormatada;
+                    
+                    const tipoDiv = document.createElement('small');
+                    tipoDiv.className = 'text-muted';
+                    tipoDiv.textContent = item.item_servico_id ? 'Item de serviço' : 'Item manual';
+                    
+                    // Criar inputs hidden
+                    const inputs = [
+                        { name: `itens[${index}][descricao]`, value: item.descricao },
+                        { name: `itens[${index}][observacao]`, value: item.observacoes || '' },
+                        { name: `itens[${index}][quantidade]`, value: item.quantidade },
+                        { name: `itens[${index}][unidade_id]`, value: item.unidade_id || '' },
+                        { name: `itens[${index}][preco_unitario]`, value: item.preco_unitario },
+                        { name: `itens[${index}][item_servico_id]`, value: item.item_servico_id || '' }
+                    ];
+                    
+                    inputs.forEach(inputData => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = inputData.name;
+                        input.value = inputData.value;
+                        tdDescricao.appendChild(input);
+                        console.log(`Input criado: ${inputData.name} = ${inputData.value}`);
+                    });
+                    
+                    tdDescricao.appendChild(descricaoDiv);
+                    tdDescricao.appendChild(tipoDiv);
+                    
+                    // Célula da quantidade
+                    const tdQuantidade = document.createElement('td');
+                    tdQuantidade.textContent = item.quantidade;
+                    
+                    // Célula de ações
+                    const tdAcoes = document.createElement('td');
+                    const btnRemover = document.createElement('button');
+                    btnRemover.type = 'button';
+                    btnRemover.className = 'btn btn-outline-danger btn-sm';
+                    btnRemover.title = 'Remover';
+                    btnRemover.onclick = () => removerItem(item.id);
+                    btnRemover.innerHTML = '<i class="fa-solid fa-trash"></i>';
+                    tdAcoes.appendChild(btnRemover);
+                    
+                    // Adicionar células à linha
+                    tr.appendChild(tdDescricao);
+                    tr.appendChild(tdQuantidade);
+                    tr.appendChild(tdAcoes);
+                    
+                    // Adicionar linha ao tbody
+                    tbody.appendChild(tr);
                 });
-
-                html += '</tbody></table></div>';
-                containerItens.innerHTML = html;
-                console.log('HTML dos itens criado:', html);
+                
+                table.appendChild(tbody);
+                tableDiv.appendChild(table);
+                
+                // Limpar container e adicionar nova tabela
+                containerItens.innerHTML = '';
+                containerItens.appendChild(tableDiv);
+                
+                console.log('Tabela de itens renderizada com sucesso');
             }
 
             function atualizarResumo() {

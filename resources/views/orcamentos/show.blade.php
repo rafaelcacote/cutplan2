@@ -25,27 +25,27 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item {{ $orcamento->status == 'draft' ? 'active' : '' }}" 
                                        href="javascript:void(0)" onclick="alterarStatus('draft')">
-                                        <span class="badge bg-secondary me-2"></span>
+                                        <span class="badge bg-secondary text-white me-2"></span>
                                         Rascunho
                                     </a>
                                     <a class="dropdown-item {{ $orcamento->status == 'sent' ? 'active' : '' }}" 
                                        href="javascript:void(0)" onclick="alterarStatus('sent')">
-                                        <span class="badge bg-primary me-2"></span>
+                                        <span class="badge bg-primary text-white me-2"></span>
                                         Enviado
                                     </a>
                                     <a class="dropdown-item {{ $orcamento->status == 'approved' ? 'active' : '' }}" 
                                        href="javascript:void(0)" onclick="alterarStatus('approved')">
-                                        <span class="badge bg-success me-2"></span>
+                                        <span class="badge bg-success text-white me-2"></span>
                                         Aprovado
                                     </a>
                                     <a class="dropdown-item {{ $orcamento->status == 'rejected' ? 'active' : '' }}" 
                                        href="javascript:void(0)" onclick="alterarStatus('rejected')">
-                                        <span class="badge bg-danger me-2"></span>
+                                        <span class="badge bg-danger text-white me-2"></span>
                                         Rejeitado
                                     </a>
                                     <a class="dropdown-item {{ $orcamento->status == 'expired' ? 'active' : '' }}" 
                                        href="javascript:void(0)" onclick="alterarStatus('expired')">
-                                        <span class="badge bg-warning me-2"></span>
+                                        <span class="badge bg-warning text-dark me-2"></span>
                                         Expirado
                                     </a>
                                 </div>
@@ -209,6 +209,7 @@
                                     <thead>
                                         <tr>
                                             <th>Descrição</th>
+                                            <th width="200px">Observações</th>
                                             <th width="100px" class="text-center">Qtd</th>
                                             <th width="100px" class="text-center">Unidade</th>
                                             <th width="120px" class="text-end">Preço Unit.</th>
@@ -230,6 +231,13 @@
                                                             <i class="fa-solid fa-edit me-1"></i>
                                                             Item manual
                                                         </small>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($item->observacao)
+                                                        <span class="text-muted">{{ $item->observacao }}</span>
+                                                    @else
+                                                        <span class="text-muted fst-italic">-</span>
                                                     @endif
                                                 </td>
                                                 <td class="text-center">
