@@ -81,34 +81,34 @@
                                     <h4 class="mb-3">O que deseja fazer agora?</h4>
                                     
                                     <div class="row g-3">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <a href="{{ route('orcamentos.pdf', $orcamento) }}" target="_blank" 
-                                               class="btn btn-primary btn-lg w-100">
+                                               class="btn btn-danger btn-lg w-100">
                                                 <i class="fa-solid fa-file-pdf me-2"></i>
                                                 Visualizar PDF
                                             </a>
                                         </div>
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-success btn-lg w-100" 
+                                        <div class="col-md-4">
+                                            <button type="button" class="btn btn-primary btn-lg w-100" 
                                                     onclick="showEmailModal()">
                                                 <i class="fa-solid fa-envelope me-2"></i>
                                                 Enviar por Email
                                             </button>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <a href="{{ route('orcamentos.send-whatsapp', $orcamento) }}" 
-                                               class="btn btn-info btn-lg w-100" target="_blank">
+                                               class="btn btn-success btn-lg w-100" target="_blank">
                                                 <i class="fa-brands fa-whatsapp me-2"></i>
                                                 Enviar via WhatsApp
                                             </a>
                                         </div>
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                             <a href="{{ route('orcamentos.edit', $orcamento) }}" 
                                                class="btn btn-warning btn-lg w-100">
                                                 <i class="fa-solid fa-edit me-2"></i>
                                                 Editar Orçamento
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 

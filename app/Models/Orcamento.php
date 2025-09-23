@@ -64,6 +64,7 @@ class Orcamento extends Model
     {
         return match($this->status) {
             'draft' => 'Rascunho',
+            'awaiting' => 'Aguardando',
             'sent' => 'Enviado',
             'approved' => 'Aprovado',
             'rejected' => 'Rejeitado',
@@ -76,6 +77,7 @@ class Orcamento extends Model
     {
         return match($this->status) {
             'draft' => 'bg-secondary text-white',
+            'awaiting' => 'bg-warning text-dark',
             'sent' => 'bg-primary text-white',
             'approved' => 'bg-success text-white',
             'rejected' => 'bg-danger text-white',
@@ -103,6 +105,6 @@ class Orcamento extends Model
 
     public function podeSerExcluido()
     {
-        return in_array($this->status, ['draft', 'rejected', 'expired']);
+        return in_array($this->status, ['draft', 'awaiting', 'rejected', 'expired']);
     }
 }

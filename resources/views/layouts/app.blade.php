@@ -204,6 +204,24 @@
                 margin-bottom: 1rem;
             }
         }
+        
+        /* Fix para dropdowns em geral */
+        .dropdown-menu {
+            z-index: 1050 !important;
+        }
+        
+        .navbar .dropdown-menu {
+            z-index: 1055 !important;
+        }
+        
+        /* Garantir que o header tenha z-index adequado */
+        .header-area {
+            z-index: 1000;
+        }
+        
+        .navbar {
+            z-index: 1030;
+        }
     </style>
 </head>
 
@@ -246,8 +264,17 @@
         </div>
     </div>
     <script src="{{ asset('tabler/js/tabler.min.js') }}"></script>
-
-    <script src="{{ asset('tabler/js/tabler.min.js') }}"></script>
+    
+    <!-- Script para garantir funcionamento dos dropdowns -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar todos os dropdowns do Bootstrap
+            var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl);
+            });
+        });
+    </script>
     
     <!-- Script para controle do sidebar mobile -->
     <script>

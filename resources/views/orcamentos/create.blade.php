@@ -224,7 +224,7 @@
                         <hr class="my-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h6 class="mb-0">Adicionar Itens do Serviço</h6>
-                            <span class="badge bg-blue" id="nome-servico-selecionado"></span>
+                            <span class="badge bg-blue text-white fs-5 fw-bold" id="nome-servico-selecionado" ></span>
                         </div>
 
                         <div class="row mb-3">
@@ -893,7 +893,7 @@
                         item_id: itemId,
                         descricao: itemSelecionado.descricao_item,
                         quantidade: quantidade,
-                        observacoes: observacoes
+                        observacao: observacoes
                     };
 
                     itensAdicionados.push(novoItem);
@@ -921,7 +921,7 @@
                         row.innerHTML = `
                             <td><strong>${item.descricao}</strong></td>
                             <td>${item.quantidade}</td>
-                            <td>${item.observacoes || '-'}</td>
+                            <td>${item.observacao || '-'}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-outline-danger" onclick="removerItemAdicionado(${index})">
                                     <i class="fa-solid fa-trash"></i>
@@ -993,7 +993,7 @@
                             preco_unitario: precoItem,
                             item_servico_id: item.item_id,
                             total: totalItem,
-                            observacoes: item.observacoes
+                            observacao: item.observacao
                         });
                     });
 
@@ -1053,7 +1053,7 @@
                         preco_unitario: preco,
                         item_servico_id: null,
                         total: quantidade * preco,
-                        observacoes: null // Item manual não tem observações por enquanto
+                        observacao: null // Item manual não tem observações por enquanto
                     });
 
                     fecharModal('modal-item-manual');
@@ -1176,7 +1176,7 @@
                     // Criar inputs hidden
                     const inputs = [
                         { name: `itens[${index}][descricao]`, value: item.descricao },
-                        { name: `itens[${index}][observacao]`, value: item.observacoes || '' },
+                        { name: `itens[${index}][observacao]`, value: item.observacao || '' },
                         { name: `itens[${index}][quantidade]`, value: item.quantidade },
                         { name: `itens[${index}][unidade_id]`, value: item.unidade_id || '' },
                         { name: `itens[${index}][preco_unitario]`, value: item.preco_unitario },

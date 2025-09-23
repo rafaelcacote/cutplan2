@@ -241,6 +241,25 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="#tab-itens" class="nav-link" data-bs-toggle="tab">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M13 5h8"/>
+                                    <path d="M13 9h5"/>
+                                    <path d="M13 15h8"/>
+                                    <path d="M13 19h5"/>
+                                    <path d="M3 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/>
+                                    <path d="M3 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/>
+                                </svg>
+                                Itens do Projeto
+                                @if ($projeto->itensProjeto->count() > 0)
+                                    <span class="badge bg-success ms-1">{{ $projeto->itensProjeto->count() }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#tab-materiais" class="nav-link" data-bs-toggle="tab">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -377,6 +396,171 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Aba Itens do Projeto -->
+                        <div class="tab-pane" id="tab-itens">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="mb-0">Itens do Projeto</h4>
+                                @if($projeto->orcamento && $projeto->itensProjeto->count() == 0)
+                                    <button class="btn btn-primary btn-sm" onclick="criarItensAutomaticamente()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg>
+                                        Criar Itens do Orçamento
+                                    </button>
+                                @endif
+                            </div>
+
+                            @if($projeto->itensProjeto->count() > 0)
+                                <div class="table-responsive">
+                                    <table class="table table-vcenter">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Quantidade</th>
+                                                <th>Unidade</th>
+                                                <th>Preço Real</th>
+                                                <th>Status</th>
+                                                <th>Progresso</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($projeto->itensProjeto as $item)
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <div class="font-weight-medium">{{ $item->descricao }}</div>
+                                                            @if($item->observacao)
+                                                                <div class="text-muted small mt-1">{{ $item->observacao }}</div>
+                                                            @endif
+                                                            @if($item->categoria || $item->familia)
+                                                                <div class="mt-1">
+                                                                    @if($item->categoria)
+                                                                        <span class="badge bg-azure-lt">{{ $item->categoria }}</span>
+                                                                    @endif
+                                                                    @if($item->familia)
+                                                                        <span class="badge bg-cyan-lt">{{ $item->familia }}</span>
+                                                                    @endif
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-primary-lt">{{ number_format($item->quantidade, 3) }}</span>
+                                                    </td>
+                                                    <td>
+                                                        {{ $item->unidade ? $item->unidade->nome : '-' }}
+                                                    </td>
+                                                    <td>
+                                                        @if($item->preco_real)
+                                                            <span class="text-info">R$ {{ number_format($item->preco_real, 2, ',', '.') }}</span>
+                                                        @else
+                                                            <span class="text-muted">-</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <span class="{{ $item->status_badge_class }}">{{ $item->status_label }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="progress flex-fill me-2" style="height: 8px;">
+                                                                <div class="progress-bar" 
+                                                                     role="progressbar" 
+                                                                     style="width: {{ $item->percentual_concluido }}%"
+                                                                     aria-valuenow="{{ $item->percentual_concluido }}" 
+                                                                     aria-valuemin="0" 
+                                                                     aria-valuemax="100">
+                                                                </div>
+                                                            </div>
+                                                            <span class="text-muted small">{{ $item->percentual_concluido }}%</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group" role="group">
+                                                            <button type="button" class="btn btn-sm btn-outline-primary" 
+                                                                    onclick="editarProgresso({{ $item->id }}, {{ $item->percentual_concluido }})">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"/>
+                                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"/>
+                                                                    <path d="M16 5l3 3"/>
+                                                                </svg>
+                                                            </button>
+                                                            @if($item->codigo_promob)
+                                                                <button type="button" class="btn btn-sm btn-outline-info" title="Item do Promob">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                        <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5"/>
+                                                                        <path d="M12 12l8 -4.5"/>
+                                                                        <path d="M12 12l0 9"/>
+                                                                        <path d="M12 12l-8 -4.5"/>
+                                                                    </svg>
+                                                                </button>
+                                                            @endif
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Resumo dos Itens -->
+                                <div class="row mt-4">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h3 class="mb-1">{{ $projeto->itensProjeto->count() }}</h3>
+                                                <div class="text-muted">Total de Itens</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h3 class="mb-1">{{ $projeto->itensProjeto->where('status', 'concluido')->count() }}</h3>
+                                                <div class="text-success">Concluídos</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h3 class="mb-1">{{ $projeto->itensProjeto->where('status', 'em_andamento')->count() }}</h3>
+                                                <div class="text-primary">Em Andamento</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h3 class="mb-1">{{ number_format($projeto->calcularProgressoGeral(), 1) }}%</h3>
+                                                <div class="text-muted">Progresso Geral</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="empty">
+                                    <div class="empty-img">
+                                        <img src="{{ asset('tabler/static/illustrations/undraw_checklist_re_2w7v.svg') }}" height="128" alt="">
+                                    </div>
+                                    <p class="empty-title">Nenhum item encontrado</p>
+                                    <p class="empty-subtitle text-muted">
+                                        @if($projeto->orcamento)
+                                            Este projeto foi criado a partir de um orçamento. Clique no botão acima para criar os itens automaticamente.
+                                        @else
+                                            Este projeto não possui itens. Itens podem ser criados automaticamente quando o projeto é baseado em um orçamento.
+                                        @endif
+                                    </p>
+                                </div>
+                            @endif
                         </div>
 
                         <!-- Aba Materiais -->

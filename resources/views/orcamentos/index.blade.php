@@ -147,7 +147,7 @@
                                             <th>Total</th>
                                             <th>Validade</th>
                                             <th>Projeto</th>
-                                            <th>Ações</th>
+                                            <th class="text-end">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -165,18 +165,25 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="dropdown">
+                                <div class="dropdown position-relative">
                                     <button class="btn btn-sm dropdown-toggle p-1 border-0 {{ $orcamento->status_badge }}" 
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false"
                                             style="min-width: 90px;">
                                         {{ $orcamento->status_label }}
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
                                             <a class="dropdown-item {{ $orcamento->status === 'draft' ? 'active' : '' }}" 
                                                href="#" onclick="event.preventDefault(); updateStatus({{ $orcamento->id }}, 'draft')">
                                                 <span class="badge bg-secondary text-white me-2">Rascunho</span>
                                                 Em elaboração
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item {{ $orcamento->status === 'awaiting' ? 'active' : '' }}" 
+                                               href="#" onclick="event.preventDefault(); updateStatus({{ $orcamento->id }}, 'awaiting')">
+                                                <span class="badge bg-warning text-dark me-2">Aguardando</span>
+                                                Pronto para envio
                                             </a>
                                         </li>
                                         <li>
@@ -245,16 +252,30 @@
                                     <span class="text-muted">-</span>
                                 @endif
                             </td>
-                            <td>
-                                <div class="btn-list flex-nowrap">
+                            <td class="text-end">
+                                <div class="btn-list flex-nowrap justify-content-end">
                                     <a href="{{ route('orcamentos.show', $orcamento) }}"
                                         class="btn btn-outline-primary btn-sm" title="Visualizar Detalhes">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('orcamentos.edit', $orcamento) }}"
-                                        class="btn btn-outline-secondary btn-sm" title="Editar Orçamento">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
+                                    @if ($orcamento->status !== 'approved')
+                                        <a href="{{ route('orcamentos.edit', $orcamento) }}"
+                                            class="btn btn-outline-secondary btn-sm" title="Editar Orçamento">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                    @else
+                                        <span class="btn btn-outline-secondary btn-sm disabled" title="Orçamentos aprovados não podem ser editados">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </span>
+                                    @endif
+                                    {{-- Botão para enviar orçamento por email --}}
+                                    @if (in_array($orcamento->status, ['draft', 'sent', 'approved', 'rejected']))
+                                        <button type="button" class="btn btn-outline-warning btn-sm" 
+                                                data-bs-toggle="modal" data-bs-target="#modal-enviar-{{ $orcamento->id }}"
+                                                title="Enviar Orçamento por Email">
+                                            <i class="fa-solid fa-paper-plane"></i>
+                                        </button>
+                                    @endif
                                     @if ($orcamento->status == 'approved')
                                         @if ($orcamento->temProjetoCriado())
                                             {{-- Botão para visualizar projeto existente --}}
@@ -411,6 +432,77 @@
         @endif
     @endforeach
 
+    <!-- Modais de Envio de Email -->
+    @foreach ($orcamentos as $orcamento)
+        @if (in_array($orcamento->status, ['draft', 'sent', 'approved', 'rejected']))
+            <div class="modal modal-blur fade" id="modal-enviar-{{ $orcamento->id }}" tabindex="-1" role="dialog"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">
+                                <i class="fa-solid fa-paper-plane me-2"></i>
+                                Enviar Orçamento por Email
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="{{ route('orcamentos.send-email', $orcamento) }}" method="POST">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="text-center mb-3">
+                                    <div class="avatar avatar-lg bg-warning text-white mb-3 mx-auto">
+                                        <i class="fa-solid fa-envelope fa-lg"></i>
+                                    </div>
+                                    <h4>Orçamento #{{ str_pad($orcamento->id, 4, '0', STR_PAD_LEFT) }}</h4>
+                                    <p class="text-muted">{{ $orcamento->cliente?->nome ?? 'Cliente não encontrado' }}</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Email do Destinatário</label>
+                                    <input type="email" class="form-control" name="email" 
+                                           value="{{ $orcamento->cliente?->email ?? '' }}" 
+                                           placeholder="Digite o email do cliente" required>
+                                    <small class="form-hint">Email principal do cliente carregado automaticamente</small>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Mensagem Personalizada (Opcional)</label>
+                                    <textarea class="form-control" name="message" rows="4" 
+                                              placeholder="Digite uma mensagem personalizada (opcional)">Prezado(a) {{ $orcamento->cliente?->nome ?? 'Cliente' }},
+
+Segue em anexo o orçamento solicitado.
+
+Qualquer dúvida, estamos à disposição.
+
+Atenciosamente,
+{{ auth()->user()->name ?? 'Equipe' }}</textarea>
+                                </div>
+                                
+                                <div class="alert alert-info">
+                                    <i class="fa-solid fa-info-circle me-2"></i>
+                                    <strong>Informações:</strong>
+                                    <ul class="mb-0 mt-2">
+                                        <li>O PDF do orçamento será anexado automaticamente</li>
+                                        <li>O status será alterado para "Enviado" após o envio</li>
+                                        <li>O email será enviado com o assunto padrão do sistema</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                    <i class="fa-solid fa-times me-2"></i>Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fa-solid fa-paper-plane me-2"></i>Enviar Email
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endforeach
+
     <!-- Modal de Confirmação de Mudança de Status -->
     <div class="modal modal-blur fade" id="modal-status-change" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -433,10 +525,10 @@
                     
                     <div class="row mb-3">
                         <div class="col-6">
-                            <div class="card bg-light">
+                            <div class="card bg-secondary text-white">
                                 <div class="card-body text-center py-3">
-                                    <small class="text-muted d-block">Status Atual</small>
-                                    <span id="modal-status-atual" class="badge bg-secondary">Rascunho</span>
+                                    <small class="d-block opacity-75">Status Atual</small>
+                                    <span id="modal-status-atual" class="badge bg-white text-dark">Rascunho</span>
                                 </div>
                             </div>
                         </div>
@@ -596,6 +688,11 @@
                 label: 'Rascunho',
                 badge: 'bg-secondary text-white',
                 description: 'O orçamento retornará ao estado de elaboração.'
+            },
+            'awaiting': {
+                label: 'Aguardando',
+                badge: 'bg-warning text-dark',
+                description: 'O orçamento está pronto e aguardando envio ao cliente.'
             },
             'sent': {
                 label: 'Enviado',
@@ -898,6 +995,41 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
+        /* Fix para posicionamento dos dropdowns */
+        .table .dropdown {
+            position: relative;
+        }
+        
+        .table .dropdown-menu {
+            position: absolute;
+            z-index: 1050;
+            min-width: 200px;
+            right: 0;
+            left: auto;
+        }
+        
+        .table .dropdown-menu.dropdown-menu-end {
+            right: 0;
+            left: auto;
+            transform: none !important;
+        }
+        
+        /* Garantir que o dropdown apareça acima da tabela */
+        .table-responsive {
+            overflow: visible;
+        }
+        
+        .card .table-responsive {
+            overflow-x: auto;
+            overflow-y: visible;
+        }
+        
+        /* Fix específico para Bootstrap dropdowns */
+        .dropdown-menu[data-bs-popper] {
+            right: 0 !important;
+            left: auto !important;
+        }
+
         #modal-status-change .card {
             transition: all 0.3s ease;
             border: none;
@@ -999,6 +1131,30 @@
                 flex: 0 0 50%;
                 max-width: 50%;
             }
+        }
+        
+        /* Estilos para o botão de enviar email */
+        .btn-outline-warning:hover {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #000;
+        }
+        
+        .btn-outline-warning {
+            transition: all 0.3s ease;
+        }
+        
+        /* Estilos para o modal de envio de email */
+        .modal-header {
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .avatar.bg-warning {
+            background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%) !important;
+        }
+        
+        .alert-info {
+            border-left: 4px solid #0dcaf0;
         }
     </style>
 @endsection

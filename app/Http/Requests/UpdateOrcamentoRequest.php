@@ -23,7 +23,7 @@ class UpdateOrcamentoRequest extends FormRequest
     {
         return [
             'cliente_id' => 'required|exists:clientes,id',
-            'status' => 'required|in:draft,sent,approved,rejected,expired',
+            'status' => 'required|in:draft,awaiting,sent,approved,rejected,expired',
             'validade' => 'nullable|date',
             'desconto' => 'nullable|numeric|min:0',
             'observacoes' => 'nullable|string|max:1000',

@@ -16,7 +16,7 @@ return new class extends Migration
             
             // Relacionamentos principais
             $table->foreignId('projeto_id')->constrained('projetos')->onDelete('cascade');
-            $table->foreignId('item_orcamento_id')->nullable()->constrained('item_orcamentos')->onDelete('set null');
+            $table->foreignId('item_orcamento_id')->nullable()->constrained('itens_orcamento')->onDelete('set null');
             
             // Dados do item (copiados do orçamento, mas podem ser alterados)
             $table->string('descricao');

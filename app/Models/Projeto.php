@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Projeto extends Model
 {
@@ -61,6 +62,11 @@ class Projeto extends Model
         return $this->hasMany(MaterialProjeto::class);
     }
 
+    public function itensProjeto()
+    {
+        return $this->hasMany(ItemProjeto::class);
+    }
+
     public function contratos()
     {
         return $this->hasMany(Contrato::class);
@@ -115,6 +121,81 @@ class Projeto extends Model
         parent::boot();
         
         // Código removido: não precisamos mais gerar código automaticamente
+    }
+
+    /**
+     * Cria itens do projeto a partir dos itens do orçamento
+     */
+    public function criarItensDoOrcamento()
+    {
+        if (!$this->orcamento) {
+            return false;
+        }
+
+        // Evitar duplicação - verificar se já existem itens
+        if ($this->itensProjeto()->count() > 0) {
+            return false;
+        }
+
+        $itensCreated = 0;
+
+        foreach ($this->orcamento->itens as $itemOrcamento) {
+            ItemProjeto::create([
+                'projeto_id' => $this->id,
+                'item_orcamento_id' => $itemOrcamento->id,
+                'descricao' => $itemOrcamento->descricao,
+                'observacao' => $itemOrcamento->observacao,
+                'quantidade' => $itemOrcamento->quantidade,
+                'unidade_id' => $itemOrcamento->unidade_id,
+                'preco_orcado' => $itemOrcamento->preco_unitario,
+                'status' => 'pendente',
+                'data_conclusao_prevista' => $this->data_entrega_prevista,
+                'criado_por' => Auth::id() ?? 1, // Usuário logado ou padrão
+            ]);
+            $itensCreated++;
+        }
+
+        return $itensCreated;
+    }
+
+    /**
+     * Calcula o percentual de conclusão do projeto baseado nos itens
+     */
+    public function calcularProgressoGeral()
+    {
+        $itens = $this->itensProjeto;
+        
+        if ($itens->count() === 0) {
+            return 0;
+        }
+
+        $progressoTotal = $itens->sum('percentual_concluido');
+        return round($progressoTotal / $itens->count(), 2);
+    }
+
+    /**
+     * Calcula o custo real total do projeto
+     */
+    public function calcularCustoReal()
+    {
+        return $this->itensProjeto->sum(function ($item) {
+            return $item->custo_total;
+        });
+    }
+
+    /**
+     * Calcula a margem do projeto
+     */
+    public function calcularMargem()
+    {
+        $precoOrcado = $this->orcamento ? $this->orcamento->total : 0;
+        $custoReal = $this->calcularCustoReal();
+        
+        if ($precoOrcado > 0) {
+            return (($precoOrcado - $custoReal) / $precoOrcado) * 100;
+        }
+        
+        return 0;
     }
 
     

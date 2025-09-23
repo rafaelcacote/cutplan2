@@ -84,8 +84,25 @@ class ProjetoController extends Controller
 
         // Se veio de um orçamento aprovado
         $orcamentoSelecionado = null;
+        $itensPrevia = collect();
         if ($request->filled('orcamento_id')) {
-            $orcamentoSelecionado = Orcamento::find($request->orcamento_id);
+            $orcamentoSelecionado = Orcamento::with(['itens.unidade', 'cliente'])
+                ->find($request->orcamento_id);
+            
+            // Criar prévia dos itens que serão criados no projeto
+            if ($orcamentoSelecionado) {
+                $itensPrevia = $orcamentoSelecionado->itens->map(function ($item) {
+                    return (object) [
+                        'descricao' => $item->descricao,
+                        'observacao' => $item->observacao,
+                        'quantidade' => $item->quantidade,
+                        'unidade' => $item->unidade ? $item->unidade->nome : null,
+                        'preco_orcado' => $item->preco_unitario,
+                        'status' => 'pendente',
+                        'status_label' => 'Pendente'
+                    ];
+                });
+            }
         }
 
         return view('projetos.create', compact(
@@ -94,7 +111,8 @@ class ProjetoController extends Controller
             'equipes',
             'orcamentos',
             'statusOptions',
-            'orcamentoSelecionado'
+            'orcamentoSelecionado',
+            'itensPrevia'
         ));
     }
 
@@ -118,8 +136,14 @@ class ProjetoController extends Controller
 
         $projeto = Projeto::create($request->all());
 
+        // Se o projeto foi criado a partir de um orçamento, criar itens automaticamente
+        if ($request->orcamento_id) {
+            $projeto->criarItensDoOrcamento();
+        }
+
         return redirect()->route('projetos.show', $projeto)
-            ->with('success', 'Projeto criado com sucesso!');
+            ->with('success', 'Projeto criado com sucesso!' . 
+                   ($request->orcamento_id ? ' Os itens do orçamento foram incluídos no projeto.' : ''));
     }
 
     /**
@@ -134,6 +158,8 @@ class ProjetoController extends Controller
             'enderecoInstalacao',
             'equipe',
             'materiaisProjeto.material',
+            'itensProjeto.itemOrcamento',
+            'itensProjeto.unidade',
             'contratos'
         ]);
 

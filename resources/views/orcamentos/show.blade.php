@@ -16,43 +16,52 @@
                     </div>
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" 
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-exchange-alt me-2"></i>
-                                    Alterar Status
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item {{ $orcamento->status == 'draft' ? 'active' : '' }}" 
-                                       href="javascript:void(0)" onclick="alterarStatus('draft')">
-                                        <span class="badge bg-secondary text-white me-2"></span>
-                                        Rascunho
-                                    </a>
-                                    <a class="dropdown-item {{ $orcamento->status == 'sent' ? 'active' : '' }}" 
-                                       href="javascript:void(0)" onclick="alterarStatus('sent')">
-                                        <span class="badge bg-primary text-white me-2"></span>
-                                        Enviado
-                                    </a>
-                                    <a class="dropdown-item {{ $orcamento->status == 'approved' ? 'active' : '' }}" 
-                                       href="javascript:void(0)" onclick="alterarStatus('approved')">
-                                        <span class="badge bg-success text-white me-2"></span>
-                                        Aprovado
-                                    </a>
-                                    <a class="dropdown-item {{ $orcamento->status == 'rejected' ? 'active' : '' }}" 
-                                       href="javascript:void(0)" onclick="alterarStatus('rejected')">
-                                        <span class="badge bg-danger text-white me-2"></span>
-                                        Rejeitado
-                                    </a>
-                                    <a class="dropdown-item {{ $orcamento->status == 'expired' ? 'active' : '' }}" 
-                                       href="javascript:void(0)" onclick="alterarStatus('expired')">
-                                        <span class="badge bg-warning text-dark me-2"></span>
-                                        Expirado
-                                    </a>
+                            @if ($orcamento->status !== 'approved')
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle" 
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-exchange-alt me-2"></i>
+                                        Alterar Status
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item {{ $orcamento->status == 'draft' ? 'active' : '' }}" 
+                                           href="javascript:void(0)" onclick="alterarStatus('draft')">
+                                            <span class="badge bg-secondary text-white me-2"></span>
+                                            Rascunho
+                                        </a>
+                                        <a class="dropdown-item {{ $orcamento->status == 'sent' ? 'active' : '' }}" 
+                                           href="javascript:void(0)" onclick="alterarStatus('sent')">
+                                            <span class="badge bg-primary text-white me-2"></span>
+                                            Enviado
+                                        </a>
+                                        <a class="dropdown-item {{ $orcamento->status == 'approved' ? 'active' : '' }}" 
+                                           href="javascript:void(0)" onclick="alterarStatus('approved')">
+                                            <span class="badge bg-success text-white me-2"></span>
+                                            Aprovado
+                                        </a>
+                                        <a class="dropdown-item {{ $orcamento->status == 'rejected' ? 'active' : '' }}" 
+                                           href="javascript:void(0)" onclick="alterarStatus('rejected')">
+                                            <span class="badge bg-danger text-white me-2"></span>
+                                            Rejeitado
+                                        </a>
+                                        <a class="dropdown-item {{ $orcamento->status == 'expired' ? 'active' : '' }}" 
+                                           href="javascript:void(0)" onclick="alterarStatus('expired')">
+                                            <span class="badge bg-warning text-dark me-2"></span>
+                                            Expirado
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <a href="{{ route('orcamentos.edit', $orcamento) }}" class="btn btn-outline-secondary">
-                                <i class="fa-solid fa-pen me-2"></i> Editar
-                            </a>
+                                <a href="{{ route('orcamentos.edit', $orcamento) }}" class="btn btn-outline-secondary">
+                                    <i class="fa-solid fa-pen me-2"></i> Editar
+                                </a>
+                            @else
+                                <div class="d-flex align-items-center me-2">
+                                    <span class="badge bg-success fs-6 me-2">
+                                        <i class="fa-solid fa-check me-1"></i> {{ $orcamento->status_label }}
+                                    </span>
+                                    <small class="text-muted">Orçamento protegido contra alterações</small>
+                                </div>
+                            @endif
                             <a href="{{ route('orcamentos.index') }}" class="btn btn-outline-secondary">
                                 <i class="fa-solid fa-arrow-left me-2"></i> Voltar
                             </a>
@@ -212,8 +221,8 @@
                                             <th width="200px">Observações</th>
                                             <th width="100px" class="text-center">Qtd</th>
                                             <th width="100px" class="text-center">Unidade</th>
-                                            <th width="120px" class="text-end">Preço Unit.</th>
-                                            <th width="120px" class="text-end">Total</th>
+                                            <!-- <th width="120px" class="text-end">Preço Unit.</th>
+                                            <th width="120px" class="text-end">Total</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -246,12 +255,12 @@
                                                 <td class="text-center">
                                                     {{ $item->unidade ? $item->unidade->codigo : '-' }}
                                                 </td>
-                                                <td class="text-end">
+                                                <!-- <td class="text-end">
                                                     R$ {{ number_format($item->preco_unitario, 2, ',', '.') }}
                                                 </td>
                                                 <td class="text-end font-weight-bold">
                                                     R$ {{ number_format($item->total, 2, ',', '.') }}
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         @endforeach
                                     </tbody>

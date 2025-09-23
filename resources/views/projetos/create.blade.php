@@ -232,6 +232,78 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @if ($itensPrevia->count() > 0)
+                                <div class="card mt-3">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M13 5h8"/>
+                                                <path d="M13 9h5"/>
+                                                <path d="M13 15h8"/>
+                                                <path d="M13 19h5"/>
+                                                <path d="M3 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/>
+                                                <path d="M3 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/>
+                                            </svg>
+                                            Itens que serão criados no projeto
+                                        </h3>
+                                        <div class="card-subtitle">{{ $itensPrevia->count() }} {{ $itensPrevia->count() == 1 ? 'item será criado' : 'itens serão criados' }}</div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table table-vcenter card-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Descrição</th>
+                                                        <th>Quantidade</th>
+                                                        <th>Unidade</th>
+                                                        <th>Preço Orçado</th>
+                                                        <th>Status Inicial</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($itensPrevia as $index => $item)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="font-weight-medium">{{ $item->descricao }}</div>
+                                                                @if ($item->observacao)
+                                                                    <div class="text-muted small">{{ $item->observacao }}</div>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-azure-lt">{{ number_format($item->quantidade, 3) }}</span>
+                                                            </td>
+                                                            <td>
+                                                                {{ $item->unidade ?? '-' }}
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-green font-weight-medium">
+                                                                    R$ {{ number_format($item->preco_orcado, 2, ',', '.') }}
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-secondary">{{ $item->status_label }}</span>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="text-muted">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle me-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/>
+                                                <path d="M12 9h.01"/>
+                                                <path d="M11 12h1v4h1"/>
+                                            </svg>
+                                            Estes itens serão automaticamente criados quando o projeto for salvo.
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>

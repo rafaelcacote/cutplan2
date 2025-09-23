@@ -10,7 +10,7 @@
             <div class="card mb-4 border-0 shadow-sm">
                 <div class="card-header bg-gradient-primary text-white text-center py-4">
                     <h1 class="h3 mb-1">📋 Orçamento #{{ str_pad($orcamento->id, 4, '0', STR_PAD_LEFT) }}</h1>
-                    <p class="mb-0">{{ config('app.name') }}</p>
+                    <!-- <p class="mb-0"> {{ config('app.name') }}</p> -->
                 </div>
                 <div class="card-body">
                     <div class="row text-center">
@@ -23,8 +23,8 @@
                         <div class="col-md-3">
                             <div class="p-3">
                                 <small class="text-muted d-block">Status</small>
-                                <span class="badge bg-{{ $orcamento->status === 'enviado' ? 'success' : ($orcamento->status === 'rascunho' ? 'warning' : 'secondary') }}">
-                                    {{ ucfirst($orcamento->status) }}
+                                <span class="badge bg-{{ $orcamento->status === 'sent' ? 'success' : ($orcamento->status === 'awaiting' ? 'warning' : ($orcamento->status === 'draft' ? 'secondary' : 'secondary')) }} text-white">
+                                    {{ $orcamento->status_label }}
                                 </span>
                             </div>
                         </div>
@@ -76,15 +76,16 @@
             </div>
 
             <!-- Projeto -->
-            @if($orcamento->projeto)
+            @if($orcamento->projetos->isNotEmpty())
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
                     <h5 class="mb-0"><i class="fas fa-project-diagram me-2"></i>Projeto</h5>
                 </div>
                 <div class="card-body">
-                    <h6>{{ $orcamento->projeto->nome }}</h6>
-                    @if($orcamento->projeto->descricao)
-                        <p class="text-muted">{{ $orcamento->projeto->descricao }}</p>
+                    @php $projeto = $orcamento->projetos->first(); @endphp
+                    <h6>{{ $projeto->nome }}</h6>
+                    @if($projeto->observacoes)
+                        <p class="text-muted">{{ $projeto->observacoes }}</p>
                     @endif
                 </div>
             </div>
@@ -100,44 +101,82 @@
                         <table class="table table-hover mb-0">
                             <thead class="table-light">
                                 <tr>
-                                    <th>Item</th>
-                                    <th class="text-center">Qtd</th>
-                                    <th class="text-center">Unidade</th>
-                                    <th class="text-end">Valor Unit.</th>
-                                    <th class="text-end">Total</th>
+                                    <th>Serviço</th>
+                                    <th>Itens</th>
+                                    <th class="text-end">Valor Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($orcamento->itens as $item)
+                                @php
+                                    // Agrupar itens por serviço
+                                    $itensAgrupados = [];
+                                    foreach ($orcamento->itens as $item) {
+                                        if ($item->item_servico_id && strpos($item->descricao, ' - ') !== false) {
+                                            // Item de serviço
+                                            $partes = explode(' - ', $item->descricao, 2);
+                                            $nomeServico = $partes[0];
+                                            $nomeItem = $partes[1];
+
+                                            if (!isset($itensAgrupados[$nomeServico])) {
+                                                $itensAgrupados[$nomeServico] = [
+                                                    'itens' => [],
+                                                    'valor_total' => 0,
+                                                ];
+                                            }
+
+                                            $itemTexto = $nomeItem;
+                                            if ($item->quantidade > 1) {
+                                                $itemTexto .= ' (Qtd: ' . number_format($item->quantidade, 0, ',', '.') . ')';
+                                            }
+                                            if ($item->observacao) {
+                                                $itemTexto .= ' - ' . $item->observacao;
+                                            }
+
+                                            $itensAgrupados[$nomeServico]['itens'][] = $itemTexto;
+                                            $itensAgrupados[$nomeServico]['valor_total'] += $item->quantidade * $item->preco_unitario;
+                                        } else {
+                                            // Item manual
+                                            $nomeServico = 'Outros Serviços';
+                                            if (!isset($itensAgrupados[$nomeServico])) {
+                                                $itensAgrupados[$nomeServico] = [
+                                                    'itens' => [],
+                                                    'valor_total' => 0,
+                                                ];
+                                            }
+
+                                            $itemTexto = $item->descricao;
+                                            if ($item->quantidade > 1) {
+                                                $itemTexto .= ' (Qtd: ' . number_format($item->quantidade, 0, ',', '.') . ')';
+                                            }
+                                            if ($item->observacao) {
+                                                $itemTexto .= ' - ' . $item->observacao;
+                                            }
+
+                                            $itensAgrupados[$nomeServico]['itens'][] = $itemTexto;
+                                            $itensAgrupados[$nomeServico]['valor_total'] += $item->quantidade * $item->preco_unitario;
+                                        }
+                                    }
+                                @endphp
+
+                                @forelse($itensAgrupados as $nomeServico => $dadosServico)
                                 <tr>
                                     <td>
-                                        <div>
-                                            @if($item->tipo === 'material')
-                                                <strong>{{ $item->material->nome }}</strong>
-                                                <small class="text-muted d-block">Material</small>
-                                            @else
-                                                <strong>{{ $item->servico->nome }}</strong>
-                                                <small class="text-muted d-block">Serviço</small>
-                                            @endif
-                                            @if($item->observacao)
-                                                <small class="text-info d-block mt-1">{{ $item->observacao }}</small>
-                                            @endif
-                                        </div>
+                                        <strong class="text-primary">{{ $nomeServico }}</strong>
                                     </td>
-                                    <td class="text-center">{{ number_format($item->quantidade, 2, ',', '.') }}</td>
-                                    <td class="text-center">
-                                        @if($item->tipo === 'material')
-                                            {{ $item->material->unidade->simbolo }}
-                                        @else
-                                            {{ $item->servico->unidade->simbolo }}
-                                        @endif
+                                    <td>
+                                        <ul class="list-unstyled mb-0">
+                                            @foreach ($dadosServico['itens'] as $item)
+                                                <li class="mb-1">• {{ $item }}</li>
+                                            @endforeach
+                                        </ul>
                                     </td>
-                                    <td class="text-end">R$ {{ number_format($item->valor_unitario, 2, ',', '.') }}</td>
-                                    <td class="text-end"><strong>R$ {{ number_format($item->valor_total, 2, ',', '.') }}</strong></td>
+                                    <td class="text-end">
+                                        <strong class="text-success">R$ {{ number_format($dadosServico['valor_total'], 2, ',', '.') }}</strong>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="5" class="text-center py-4 text-muted">
+                                    <td colspan="3" class="text-center py-4 text-muted">
                                         Nenhum item encontrado
                                     </td>
                                 </tr>
@@ -162,7 +201,7 @@
                             <table class="table table-sm mb-0">
                                 <tr>
                                     <td>Subtotal:</td>
-                                    <td class="text-end">R$ {{ number_format($orcamento->itens->sum('valor_total'), 2, ',', '.') }}</td>
+                                    <td class="text-end">R$ {{ number_format($orcamento->subtotal, 2, ',', '.') }}</td>
                                 </tr>
                                 @if($orcamento->desconto > 0)
                                 <tr class="text-danger">

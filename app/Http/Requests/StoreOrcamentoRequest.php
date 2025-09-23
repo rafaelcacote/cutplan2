@@ -28,6 +28,7 @@ class StoreOrcamentoRequest extends FormRequest
             'observacoes' => 'nullable|string|max:1000',
             'itens' => 'required|array|min:1',
             'itens.*.descricao' => 'required|string|max:255',
+            'itens.*.observacao' => 'nullable|string|max:500',
             'itens.*.quantidade' => 'required|numeric|min:0.01',
             'itens.*.unidade_id' => 'nullable|exists:unidades,id',
             'itens.*.preco_unitario' => 'required|numeric|min:0.01',

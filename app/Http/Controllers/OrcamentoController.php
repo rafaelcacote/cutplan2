@@ -12,6 +12,9 @@ use App\Http\Requests\StoreOrcamentoRequest;
 use App\Http\Requests\UpdateOrcamentoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Mpdf\Mpdf;
 
 class OrcamentoController extends Controller
@@ -104,8 +107,8 @@ class OrcamentoController extends Controller
             $orcamento->recalcularTotais();
             \Log::info('Totais recalculados:', ['subtotal' => $orcamento->subtotal, 'total' => $orcamento->total]);
 
-            // Atualizar status para 'ready'
-            $orcamento->update(['status' => 'ready']);
+            // Atualizar status para 'awaiting'
+            $orcamento->update(['status' => 'awaiting']);
 
             \Log::info('=== ORÇAMENTO SALVO COM SUCESSO ===');
             return redirect()->route('orcamentos.actions', $orcamento->id)->with('success', 'Orçamento criado com sucesso!');
@@ -137,6 +140,12 @@ class OrcamentoController extends Controller
 
     public function edit(Orcamento $orcamento)
     {
+        // Verificar se o orçamento pode ser editado
+        if ($orcamento->status === 'approved') {
+            return redirect()->route('orcamentos.show', $orcamento)
+                ->with('error', 'Orçamentos aprovados não podem ser editados.');
+        }
+
         $orcamento->load(['itens.unidade', 'itens.itemServico']);
         $clientes = Cliente::orderBy('nome')->get();
         $servicos = Servico::where('ativo', true)->orderBy('nome')->get();
@@ -147,6 +156,12 @@ class OrcamentoController extends Controller
 
     public function update(UpdateOrcamentoRequest $request, Orcamento $orcamento)
     {
+        // Verificar se o orçamento pode ser editado
+        if ($orcamento->status === 'approved') {
+            return redirect()->route('orcamentos.show', $orcamento)
+                ->with('error', 'Orçamentos aprovados não podem ser editados.');
+        }
+
         $validated = $request->validated();
 
         // Atualizar orçamento
@@ -220,8 +235,16 @@ class OrcamentoController extends Controller
 
     public function updateStatus(Request $request, Orcamento $orcamento): JsonResponse
     {
+        // Verificar se o orçamento pode ter status alterado
+        if ($orcamento->status === 'approved') {
+            return response()->json([
+                'success' => false,
+                'message' => 'O status de orçamentos aprovados não pode ser alterado.'
+            ], 422);
+        }
+
         $request->validate([
-            'status' => 'required|in:draft,sent,approved,rejected,expired'
+            'status' => 'required|in:draft,awaiting,sent,approved,rejected,expired'
         ]);
 
         $orcamento->update(['status' => $request->status]);
@@ -349,7 +372,7 @@ class OrcamentoController extends Controller
      */
     public function publicView($uuid)
     {
-        $orcamento = Orcamento::with(['cliente', 'itens.unidade', 'user'])
+        $orcamento = Orcamento::with(['cliente', 'itens.unidade', 'itens.itemServico', 'user', 'projetos'])
             ->where('uuid', $uuid)
             ->firstOrFail();
             

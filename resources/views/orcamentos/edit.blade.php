@@ -83,6 +83,9 @@
                                             <option value="draft"
                                                 {{ (old('status') ?? $orcamento->status) == 'draft' ? 'selected' : '' }}>
                                                 Rascunho</option>
+                                            <option value="awaiting"
+                                                {{ (old('status') ?? $orcamento->status) == 'awaiting' ? 'selected' : '' }}>
+                                                Aguardando</option>
                                             <option value="sent"
                                                 {{ (old('status') ?? $orcamento->status) == 'sent' ? 'selected' : '' }}>
                                                 Enviado</option>

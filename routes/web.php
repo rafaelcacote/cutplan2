@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 // Rota pública para visualização de orçamentos (sem autenticação)
-Route::get('orcamento/public/{uuid}', [App\Http\Controllers\OrcamentoController::class, 'publicView'])->name('orcamentos.public');
+Route::get('orcamentos/public/{uuid}', [App\Http\Controllers\OrcamentoController::class, 'publicView'])->name('orcamentos.public');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
