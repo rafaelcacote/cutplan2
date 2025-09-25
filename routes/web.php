@@ -95,6 +95,18 @@ Route::middleware('auth')->group(function () {
 
     // Rotas de CRUD de projetos
     Route::resource('projetos', App\Http\Controllers\ProjetoController::class);
+
+    // Rotas para importação de materiais do Promob
+    Route::prefix('projetos/itens/{item_projeto}')->group(function () {
+        Route::get('/promob/import', [App\Http\Controllers\PromobImportController::class, 'show'])->name('projetos.itens.promob.import');
+        Route::post('/promob/preview', [App\Http\Controllers\PromobImportController::class, 'preview'])->name('projetos.itens.promob.preview');
+        Route::post('/promob/import', [App\Http\Controllers\PromobImportController::class, 'import'])->name('projetos.itens.promob.import.execute');
+        Route::get('/promob/materiais', [App\Http\Controllers\PromobImportController::class, 'materiais'])->name('projetos.itens.promob.materiais');
+        Route::delete('/promob/materiais/{material}', [App\Http\Controllers\PromobImportController::class, 'removeMaterial'])->name('projetos.itens.promob.materiais.remove');
+        Route::put('/promob/materiais/{material}/vincular', [App\Http\Controllers\PromobImportController::class, 'vincularMaterial'])->name('projetos.itens.promob.materiais.vincular');
+        Route::delete('/promob/materiais/{material}/desvincular', [App\Http\Controllers\PromobImportController::class, 'desvincularMaterial'])->name('projetos.itens.promob.materiais.desvincular');
+        Route::delete('/promob/limpar', [App\Http\Controllers\PromobImportController::class, 'limparImportacao'])->name('projetos.itens.promob.limpar');
+    });
 });
 
 require __DIR__.'/auth.php';

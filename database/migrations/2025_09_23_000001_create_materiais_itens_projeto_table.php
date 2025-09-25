@@ -28,7 +28,7 @@ return new class extends Migration
             $table->enum('origem', ['manual', 'importacao'])->default('manual');
             $table->timestamps();
 
-            $table->foreign('item_projeto_id')->references('id')->on('item_projetos')->onDelete('cascade');
+            $table->foreign('item_projeto_id')->references('id')->on('itens_projeto')->onDelete('cascade');
             $table->foreign('material_id')->references('id')->on('materiais')->onDelete('set null');
         });
     }

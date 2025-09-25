@@ -100,6 +100,21 @@ class ItemProjeto extends Model
         return $this->hasMany(MaterialProjeto::class);
     }
 
+    public function materiaisItem()
+    {
+        return $this->hasMany(MaterialItemProjeto::class, 'item_projeto_id');
+    }
+
+    public function materiaisImportados()
+    {
+        return $this->materiaisItem()->where('origem', 'importacao');
+    }
+
+    public function materiaisManuais()
+    {
+        return $this->materiaisItem()->where('origem', 'manual');
+    }
+
     // Accessors
     public function getStatusLabelAttribute()
     {
