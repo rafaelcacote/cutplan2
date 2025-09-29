@@ -1,0 +1,1303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LISTING CUSTOMERNUMBER="14" ID="Listagem_explosao" DESCRIPTION="Listagem-Explodido" DATE="22/09/2025" HOUR="17:24:03" CLIENTLOGO="%pastasistema%\identity\logoCliente.gif" CURRENCYSYMBOL="R$" IDTYPE="Listagem_explosao" UNIT="MM" AMBIENTS="2\0" QUANTITYINCREASE="N" DEFAULTPRICETABLEUSED="Y" PRICETABLEUSED="" ONLYSELECTEDITEMS="N" ALLOWSUPPLEMENTARYITEMS="Y" ALLOWEXTRAITEMS="Y" HASNOTAVAILABLEITEMS="N" HASCHANGEDDIMENSIONITEMS="N" AREASPROCESSED="N">
+  <PROJECTGUID GUID="e4dd8fcf-6bca-4005-b659-e04be305a150" />
+  <ABOUTPROMOB VERSION="5" REVISION="60" BUILD="40" SYSTEM="Enterprise" SYSTEMID="2025" DISTRIBUTION="Plus" SERIALNUMBER="183152811" PRODUCTCODE="UUZRMTOO14" CUSTOMERNUMBER="15" SYSTEMREVISION="22/04/2019 14:39:56">
+    <LIBRARIES>
+      <LIBRARY LINE="bibliotecas" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="lofra" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="acessorios" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="cozinhas" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="pux_tor" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Lucap" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Metal_Design" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="blum" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="fgv" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Cozinha_Cava45" REVISION="" VERSION="" />
+      <LIBRARY LINE="reativa" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Invita" REVISION="Agosto/2023" VERSION="Agosto/2023" />
+      <LIBRARY LINE="debacco" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Gre_3480" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Vort" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="mabe" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="brastemp" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="salvatore" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Metal_House" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="mim_2783" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="smeg" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="reval" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Ezdoor" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="consul" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="pux_obi" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="leo_3025" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="COM" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="banheiros" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="puxadores" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Alumiglass" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="mueller" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="fischer" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Aluni_Portas" REVISION="Janeiro/2024" VERSION="Janeiro/2024" />
+      <LIBRARY LINE="Criativa_Puxadores" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="alb" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="sofisticato" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Hafele" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="accord_Iluminacao" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="mad_mad" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="cla_a_lar_" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="falmec" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="LIF_1158" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="cinex" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="sis_dur" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="perlare" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="hettich" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="2468_Dimec" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="bosch" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Pigmento_Laqueados" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="omp" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="altero" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="dormitorios" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Reflexo_Glass" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Scheer_Churrasqueiras" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="neo" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Cosentino" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="sai_cla" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="cozinhas_cava" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Tabone" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="LG" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="portabille" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="persol" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Aramados Jomer" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Duoz_Organizadores" REVISION="Setembro/2023" VERSION="Setembro/2023" />
+      <LIBRARY LINE="masotti" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Alpam" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Siforma_6034" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="arix" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="crissair" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="incomaq" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Tecnovidro" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="omega_viratto" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Revoled" REVISION="24.01" VERSION="Novembro/2023" />
+      <LIBRARY LINE="Soldax" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="casavitra" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="wp" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="decore" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Villaggio" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="salas" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Wurth" REVISION="23.01" VERSION="1" />
+      <LIBRARY LINE="Pux_usitop" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="est_3649" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="rubinettos" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="ron" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="panizzi" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="mekal" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Tramontina" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Italyline" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Rometal" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Adipar" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Masutti_Copat" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="cad_cad" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="suggar" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="PAI" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Artetilica" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="ancezki" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Led_Line" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="puxadores_par" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="sis_con" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="origin" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Gaya_Iluminacao" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Dutotec_2167" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="tra_mov" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Orange_Bed" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="amma1192" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="estofados" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="East_Glass" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="SAS_Plastic" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="elettromec" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Sunlux" REVISION="24.03" VERSION="1" />
+      <LIBRARY LINE="VON_ORT" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="pux_zen" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="esquadrimed" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="escritorios" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="brasilpost" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Sulfer" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="sis_cos" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="revest" REVISION="" VERSION="" />
+      <LIBRARY LINE="tidelli" REVISION="14.01" VERSION="1" />
+      <LIBRARY LINE="franke" REVISION="Dezembro/2023" VERSION="Dezembro/2023" />
+      <LIBRARY LINE="Fle1198" REVISION="16.13" VERSION="1" />
+      <LIBRARY LINE="DT_Vidros" REVISION="Setembro/2023" VERSION="Setembro/2023" />
+      <LIBRARY LINE="Ferragens_Copia" REVISION="29.04" VERSION="1" />
+      <LIBRARY LINE="Cata" REVISION="14.01" VERSION="1" />
+      <LIBRARY LINE="ele_ele" REVISION="21.01" VERSION="1" />
+    </LIBRARIES>
+  </ABOUTPROMOB>
+  <CUSTOMERSDATA>
+    <DATA ID="cep" VALUE="" />
+    <DATA ID="uf" VALUE="" />
+    <DATA ID="rep_telefoneempresa" VALUE="83988591010" />
+    <DATA ID="rep_cidadeempresa" VALUE="" />
+    <DATA ID="nomecliente" VALUE="" />
+    <DATA ID="observacoes" VALUE="" />
+    <DATA ID="fone" VALUE="" />
+    <DATA ID="bairro" VALUE="" />
+    <DATA ID="codcliente" VALUE="" />
+    <DATA ID="rep_contatoempresa" VALUE="PAULO CALDAS TRAVASSOS" />
+    <DATA ID="endentrega" VALUE="" />
+    <DATA ID="email" VALUE="" />
+    <DATA ID="rep_cnpjempresa" VALUE="" />
+    <DATA ID="rep_emailempresa" VALUE="" />
+    <DATA ID="rep_ufempresa" VALUE="" />
+    <DATA ID="rep_bairroempresa" VALUE="" />
+    <DATA ID="cpfcnpj" VALUE="" />
+    <DATA ID="endereco" VALUE="" />
+    <DATA ID="rep_nomeempresa" VALUE="" />
+    <DATA ID="rep_cepenpresa" VALUE="" />
+    <DATA ID="cidade" VALUE="" />
+    <DATA ID="celular" VALUE="" />
+    <DATA ID="rep_enderecoempresa" VALUE="" />
+  </CUSTOMERSDATA>
+  <TOTALPRICES />
+  <AMBIENTS>
+    <AMBIENT GUID="0328a412-644e-45b2-a41b-44d1681b74ad" DESCRIPTION="Cozinhas - Ambiente 3D" UNIQUEID="2\0">
+      <TOTALPRICES />
+      <MODELINFORMATIONS>
+        <MODELCATEGORYINFORMATIONS>
+          <MODELCATEGORYINFORMATION DESCRIPTION="Dormitórios">
+            <MODELINFORMATIONS>
+              <MODELINFORMATION DESCRIPTION="Caixas" ID="dor_mod_caixas_int">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_int;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Fita Borda Caixas" ID="dor_fita_borda_caixas">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_fita;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Externo Caixas" ID="dor_mod_caixas_ext">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_ext;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Fita Borda Frontal Caixas" ID="dor_fita_fro_borda_caixas">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_fita_fro;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Puxador Gola" ID="dor_pux_gol">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Alumínio" ID="dor_pux_gol_alu" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Externo Portas - Deslizante Gola" ID="dor_mod_painel_porta_correr_per_alum_ext">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_ext;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Portas - Deslizante Gola" ID="dor_mod_painel_porta_correr_per_alum_int">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_int;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+              <MODELINFORMATION DESCRIPTION="Fita Borda Portas/Frentes" ID="dor_fita_frente">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Cores&gt;Branco" ID="dor_mod_cores_fita;dor_branco" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+            </MODELINFORMATIONS>
+          </MODELCATEGORYINFORMATION>
+          <MODELCATEGORYINFORMATION DESCRIPTION="Puxadores">
+            <MODELINFORMATIONS>
+              <MODELINFORMATION DESCRIPTION="Puxadores Gavetas Int" ID="Plu_Dor_Ocu_pix_gav">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="Sem Puxador" ID="sem_pux" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+            </MODELINFORMATIONS>
+          </MODELCATEGORYINFORMATION>
+          <MODELCATEGORYINFORMATION DESCRIPTION="Acessórios">
+            <MODELINFORMATIONS>
+              <MODELINFORMATION DESCRIPTION="Corrediças" ID="aces_fer_cor">
+                <MODELTYPEINFORMATIONS>
+                  <MODELTYPEINFORMATION DESCRIPTION="500 Telescópica" ID="aces_fer_cor_telesc" />
+                </MODELTYPEINFORMATIONS>
+              </MODELINFORMATION>
+            </MODELINFORMATIONS>
+          </MODELCATEGORYINFORMATION>
+        </MODELCATEGORYINFORMATIONS>
+      </MODELINFORMATIONS>
+      <CATEGORIES>
+        <CATEGORY DESCRIPTION="Acessórios">
+          <TOTALPRICES />
+          <ITEMS>
+            <ITEM ID="dorm_comp_acess_cab_reto_02" DESCRIPTION="Cabideiro" OBSERVATIONS="" REFERENCE="2.1027.000" UNIT="M" REPETITION="1" QUANTITY="0.904" WIDTH="903.33" HEIGHT="30" DEPTH="15" TEXTDIMENSION="903,3 x 30 x 15" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Acessórios Int" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\Acessorios\Cabideiro_Reto_2.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2584" UNIQUEPARENTID="-2" GUID="78c13b82-b73e-486c-a168-420cfcdfff5c" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1027.000" />
+                <PRICE REFERENCE="2.1027.000" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="dorm_par_att_sup_cab_02" DESCRIPTION="Suporte" OBSERVATIONS="" REFERENCE="2.1029.000" UNIT="UN" REPETITION="2" QUANTITY="1" WIDTH="18.5" HEIGHT="43" DEPTH="12.7" TEXTDIMENSION="18,5 x 43 x 12,7" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Componentes/Suportes" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\Comp_Sup\suporte_cab 02.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2586" UNIQUEPARENTID="2584" GUID="9717e8ec-dbec-48bd-904a-0a22c920bc70" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2586;2585" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.1029.000" />
+                    <PRICE REFERENCE="2.1029.000" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="dorm_comp_acess_cab_reto_02" DESCRIPTION="Cabideiro" OBSERVATIONS="" REFERENCE="2.1027.000" UNIT="M" REPETITION="1" QUANTITY="0.904" WIDTH="903.33" HEIGHT="30" DEPTH="15" TEXTDIMENSION="903,3 x 30 x 15" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Acessórios Int" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\Acessorios\Cabideiro_Reto_2.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2581" UNIQUEPARENTID="-2" GUID="32919922-6ee0-415b-bffc-959c6e7efd54" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1027.000" />
+                <PRICE REFERENCE="2.1027.000" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="dorm_par_att_sup_cab_02" DESCRIPTION="Suporte" OBSERVATIONS="" REFERENCE="2.1029.000" UNIT="UN" REPETITION="2" QUANTITY="1" WIDTH="18.5" HEIGHT="43" DEPTH="12.7" TEXTDIMENSION="18,5 x 43 x 12,7" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Componentes/Suportes" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\Comp_Sup\suporte_cab 02.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2583" UNIQUEPARENTID="2581" GUID="f3382891-171c-48d1-8846-5255b02336a8" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2583;2582" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.1029.000" />
+                    <PRICE REFERENCE="2.1029.000" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="aces_fer_cor_telesc" DESCRIPTION="Corrediça Telescópica 500" OBSERVATIONS="" REFERENCE="1.1089.500" UNIT="UN" REPETITION="4" QUANTITY="1" WIDTH="841.33" HEIGHT="37.4" DEPTH="500" TEXTDIMENSION="841,3 x 37,4 x 500" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Corrediças" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\corredicas\telesc.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2330" UNIQUEPARENTID="-2" GUID="9fa16600-deac-40e9-b588-1c5a814030d3" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <METADATAS>
+                <METADATA ID="UniqueIdCollection" VALUE="2330;2297;2308;2319" />
+              </METADATAS>
+              <REFERENCES>
+                <COMPLETE REFERENCE="1.1089.500" />
+                <PROFUNDIDADE REFERENCE="500" />
+                <CORREDICA REFERENCE="TELESCOPICA" />
+                <PRICE REFERENCE="1.1089.500" />
+              </REFERENCES>
+            </ITEM>
+            <ITEM ID="dorm_comp_pt_correr_kit_desl_emb" DESCRIPTION="Kit p/ Portas Deslizantes Embutidas" OBSERVATIONS="" REFERENCE="2.1147.000" UNIT="UN" REPETITION="2" QUANTITY="1" WIDTH="10" HEIGHT="10" DEPTH="10" TEXTDIMENSION="10 x 10 x 10" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Pt Correr" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\comp_pt_correr\205_9057_2.jpeg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2611" UNIQUEPARENTID="-2" GUID="2a142762-7d2e-4c6b-8cb2-b35a46581c4c" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <METADATAS>
+                <METADATA ID="UniqueIdCollection" VALUE="2611;2601" />
+              </METADATAS>
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1147.000" />
+                <PRICE REFERENCE="2.1147.000" />
+              </REFERENCES>
+            </ITEM>
+            <ITEM ID="dorm_comp_pt_correr_kit_desl_int" DESCRIPTION="Kit p/ Portas Deslizantes Internas" OBSERVATIONS="" REFERENCE="2.1145.000" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="10" HEIGHT="10" DEPTH="10" TEXTDIMENSION="10 x 10 x 10" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Pt Correr" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\comp_pt_correr\205_9057_4.jpeg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2623" UNIQUEPARENTID="-2" GUID="c8b06095-611e-451d-a042-09e3bc4a0dc9" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1145.000" />
+                <PRICE REFERENCE="2.1145.000" />
+              </REFERENCES>
+            </ITEM>
+            <ITEM ID="dorm_por_des_com_des_leve_dup_inf" DESCRIPTION="Trilho Inferior Duplo p/ Sistema Deslizante Leve" OBSERVATIONS="" REFERENCE="2.1122.000" UNIT="M" REPETITION="1" QUANTITY="2.74" WIDTH="2740" HEIGHT="6" DEPTH="60" TEXTDIMENSION="2740 x 6 x 60" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Pt Correr" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\comp_pt_correr\des_leve_duplo_inf.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2614" UNIQUEPARENTID="-2" GUID="b4f6c39b-084b-4928-8676-ffc3062b95a1" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1122.000" />
+                <PRICE REFERENCE="2.1122.000" />
+              </REFERENCES>
+            </ITEM>
+            <ITEM ID="dorm_por_des_com_des_leve_dup_sup" DESCRIPTION="Trilho Superior Duplo p/ Sistema Deslizante Leve" OBSERVATIONS="" REFERENCE="2.1123.000" UNIT="M" REPETITION="1" QUANTITY="2.74" WIDTH="2740" HEIGHT="40" DEPTH="80" TEXTDIMENSION="2740 x 40 x 80" COMPONENT="N" STRUCTURE="N" FAMILY="Acessórios" GROUP="Pt Correr" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Acessorios\Dormitorios\comp_pt_correr\des_leve_duplo_sup.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2613" UNIQUEPARENTID="-2" GUID="bf4316c3-da15-4ab3-83f8-3c177702cec2" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1123.000" />
+                <PRICE REFERENCE="2.1123.000" />
+              </REFERENCES>
+            </ITEM>
+          </ITEMS>
+        </CATEGORY>
+        <CATEGORY DESCRIPTION="Construtor de Armários - Dormitórios">
+          <TOTALPRICES />
+          <ITEMS>
+            <ITEM ID="GROUPENTITY" DESCRIPTION="Armário" OBSERVATIONS="" REFERENCE="2.9999" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="2770" HEIGHT="2300" DEPTH="600" TEXTDIMENSION="2770 x 2300 x 600" COMPONENT="N" STRUCTURE="N" FAMILY="Construtor de Armários - Dormitórios" ISAGGREGATEGROUP="N" IMAGE="" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="" IDPRICESOURCE="" IDPRICETABLE="" UNIQUEID="2346" UNIQUEPARENTID="-2" GUID="4d6a5493-08bb-4703-b364-ef0cd16a194b" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <METADATAS>
+                <METADATA ID="WardrobeData" VALUE="Promob.WardrobesBuilder.WardrobeStructureBuilder" />
+              </METADATAS>
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.9999" />
+                <PRICE REFERENCE="2.9999" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="dorm_afast_mont_2015" DESCRIPTION="Afastador p/ Montante 15" OBSERVATIONS="" REFERENCE="2.2035.15.Branco.MDF" UNIT="M2" REPETITION="8" QUANTITY="0.05" WIDTH="70" HEIGHT="15" DEPTH="700" TEXTDIMENSION="70 x 15 x 700" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Diversos" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\diversos\lateral_fixa.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2292" UNIQUEPARENTID="2346" GUID="32e4cb18-f10b-4bca-9802-f7d8103f1586" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2292;2285;2286;2287;2288;2289;2290;2291" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2035.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0" />
+                    <FITA_BORDA_3 REFERENCE="0" />
+                    <FITA_BORDA_4 REFERENCE="0" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+                <ITEM ID="dorm_comp_bas_bas_2015" DESCRIPTION="Base Linear 15" OBSERVATIONS="" REFERENCE="2.2008.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="1.65" WIDTH="2740" HEIGHT="15" DEPTH="600" TEXTDIMENSION="2740 x 15 x 600" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Bases" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\bases\base.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2278" UNIQUEPARENTID="2346" GUID="3d4188cf-fe39-42fd-988e-f903716750de" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2278;2277" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2008.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <TYPE REFERENCE="" />
+                    <MODEL REFERENCE="Branco" />
+                    <MODEL_EXT REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_EXT REFERENCE="" />
+                    <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                    <LINE_EXT REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <SUPPLIER_FITA_FRO REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA_FRO REFERENCE="Branco" />
+                    <LINE_FITA_FRO REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+                <ITEM ID="dorm_comp_div_arm_fix" DESCRIPTION="Divisória 15" OBSERVATIONS="" REFERENCE="2.2036.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="1.19" WIDTH="2270" HEIGHT="15" DEPTH="520" TEXTDIMENSION="2270 x 15 x 520" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Laterais/Divisórias" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\laterais_divisorias\divisoria_fixa.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2276" UNIQUEPARENTID="2346" GUID="c73c26c0-dac3-4d61-8980-e047d3d608c8" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2276;2273" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2036.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0" />
+                    <FITA_BORDA_4 REFERENCE="0" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <TIPO_DIVISAO_CONSTRUTOR REFERENCE=" " />
+                  </REFERENCES>
+                </ITEM>
+                <ITEM ID="dorm_comp_fun_fun_2015" DESCRIPTION="Fundo 3" OBSERVATIONS="" REFERENCE="2.2015.3.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="2.11" WIDTH="917.33" HEIGHT="3" DEPTH="2290" TEXTDIMENSION="917,3 x 3 x 2290" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Fundos" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\fundos\fundo.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2588" UNIQUEPARENTID="2346" GUID="df976775-ab18-4465-badb-b7501a303618" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2015.3.Branco.MDF" />
+                    <PRICE REFERENCE="3.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2440" />
+                    <MAXDEPTH REFERENCE="1850" />
+                    <THICKNESS REFERENCE="3" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0" />
+                    <FITA_BORDA_3 REFERENCE="0" />
+                    <FITA_BORDA_4 REFERENCE="0" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+                <ITEM ID="dorm_comp_fun_fun_2015" DESCRIPTION="Fundo 3" OBSERVATIONS="" REFERENCE="2.2015.3.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="2.11" WIDTH="920.33" HEIGHT="3" DEPTH="2290" TEXTDIMENSION="920,3 x 3 x 2290" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Fundos" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\fundos\fundo.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2589" UNIQUEPARENTID="2346" GUID="a97a477d-526c-4908-954f-aac85dca3b62" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2589;2587" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2015.3.Branco.MDF" />
+                    <PRICE REFERENCE="3.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2440" />
+                    <MAXDEPTH REFERENCE="1850" />
+                    <THICKNESS REFERENCE="3" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0" />
+                    <FITA_BORDA_3 REFERENCE="0" />
+                    <FITA_BORDA_4 REFERENCE="0" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+                <ITEM ID="dorm_comp_lat_arm" DESCRIPTION="Lateral 15" OBSERVATIONS="" REFERENCE="2.2033.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="1.38" WIDTH="2300" HEIGHT="15" DEPTH="600" TEXTDIMENSION="2300 x 15 x 600" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Laterais/Divisórias" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\laterais_divisorias\lateral_armario.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2274" UNIQUEPARENTID="2346" GUID="aa161477-76dc-4a28-9336-4b504a7edf7e" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2274;2271" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2033.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <TYPE REFERENCE="" />
+                    <MODEL REFERENCE="Branco" />
+                    <MODEL_EXT REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0" />
+                    <FITA_BORDA_4 REFERENCE="0" />
+                    <POSICAO REFERENCE="Dir" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_EXT REFERENCE="" />
+                    <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                    <LINE_EXT REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <SUPPLIER_FITA_FRO REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA_FRO REFERENCE="Branco" />
+                    <LINE_FITA_FRO REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+                <ITEM ID="dorm_prat_hor_int_2015" DESCRIPTION="Prateleira Linear de Madeira 15" OBSERVATIONS="" REFERENCE="2.0160.15.Branco.MDF" UNIT="M2" REPETITION="10" QUANTITY="0.47" WIDTH="903.33" HEIGHT="15" DEPTH="517" TEXTDIMENSION="903,3 x 15 x 517" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Prateleiras" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\tampos_prateleiras_NOVO\prateleiras\interna_madeira.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2270" UNIQUEPARENTID="2346" GUID="72ef5e1a-f524-431e-a241-8c4be388e1c8" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <METADATAS>
+                    <METADATA ID="UniqueIdCollection" VALUE="2270;2261;2262;2263;2264;2265;2266;2267;2268;2269" />
+                  </METADATAS>
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0160.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0" />
+                    <FITA_BORDA_4 REFERENCE="0" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <TIPO_DIVISAO_CONSTRUTOR REFERENCE="Móvel" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+          </ITEMS>
+        </CATEGORY>
+        <CATEGORY DESCRIPTION="Dormitórios">
+          <TOTALPRICES />
+          <ITEMS>
+            <ITEM ID="Plu_Dor_Ocu_gav_int_cons_ret_c_2015" DESCRIPTION="Gaveta Interna c/ Contra Frente" OBSERVATIONS="" REFERENCE="2.0095C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="146.25" DEPTH="507" TEXTDIMENSION="817,3 x 146,3 x 507" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas Internas Construtor NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\Gav Int Construtor NOVO\c CF Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2326" UNIQUEPARENTID="-2" GUID="1126e127-c736-47a4-a1f7-d39748a60c7a" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.0095C.817.33.Branco" />
+                <MODEL REFERENCE="Branco" />
+                <PRICE REFERENCE="2.0095C.817.33.Branco" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Cai_Gav_int_cf_2015" DESCRIPTION="Corpo de Gaveta" OBSERVATIONS="" REFERENCE="2.0158C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="131.25" DEPTH="492" TEXTDIMENSION="817,3 x 131,3 x 492" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\caixa_rod NOVO\gavetas\externa.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2336" UNIQUEPARENTID="2326" GUID="e4d92009-9e53-4a2b-808d-0294c79a4517" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0158C.817.33.Branco" />
+                    <MODEL REFERENCE="Branco" />
+                    <TIPO_CORREDICA REFERENCE="TELESCOPICA" />
+                    <PRICE REFERENCE="2.0158C.817.33.Branco" />
+                  </REFERENCES>
+                  <ITEMS>
+                    <ITEM ID="dorm_comp_div_gav_ctfr_2015" DESCRIPTION="Contra Frente de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2057.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2333" UNIQUEPARENTID="2336" GUID="5d120da6-f1d2-40d6-a81b-c24ad37660b1" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2057.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_fundo_2015" DESCRIPTION="Fundo de Gaveta 3" OBSERVATIONS="" REFERENCE="2.2056.3.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.4" WIDTH="801.33" HEIGHT="3" DEPTH="492" TEXTDIMENSION="801,3 x 3 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\fundo.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2332" UNIQUEPARENTID="2336" GUID="04982695-fbf2-4d93-b866-06b724ce322e" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2056.3.Branco.MDF" />
+                        <PRICE REFERENCE="3.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2440" />
+                        <MAXDEPTH REFERENCE="1850" />
+                        <THICKNESS REFERENCE="3" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_lat_2015" DESCRIPTION="Lateral de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2054.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="0.07" WIDTH="131.25" HEIGHT="15" DEPTH="492" TEXTDIMENSION="131,3 x 15 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2335" UNIQUEPARENTID="2336" GUID="a3905560-472c-42ec-811a-0c75090e327a" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <METADATAS>
+                        <METADATA ID="UniqueIdCollection" VALUE="2335;2334" />
+                      </METADATAS>
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2054.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0.4" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_post_2015" DESCRIPTION="Posterior de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2055.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2331" UNIQUEPARENTID="2336" GUID="c447abbd-a9af-43e5-8582-558e866be751" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2055.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                  </ITEMS>
+                </ITEM>
+                <ITEM ID="dorm_comp_fgav_ret_2015" DESCRIPTION="Frente Gaveta Reta 15mm" OBSERVATIONS="" REFERENCE="2.2032.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.13" WIDTH="837.33" HEIGHT="15" DEPTH="146.25" TEXTDIMENSION="837,3 x 15 x 146,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Frente Gavetas Internas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\frente_gavetas\Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2328" UNIQUEPARENTID="2326" GUID="3313be0c-6788-41b5-8090-13724a245179" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2032.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="Plu_Dor_Ocu_gav_int_cons_ret_c_2015" DESCRIPTION="Gaveta Interna c/ Contra Frente" OBSERVATIONS="" REFERENCE="2.0095C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="146.25" DEPTH="507" TEXTDIMENSION="817,3 x 146,3 x 507" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas Internas Construtor NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\Gav Int Construtor NOVO\c CF Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2315" UNIQUEPARENTID="-2" GUID="31503d6b-329b-42d5-975c-e90ca0481e5c" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.0095C.817.33.Branco" />
+                <MODEL REFERENCE="Branco" />
+                <PRICE REFERENCE="2.0095C.817.33.Branco" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Cai_Gav_int_cf_2015" DESCRIPTION="Corpo de Gaveta" OBSERVATIONS="" REFERENCE="2.0158C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="131.25" DEPTH="492" TEXTDIMENSION="817,3 x 131,3 x 492" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\caixa_rod NOVO\gavetas\externa.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2325" UNIQUEPARENTID="2315" GUID="719b27b9-4ea6-4f9a-8e35-d371083a1297" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0158C.817.33.Branco" />
+                    <MODEL REFERENCE="Branco" />
+                    <TIPO_CORREDICA REFERENCE="TELESCOPICA" />
+                    <PRICE REFERENCE="2.0158C.817.33.Branco" />
+                  </REFERENCES>
+                  <ITEMS>
+                    <ITEM ID="dorm_comp_div_gav_ctfr_2015" DESCRIPTION="Contra Frente de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2057.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2322" UNIQUEPARENTID="2325" GUID="c8006f8f-c7e2-4bcc-9b89-7febf7336747" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2057.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_fundo_2015" DESCRIPTION="Fundo de Gaveta 3" OBSERVATIONS="" REFERENCE="2.2056.3.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.4" WIDTH="801.33" HEIGHT="3" DEPTH="492" TEXTDIMENSION="801,3 x 3 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\fundo.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2321" UNIQUEPARENTID="2325" GUID="68dce069-61ef-4659-bb76-34c59b63a4b6" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2056.3.Branco.MDF" />
+                        <PRICE REFERENCE="3.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2440" />
+                        <MAXDEPTH REFERENCE="1850" />
+                        <THICKNESS REFERENCE="3" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_lat_2015" DESCRIPTION="Lateral de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2054.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="0.07" WIDTH="131.25" HEIGHT="15" DEPTH="492" TEXTDIMENSION="131,3 x 15 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2324" UNIQUEPARENTID="2325" GUID="1aa246b8-a799-4716-a78c-701d25e3e264" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <METADATAS>
+                        <METADATA ID="UniqueIdCollection" VALUE="2324;2323" />
+                      </METADATAS>
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2054.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0.4" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_post_2015" DESCRIPTION="Posterior de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2055.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2320" UNIQUEPARENTID="2325" GUID="60162def-dc10-4951-9ad2-e8939d23916e" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2055.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                  </ITEMS>
+                </ITEM>
+                <ITEM ID="dorm_comp_fgav_ret_2015" DESCRIPTION="Frente Gaveta Reta 15mm" OBSERVATIONS="" REFERENCE="2.2032.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.13" WIDTH="837.33" HEIGHT="15" DEPTH="146.25" TEXTDIMENSION="837,3 x 15 x 146,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Frente Gavetas Internas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\frente_gavetas\Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2317" UNIQUEPARENTID="2315" GUID="dffefd9b-7233-4e54-bc6a-7f10e4502b2f" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2032.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="Plu_Dor_Ocu_gav_int_cons_ret_c_2015" DESCRIPTION="Gaveta Interna c/ Contra Frente" OBSERVATIONS="" REFERENCE="2.0095C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="146.25" DEPTH="507" TEXTDIMENSION="817,3 x 146,3 x 507" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas Internas Construtor NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\Gav Int Construtor NOVO\c CF Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2304" UNIQUEPARENTID="-2" GUID="8c2af4c6-8f3a-443b-93cf-3765c04bdfdb" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.0095C.817.33.Branco" />
+                <MODEL REFERENCE="Branco" />
+                <PRICE REFERENCE="2.0095C.817.33.Branco" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Cai_Gav_int_cf_2015" DESCRIPTION="Corpo de Gaveta" OBSERVATIONS="" REFERENCE="2.0158C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="131.25" DEPTH="492" TEXTDIMENSION="817,3 x 131,3 x 492" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\caixa_rod NOVO\gavetas\externa.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2314" UNIQUEPARENTID="2304" GUID="a3c11c58-44a0-44d6-b964-3e3e6c001bb4" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0158C.817.33.Branco" />
+                    <MODEL REFERENCE="Branco" />
+                    <TIPO_CORREDICA REFERENCE="TELESCOPICA" />
+                    <PRICE REFERENCE="2.0158C.817.33.Branco" />
+                  </REFERENCES>
+                  <ITEMS>
+                    <ITEM ID="dorm_comp_div_gav_ctfr_2015" DESCRIPTION="Contra Frente de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2057.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2311" UNIQUEPARENTID="2314" GUID="4e385bd9-5ed8-4576-b1f8-528807d4d7a0" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2057.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_fundo_2015" DESCRIPTION="Fundo de Gaveta 3" OBSERVATIONS="" REFERENCE="2.2056.3.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.4" WIDTH="801.33" HEIGHT="3" DEPTH="492" TEXTDIMENSION="801,3 x 3 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\fundo.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2310" UNIQUEPARENTID="2314" GUID="c9d0b185-57cc-4417-9f58-9031fdfdddee" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2056.3.Branco.MDF" />
+                        <PRICE REFERENCE="3.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2440" />
+                        <MAXDEPTH REFERENCE="1850" />
+                        <THICKNESS REFERENCE="3" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_lat_2015" DESCRIPTION="Lateral de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2054.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="0.07" WIDTH="131.25" HEIGHT="15" DEPTH="492" TEXTDIMENSION="131,3 x 15 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2313" UNIQUEPARENTID="2314" GUID="430a0a32-5d70-442a-ac7b-b430a754a59a" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <METADATAS>
+                        <METADATA ID="UniqueIdCollection" VALUE="2313;2312" />
+                      </METADATAS>
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2054.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0.4" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_post_2015" DESCRIPTION="Posterior de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2055.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2309" UNIQUEPARENTID="2314" GUID="bf2b34a9-0a22-4854-aba9-90eb5a7b1722" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2055.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                  </ITEMS>
+                </ITEM>
+                <ITEM ID="dorm_comp_fgav_ret_2015" DESCRIPTION="Frente Gaveta Reta 15mm" OBSERVATIONS="" REFERENCE="2.2032.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.13" WIDTH="837.33" HEIGHT="15" DEPTH="146.25" TEXTDIMENSION="837,3 x 15 x 146,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Frente Gavetas Internas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\frente_gavetas\Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2306" UNIQUEPARENTID="2304" GUID="f346ee98-6088-463c-973c-3dddd0a81a92" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2032.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="Plu_Dor_Ocu_gav_int_cons_ret_c_2015" DESCRIPTION="Gaveta Interna c/ Contra Frente" OBSERVATIONS="" REFERENCE="2.0095C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="146.25" DEPTH="507" TEXTDIMENSION="817,3 x 146,3 x 507" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas Internas Construtor NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\Gav Int Construtor NOVO\c CF Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2293" UNIQUEPARENTID="-2" GUID="373ef221-d859-4bb5-a75e-e6b03a8cd68b" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.0095C.817.33.Branco" />
+                <MODEL REFERENCE="Branco" />
+                <PRICE REFERENCE="2.0095C.817.33.Branco" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Cai_Gav_int_cf_2015" DESCRIPTION="Corpo de Gaveta" OBSERVATIONS="" REFERENCE="2.0158C.817.33.Branco" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="817.33" HEIGHT="131.25" DEPTH="492" TEXTDIMENSION="817,3 x 131,3 x 492" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gavetas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\caixa_rod NOVO\gavetas\externa.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2303" UNIQUEPARENTID="2293" GUID="f57bea0c-67c3-4a9a-abb6-e10d94b07d0a" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0158C.817.33.Branco" />
+                    <MODEL REFERENCE="Branco" />
+                    <TIPO_CORREDICA REFERENCE="TELESCOPICA" />
+                    <PRICE REFERENCE="2.0158C.817.33.Branco" />
+                  </REFERENCES>
+                  <ITEMS>
+                    <ITEM ID="dorm_comp_div_gav_ctfr_2015" DESCRIPTION="Contra Frente de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2057.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2300" UNIQUEPARENTID="2303" GUID="3439426d-a959-4e99-bebd-375e9cac0879" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2057.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_fundo_2015" DESCRIPTION="Fundo de Gaveta 3" OBSERVATIONS="" REFERENCE="2.2056.3.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.4" WIDTH="801.33" HEIGHT="3" DEPTH="492" TEXTDIMENSION="801,3 x 3 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\fundo.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2299" UNIQUEPARENTID="2303" GUID="174949db-296b-484b-831f-7a0504a045bd" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2056.3.Branco.MDF" />
+                        <PRICE REFERENCE="3.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2440" />
+                        <MAXDEPTH REFERENCE="1850" />
+                        <THICKNESS REFERENCE="3" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_lat_2015" DESCRIPTION="Lateral de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2054.15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="0.07" WIDTH="131.25" HEIGHT="15" DEPTH="492" TEXTDIMENSION="131,3 x 15 x 492" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2302" UNIQUEPARENTID="2303" GUID="787420e3-67a5-40b7-bb0f-8d4932e3b135" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <METADATAS>
+                        <METADATA ID="UniqueIdCollection" VALUE="2302;2301" />
+                      </METADATAS>
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2054.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0.4" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                    <ITEM ID="dorm_comp_div_gav_post_2015" DESCRIPTION="Posterior de Gaveta 15" OBSERVATIONS="" REFERENCE="2.2055.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.09" WIDTH="787.33" HEIGHT="15" DEPTH="108.25" TEXTDIMENSION="787,3 x 15 x 108,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Gaveta" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\gaveta\lateral.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2298" UNIQUEPARENTID="2303" GUID="e2f3e379-e99d-4125-a0bc-ce407c2d1386" INVERTED="" PLATECUTTINGROTATE="NONE">
+                      <SHAPE />
+                      <REFERENCES>
+                        <COMPLETE REFERENCE="2.2055.15.Branco.MDF" />
+                        <PRICE REFERENCE="15.Branco.MDF" />
+                        <MATERIAL REFERENCE="MDF" />
+                        <MODEL REFERENCE="Branco" />
+                        <MAXWIDTH REFERENCE="2750" />
+                        <MAXDEPTH REFERENCE="1830" />
+                        <THICKNESS REFERENCE="15" />
+                        <FITA_BORDA_1 REFERENCE="0.4" />
+                        <FITA_BORDA_2 REFERENCE="0" />
+                        <FITA_BORDA_3 REFERENCE="0" />
+                        <FITA_BORDA_4 REFERENCE="0" />
+                        <SUPPLIER REFERENCE="" />
+                        <MODEL_DESCRIPTION REFERENCE="Branco" />
+                        <LINE REFERENCE="Cores" />
+                        <SUPPLIER_FITA REFERENCE="" />
+                        <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                        <LINE_FITA REFERENCE="Cores" />
+                      </REFERENCES>
+                    </ITEM>
+                  </ITEMS>
+                </ITEM>
+                <ITEM ID="dorm_comp_fgav_ret_2015" DESCRIPTION="Frente Gaveta Reta 15mm" OBSERVATIONS="" REFERENCE="2.2032.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="0.13" WIDTH="837.33" HEIGHT="15" DEPTH="146.25" TEXTDIMENSION="837,3 x 15 x 146,3" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Frente Gavetas Internas" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\frente_gavetas\Reta.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2295" UNIQUEPARENTID="2293" GUID="0f49c773-e7dc-473f-8701-fa4f3078ef4f" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.2032.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <MODEL REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="dorm_comp_pai_fro_2015" DESCRIPTION="Painel Frontal 15" OBSERVATIONS="" REFERENCE="15.Branco.MDF" UNIT="M2" REPETITION="2" QUANTITY="0.1" WIDTH="2300" HEIGHT="15" DEPTH="40" TEXTDIMENSION="2300 x 15 x 40" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Painéis" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\Paineis\painel_frontal.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2627" UNIQUEPARENTID="-2" GUID="9b754032-3de1-4ed6-8117-47a3dc291361" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <METADATAS>
+                <METADATA ID="UniqueIdCollection" VALUE="2627;2625" />
+              </METADATAS>
+              <REFERENCES>
+                <COMPLETE REFERENCE="15.Branco.MDF" />
+                <PRICE REFERENCE="15.Branco.MDF" />
+                <MATERIAL REFERENCE="MDF" />
+                <TYPE REFERENCE="" />
+                <MODEL REFERENCE="Branco" />
+                <MODEL_EXT REFERENCE="Branco" />
+                <MAXWIDTH REFERENCE="2750" />
+                <MAXDEPTH REFERENCE="1830" />
+                <THICKNESS REFERENCE="15" />
+                <FITA_BORDA_1 REFERENCE="0.4" />
+                <FITA_BORDA_2 REFERENCE="0.4" />
+                <FITA_BORDA_3 REFERENCE="0.4" />
+                <FITA_BORDA_4 REFERENCE="0.4" />
+                <SUPPLIER REFERENCE="" />
+                <MODEL_DESCRIPTION REFERENCE="Branco" />
+                <LINE REFERENCE="Cores" />
+                <SUPPLIER_EXT REFERENCE="" />
+                <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                <LINE_EXT REFERENCE="Cores" />
+                <SUPPLIER_FITA REFERENCE="" />
+                <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                <LINE_FITA REFERENCE="Cores" />
+              </REFERENCES>
+            </ITEM>
+            <ITEM ID="dorm_pta_cor_arm_emb_gol" DESCRIPTION="Porta Gola Vertical" OBSERVATIONS="" REFERENCE="2.1228.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="2.07" WIDTH="923.33" HEIGHT="15" DEPTH="2235" TEXTDIMENSION="923,3 x 15 x 2235" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Embutida" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\portas_deslizantes_NOVO\Armarios\Embutida\per_alum.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2612" UNIQUEPARENTID="-2" GUID="c048db09-c002-4e17-a0d3-d86f3101dd3f" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1228.15.Branco.MDF" />
+                <DESCRICAO REFERENCE="Porta Gola Vertical" />
+                <PRICE REFERENCE="2.1228.15.Branco.MDF" />
+                <MATERIAL REFERENCE="MDF" />
+                <TYPE REFERENCE="" />
+                <MODEL REFERENCE="Branco" />
+                <MODEL_EXT REFERENCE="Branco" />
+                <MODEL_INT_EXT REFERENCE="Branco.Branco" />
+                <MAXWIDTH REFERENCE="2750" />
+                <MAXDEPTH REFERENCE="1830" />
+                <THICKNESS REFERENCE="15" />
+                <SUPPLIER REFERENCE="" />
+                <MODEL_DESCRIPTION REFERENCE="Branco" />
+                <LINE REFERENCE="Cores" />
+                <SUPPLIER_EXT REFERENCE="" />
+                <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                <LINE_EXT REFERENCE="Cores" />
+                <SUPPLIER_FITA REFERENCE="" />
+                <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                <LINE_FITA REFERENCE="Cores" />
+                <FORMA REFERENCE="Painel Madeira" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Ocu_Pai_1667_2015" DESCRIPTION="Painel Gola Vertical" OBSERVATIONS="" REFERENCE="2.0228.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="1.99" WIDTH="888.33" HEIGHT="15" DEPTH="2235" TEXTDIMENSION="888,3 x 15 x 2235" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Painéis Portas NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\portas NOVO\per_alum.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2610" UNIQUEPARENTID="2612" GUID="9fbd83ae-4793-41d3-ab99-6de79521b643" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0228.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <TYPE REFERENCE="" />
+                    <MODEL REFERENCE="Branco" />
+                    <MODEL_EXT REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <DESCRICAO REFERENCE="Painel Gola Vertical" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_EXT REFERENCE="" />
+                    <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                    <LINE_EXT REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="dorm_pta_cor_arm_emb_gol" DESCRIPTION="Porta Gola Vertical" OBSERVATIONS="" REFERENCE="2.1228.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="2.07" WIDTH="923.33" HEIGHT="15" DEPTH="2235" TEXTDIMENSION="923,3 x 15 x 2235" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Embutida" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\portas_deslizantes_NOVO\Armarios\Embutida\per_alum.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2602" UNIQUEPARENTID="-2" GUID="2e10b15a-d8d4-4007-aba2-8151ac4a8a69" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="2.1228.15.Branco.MDF" />
+                <DESCRICAO REFERENCE="Porta Gola Vertical" />
+                <PRICE REFERENCE="2.1228.15.Branco.MDF" />
+                <MATERIAL REFERENCE="MDF" />
+                <TYPE REFERENCE="" />
+                <MODEL REFERENCE="Branco" />
+                <MODEL_EXT REFERENCE="Branco" />
+                <MODEL_INT_EXT REFERENCE="Branco.Branco" />
+                <MAXWIDTH REFERENCE="2750" />
+                <MAXDEPTH REFERENCE="1830" />
+                <THICKNESS REFERENCE="15" />
+                <SUPPLIER REFERENCE="" />
+                <MODEL_DESCRIPTION REFERENCE="Branco" />
+                <LINE REFERENCE="Cores" />
+                <SUPPLIER_EXT REFERENCE="" />
+                <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                <LINE_EXT REFERENCE="Cores" />
+                <SUPPLIER_FITA REFERENCE="" />
+                <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                <LINE_FITA REFERENCE="Cores" />
+                <FORMA REFERENCE="Painel Madeira" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Ocu_Pai_1667_2015" DESCRIPTION="Painel Gola Vertical" OBSERVATIONS="" REFERENCE="2.0228.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="1.99" WIDTH="888.33" HEIGHT="15" DEPTH="2235" TEXTDIMENSION="888,3 x 15 x 2235" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Painéis Portas NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\portas NOVO\per_alum.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2600" UNIQUEPARENTID="2602" GUID="b585c558-0075-4c6d-a4f7-6ff11322deba" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="2.0228.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <TYPE REFERENCE="" />
+                    <MODEL REFERENCE="Branco" />
+                    <MODEL_EXT REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <DESCRICAO REFERENCE="Painel Gola Vertical" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_EXT REFERENCE="" />
+                    <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                    <LINE_EXT REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+            <ITEM ID="dorm_pta_cor_arm_int_gol2" DESCRIPTION="Porta Gola Vertical 2L" OBSERVATIONS="" REFERENCE="3.6013.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="2.07" WIDTH="923.33" HEIGHT="15" DEPTH="2235" TEXTDIMENSION="923,3 x 15 x 2235" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Interna" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\portas_deslizantes_NOVO\Armarios\interna\perfil aluminio 2l_1.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2624" UNIQUEPARENTID="-2" GUID="917721b0-9297-457d-8b55-6c2337e877be" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="3.6013.15.Branco.MDF" />
+                <DESCRICAO REFERENCE="Porta Gola Vertical 2L" />
+                <PRICE REFERENCE="3.6013.15.Branco.MDF" />
+                <MATERIAL REFERENCE="MDF" />
+                <TYPE REFERENCE="" />
+                <MODEL REFERENCE="Branco" />
+                <MODEL_EXT REFERENCE="Branco" />
+                <MODEL_INT_EXT REFERENCE="Branco.Branco" />
+                <MAXWIDTH REFERENCE="2750" />
+                <MAXDEPTH REFERENCE="1830" />
+                <THICKNESS REFERENCE="15" />
+                <SUPPLIER REFERENCE="" />
+                <MODEL_DESCRIPTION REFERENCE="Branco" />
+                <LINE REFERENCE="Cores" />
+                <SUPPLIER_EXT REFERENCE="" />
+                <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                <LINE_EXT REFERENCE="Cores" />
+                <SUPPLIER_FITA REFERENCE="" />
+                <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                <LINE_FITA REFERENCE="Cores" />
+                <FORMA REFERENCE="Painel Madeira" />
+              </REFERENCES>
+              <ITEMS>
+                <ITEM ID="Plu_Dor_Ocu_Pai_rod_int_2l_2015" DESCRIPTION="Painel Gola Vertical" OBSERVATIONS="" REFERENCE="3.5013.15.Branco.MDF" UNIT="M2" REPETITION="1" QUANTITY="1.91" WIDTH="853.33" HEIGHT="15" DEPTH="2235" TEXTDIMENSION="853,3 x 15 x 2235" COMPONENT="Y" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Painéis Portas NOVO" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\portas NOVO\per_alum.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2620" UNIQUEPARENTID="2624" GUID="85fcdb8d-6c8c-4055-b3ed-b077133fe3c7" INVERTED="" PLATECUTTINGROTATE="NONE">
+                  <SHAPE />
+                  <REFERENCES>
+                    <COMPLETE REFERENCE="3.5013.15.Branco.MDF" />
+                    <PRICE REFERENCE="15.Branco.MDF" />
+                    <MATERIAL REFERENCE="MDF" />
+                    <TYPE REFERENCE="" />
+                    <MODEL REFERENCE="Branco" />
+                    <MODEL_EXT REFERENCE="Branco" />
+                    <MAXWIDTH REFERENCE="2750" />
+                    <MAXDEPTH REFERENCE="1830" />
+                    <THICKNESS REFERENCE="15" />
+                    <DESCRICAO REFERENCE="Painel Gola Vertical" />
+                    <SUPPLIER REFERENCE="" />
+                    <MODEL_DESCRIPTION REFERENCE="Branco" />
+                    <LINE REFERENCE="Cores" />
+                    <SUPPLIER_EXT REFERENCE="" />
+                    <MODEL_DESCRIPTION_EXT REFERENCE="Branco" />
+                    <LINE_EXT REFERENCE="Cores" />
+                    <SUPPLIER_FITA REFERENCE="" />
+                    <MODEL_DESCRIPTION_FITA REFERENCE="Branco" />
+                    <LINE_FITA REFERENCE="Cores" />
+                    <FITA_BORDA_1 REFERENCE="0.4" />
+                    <FITA_BORDA_2 REFERENCE="0.4" />
+                    <FITA_BORDA_3 REFERENCE="0.4" />
+                    <FITA_BORDA_4 REFERENCE="0.4" />
+                  </REFERENCES>
+                </ITEM>
+              </ITEMS>
+            </ITEM>
+          </ITEMS>
+        </CATEGORY>
+        <CATEGORY DESCRIPTION="Processo de Fabricação">
+          <TOTALPRICES />
+          <ITEMS>
+            <ITEM ID="dor_ocu_pro_fabricacao" DESCRIPTION="Processo de Fabricação" OBSERVATIONS="" REFERENCE="Porta Gola Vertical 2L" UNIT="UN" REPETITION="1" QUANTITY="1" WIDTH="10" HEIGHT="10" DEPTH="10" TEXTDIMENSION="10 x 10 x 10" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Processo Fabricação" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\Processo_Fab\processo_fabricacao.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2619" UNIQUEPARENTID="-2" GUID="2b37fdc3-08a4-4bed-b06f-ed8c3c543e31" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <REFERENCES>
+                <COMPLETE REFERENCE="Porta Gola Vertical 2L" />
+                <PRICE REFERENCE="Porta Gola Vertical 2L" />
+              </REFERENCES>
+            </ITEM>
+            <ITEM ID="dor_ocu_pro_fabricacao" DESCRIPTION="Processo de Fabricação" OBSERVATIONS="" REFERENCE="Porta Gola Vertical" UNIT="UN" REPETITION="2" QUANTITY="1" WIDTH="10" HEIGHT="10" DEPTH="10" TEXTDIMENSION="10 x 10 x 10" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Processo Fabricação" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Ocultos\Processo_Fab\processo_fabricacao.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2608" UNIQUEPARENTID="-2" GUID="e452a859-dc86-4b6f-bc8b-ddff584a7bbd" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <METADATAS>
+                <METADATA ID="UniqueIdCollection" VALUE="2608;2598" />
+              </METADATAS>
+              <REFERENCES>
+                <COMPLETE REFERENCE="Porta Gola Vertical" />
+                <PRICE REFERENCE="Porta Gola Vertical" />
+              </REFERENCES>
+            </ITEM>
+          </ITEMS>
+        </CATEGORY>
+        <CATEGORY DESCRIPTION="Puxadores">
+          <TOTALPRICES />
+          <ITEMS>
+            <ITEM ID="dor_aces_div_puxador_aluminio_2015" DESCRIPTION="Puxador Gola" OBSERVATIONS="" REFERENCE="1.2600.00" UNIT="M" REPETITION="4" QUANTITY="2.235" WIDTH="2235" HEIGHT="35" DEPTH="21" TEXTDIMENSION="2235 x 35 x 21" COMPONENT="N" STRUCTURE="N" FAMILY="Dormitórios" GROUP="Diversos" ISAGGREGATEGROUP="N" IMAGE="%PastaSistema%\Bibliotecas\Dormitorios\Composicao NOVO\diversos\puxador_aluminio.jpg" EXPLODEDIMAGE="" EXPLODEDIMAGECAPTION="" RULEQUANTITYINCREASE="N" SHOWPRICE="Y" RULEQUANTITYINCREASEPERCENT="0" IDPRICEPROVIDER="Plus" IDPRICESOURCE="BancoDados" IDPRICETABLE="" UNIQUEID="2622" UNIQUEPARENTID="-2" GUID="63a8618d-7508-4cdc-b301-582b4c7b1a8b" INVERTED="" PLATECUTTINGROTATE="NONE">
+              <SHAPE />
+              <METADATAS>
+                <METADATA ID="UniqueIdCollection" VALUE="2622;2599;2609;2621" />
+              </METADATAS>
+              <REFERENCES>
+                <COMPLETE REFERENCE="1.2600.00" />
+                <MODEL REFERENCE="00" />
+                <PRICE REFERENCE="1.2600.00" />
+              </REFERENCES>
+            </ITEM>
+          </ITEMS>
+        </CATEGORY>
+      </CATEGORIES>
+    </AMBIENT>
+  </AMBIENTS>
+</LISTING>

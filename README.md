@@ -43,11 +43,15 @@ O sistema oferece uma solução robusta para empresas que precisam gerenciar mú
 - **Tailwind CSS** - Framework CSS utilitário
 - **Vite** - Build tool rápido e moderno
 
-### Funcionalidades
+### Funcionalidades Específicas
+- **Gestão de Clientes e Fornecedores** - Cadastro completo com endereços
+- **Sistema de Projetos** - Criação e acompanhamento de projetos
+- **Orçamentos Detalhados** - Criação de orçamentos com materiais e serviços
+- **Integração Promob** - Importação de dados XML do Promob
+- **Contratos Automáticos** - Geração de contratos em PDF
+- **Sistema Multi-tenant** - Suporte a múltiplas empresas
+- **Validação de CPF/CNPJ** - Regras customizadas para documentos brasileiros
 - **Spatie/Permission** - Sistema completo de permissões e roles
-- **Sistema de Autenticação** - Login, registro e recuperação de senha
-- **Dashboard Responsivo** - Interface administrativa moderna
-- **Validação de CPF** - Regra customizada para validação
 - **Testes Automatizados** - PHPUnit configurado
 
 ---
@@ -67,8 +71,8 @@ Certifique-se de ter instalado em sua máquina:
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/rafaelcacote/projeto-base.git
-cd projeto-base
+git clone https://github.com/seu-usuario/cutplan2.git
+cd cutplan2
 ```
 
 2. **Instale as dependências do PHP**
@@ -97,7 +101,7 @@ Edite o arquivo `.env` com suas credenciais do MySQL:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=seu_banco_de_dados
+DB_DATABASE=cutplan2
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 ```
@@ -129,22 +133,24 @@ php artisan serve
 ## 📁 Estrutura do Projeto
 
 ```
-projeto-base/
+cutplan2/
 ├── app/
-│   ├── Http/Controllers/     # Controladores
-│   ├── Models/              # Modelos Eloquent
-│   ├── Rules/               # Regras de validação customizadas
+│   ├── Http/Controllers/     # Controladores (Clientes, Projetos, Orçamentos, etc.)
+│   ├── Models/              # Modelos (Cliente, Projeto, Material, Orçamento, etc.)
+│   ├── Rules/               # Regras de validação (CPF, CNPJ)
+│   ├── Services/            # Serviços (Importação Promob, etc.)
 │   └── Providers/           # Provedores de serviços
 ├── database/
-│   ├── migrations/          # Migrações do banco
-│   ├── seeders/            # Seeders para popular dados
+│   ├── migrations/          # Migrações do banco de dados
+│   ├── seeders/            # Seeders (Estados, Municípios, Tipos, etc.)
 │   └── factories/          # Factories para testes
 ├── resources/
-│   ├── views/              # Templates Blade
-│   ├── css/                # Estilos CSS
-│   └── js/                 # JavaScript
+│   ├── views/              # Templates Blade organizados por módulo
+│   ├── css/                # Estilos CSS customizados
+│   ├── js/                 # JavaScript (endereços, etc.)
+│   └── templates/          # Templates de contratos
 ├── routes/
-│   ├── web.php             # Rotas web
+│   ├── web.php             # Rotas principais do sistema
 │   └── auth.php            # Rotas de autenticação
 └── tests/                  # Testes automatizados
 ```

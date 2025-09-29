@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Dropdowns</title>
+    <link href="tabler/css/tabler.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; }
+        .test-section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        
+        /* Fix para dropdowns em tabelas */
+        .table .dropdown {
+            position: relative;
+        }
+        
+        .table .dropdown-menu {
+            position: absolute;
+            z-index: 1050;
+            min-width: 200px;
+            right: 0;
+            left: auto;
+        }
+        
+        .table .dropdown-menu.dropdown-menu-end {
+            right: 0;
+            left: auto;
+            transform: none !important;
+        }
+        
+        .table-responsive {
+            overflow: visible;
+        }
+        
+        .dropdown-menu[data-bs-popper] {
+            right: 0 !important;
+            left: auto !important;
+        }
+        
+        .navbar .dropdown-menu {
+            z-index: 1055 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teste de Dropdowns</h1>
+        
+        <!-- Teste 1: Dropdown no Header -->
+        <div class="test-section">
+            <h3>Dropdown no Header</h3>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Sistema</a>
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                                <span class="avatar avatar-sm" style="background-image: url('https://ui-avatars.com/api/?name=Usuario&background=206bc4&color=fff')"></span>
+                                <div class="d-none d-xl-block ps-2">
+                                    <div>Nome do Usuário</div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <a href="#" class="dropdown-item">Perfil</a>
+                                <a href="#" class="dropdown-item">Configurações</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Teste 2: Dropdown em Tabela -->
+        <div class="test-section">
+            <h3>Dropdown em Tabela</h3>
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-vcenter card-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#001</td>
+                                <td>Teste 1</td>
+                                <td>
+                                    <div class="dropdown position-relative">
+                                        <button class="btn btn-sm dropdown-toggle p-1 border-0 bg-primary text-white" 
+                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                                style="min-width: 90px;">
+                                            Ativo
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Ativo</a></li>
+                                            <li><a class="dropdown-item" href="#">Inativo</a></li>
+                                            <li><a class="dropdown-item" href="#">Pendente</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Ações
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Editar</a></li>
+                                            <li><a class="dropdown-item" href="#">Excluir</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#002</td>
+                                <td>Teste 2</td>
+                                <td>
+                                    <div class="dropdown position-relative">
+                                        <button class="btn btn-sm dropdown-toggle p-1 border-0 bg-success text-white" 
+                                                type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                                style="min-width: 90px;">
+                                            Aprovado
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Aprovado</a></li>
+                                            <li><a class="dropdown-item" href="#">Rejeitado</a></li>
+                                            <li><a class="dropdown-item" href="#">Pendente</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Ações
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Editar</a></li>
+                                            <li><a class="dropdown-item" href="#">Excluir</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Teste 3: Dropdown Normal -->
+        <div class="test-section">
+            <h3>Dropdown Normal</h3>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    Dropdown Normal
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Opção 1</a></li>
+                    <li><a class="dropdown-item" href="#">Opção 2</a></li>
+                    <li><a class="dropdown-item" href="#">Opção 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="tabler/js/tabler.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página carregada');
+            
+            // Verificar se o Bootstrap está carregado
+            if (typeof bootstrap !== 'undefined') {
+                console.log('Bootstrap carregado com sucesso');
+            } else {
+                console.log('Bootstrap NÃO carregado');
+            }
+            
+            // Inicializar dropdowns manualmente se necessário
+            var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                console.log('Inicializando dropdown:', dropdownToggleEl);
+                return new bootstrap.Dropdown(dropdownToggleEl);
+            });
+            
+            console.log('Total de dropdowns inicializados:', dropdownList.length);
+        });
+    </script>
+</body>
+</html>

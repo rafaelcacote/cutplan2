@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PromobExport>
+    <Informacoes>
+        <DataGeracao>2025-09-25</DataGeracao>
+        <VersaoPromob>5.68.2.5</VersaoPromob>
+    </Informacoes>
+    <Materiais>
+        <Material>
+            <Codigo>MAD001</Codigo>
+            <Descricao>MDF 15mm Branco</Descricao>
+            <Unidade>M2</Unidade>
+            <Quantidade>2.50</Quantidade>
+            <Dimensoes>
+                <Largura>1220</Largura>
+                <Altura>2750</Altura>
+                <Profundidade>15</Profundidade>
+            </Dimensoes>
+            <Familia>MDF</Familia>
+            <Grupo>Paineis</Grupo>
+        </Material>
+        <Material>
+            <Codigo>FER001</Codigo>
+            <Descricao>Dobradiça 35mm</Descricao>
+            <Unidade>PC</Unidade>
+            <Quantidade>12</Quantidade>
+            <Familia>Ferragens</Familia>
+            <Grupo>Dobradiças</Grupo>
+        </Material>
+        <Material>
+            <Codigo>PUX001</Codigo>
+            <Descricao>Puxador Alça 128mm Inox</Descricao>
+            <Unidade>PC</Unidade>
+            <Quantidade>4</Quantidade>
+            <Familia>Ferragens</Familia>
+            <Grupo>Puxadores</Grupo>
+        </Material>
+        <Material>
+            <Codigo>COR001</Codigo>
+            <Descricao>Corrediça Telescópica 45cm</Descricao>
+            <Unidade>PC</Unidade>
+            <Quantidade>6</Quantidade>
+            <Familia>Ferragens</Familia>
+            <Grupo>Corrediças</Grupo>
+        </Material>
+        <Material>
+            <Codigo>PAR001</Codigo>
+            <Descricao>Parafuso Cabeça Panela 4x40mm</Descricao>
+            <Unidade>PC</Unidade>
+            <Quantidade>24</Quantidade>
+            <Familia>Fixação</Familia>
+            <Grupo>Parafusos</Grupo>
+        </Material>
+    </Materiais>
+</PromobExport>
